@@ -1,0 +1,16 @@
+{
+  "userid": "填写仿真账号",
+  "password": "",
+  "brokerid": "9999",
+  "td_address": "tcp://182.254.243.31:30001",
+  "md_address": "tcp://182.254.243.31:30011",
+  "appid": "simnow_client_test",
+  "auth_code": "0000000000000000",
+  "symbols": [
+    "rb2701",
+    "au2612",
+    "ag2612",
+    "cu2610"
+  ],
+  "production_mode": true
+}

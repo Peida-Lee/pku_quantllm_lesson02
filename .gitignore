@@ -1,0 +1,10 @@
+# Only the explicit public files assembled by the build script are committed.
+__pycache__/
+*.pyc
+.venv*/
+config.simnow.local.json
+*.pkl
+*.parquet
+*.tar
+*.tar.gz
+*.zip

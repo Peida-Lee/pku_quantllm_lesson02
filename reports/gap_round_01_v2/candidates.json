@@ -1,0 +1,82 @@
+{
+  "g01_gap": {
+    "description": "当日跳空",
+    "expression": "(open / ts_delay(close, 1) - 1)",
+    "expected_sign": 1
+  },
+  "g02_gap_mean3": {
+    "description": "三日跳空均值",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1), 3)",
+    "expected_sign": 1
+  },
+  "g03_gap_mean5": {
+    "description": "五日跳空均值",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1), 5)",
+    "expected_sign": 1
+  },
+  "g04_gap_mean10": {
+    "description": "十日跳空均值",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1), 10)",
+    "expected_sign": 1
+  },
+  "g05_gap_mean20": {
+    "description": "二十日跳空均值",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1), 20)",
+    "expected_sign": 1
+  },
+  "g06_surprise": {
+    "description": "超出过去二十日均值的跳空",
+    "expression": "(open / ts_delay(close, 1) - 1) - ts_delay(ts_mean((open / ts_delay(close, 1) - 1), 20), 1)",
+    "expected_sign": 1
+  },
+  "g07_vol_scaled": {
+    "description": "按过去波动标准化的跳空",
+    "expression": "(open / ts_delay(close, 1) - 1) / (ts_delay(ts_std((close / ts_delay(close, 1) - 1), 20), 1) + 0.000001)",
+    "expected_sign": 1
+  },
+  "g08_recent_accel": {
+    "description": "短期跳空相对长期增强",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1), 3) - ts_mean((open / ts_delay(close, 1) - 1), 20)",
+    "expected_sign": 1
+  },
+  "g09_positive_count": {
+    "description": "五日向上跳空比例",
+    "expression": "ts_mean(((open / ts_delay(close, 1) - 1) > 0) * 1.0, 5)",
+    "expected_sign": 1
+  },
+  "g10_sign_consistency": {
+    "description": "方向一致性",
+    "expression": "ts_sum((open / ts_delay(close, 1) - 1), 5) / (ts_sum(abs((open / ts_delay(close, 1) - 1)), 5) + 0.000001)",
+    "expected_sign": 1
+  },
+  "g11_volume_confirm": {
+    "description": "当日量比加权跳空",
+    "expression": "(open / ts_delay(close, 1) - 1) * (volume / (ts_delay(ts_mean(volume, 20), 1) + 1))",
+    "expected_sign": 1
+  },
+  "g12_prior_volume": {
+    "description": "过去量比加权跳空",
+    "expression": "(open / ts_delay(close, 1) - 1) * (ts_delay(volume, 1) / (ts_delay(ts_mean(volume, 20), 1) + 1))",
+    "expected_sign": 1
+  },
+  "g13_intraday_confirm": {
+    "description": "日内同向延续门控",
+    "expression": "(open / ts_delay(close, 1) - 1) * ((close / open - 1) * (open / ts_delay(close, 1) - 1) > 0)",
+    "expected_sign": 1
+  },
+  "g14_trend_confirm": {
+    "description": "过去趋势同向门控",
+    "expression": "(open / ts_delay(close, 1) - 1) * ((ts_delay(close, 1) / ts_delay(close, 21) - 1) * (open / ts_delay(close, 1) - 1) > 0)",
+    "expected_sign": 1
+  },
+  "g15_gap_volume_corr": {
+    "description": "二十日跳空与成交量相关",
+    "expression": "ts_corr((open / ts_delay(close, 1) - 1), volume, 20)",
+    "expected_sign": 1
+  },
+  "g16_gap_intraday": {
+    "description": "隔夜与日内收益差的五日均值",
+    "expression": "ts_mean((open / ts_delay(close, 1) - 1) - (close / open - 1), 5)",
+    "expected_sign": 1
+  }
+}

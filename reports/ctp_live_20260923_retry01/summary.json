@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "starting": 1,
+    "connected": 2,
+    "login_succeeded": 2,
+    "subscription_requested": 4,
+    "authenticated": 1,
+    "subscription_response": 4,
+    "tick": 202,
+    "heartbeat": 6
+  },
+  "mode": "LIVE",
+  "status": "TICKS_RECEIVED",
+  "md_login_successes": 1,
+  "td_login_successes": 1,
+  "tick_counts": {
+    "rb2701": 1,
+    "au2612": 82,
+    "ag2612": 93,
+    "cu2610": 26
+  },
+  "latest_session_volumes": {
+    "rb2701": 248945,
+    "au2612": 50196,
+    "ag2612": 66801,
+    "cu2610": 21929
+  },
+  "elapsed_seconds": 60.11,
+  "orders_sent": 0
+}

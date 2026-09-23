@@ -1,0 +1,28 @@
+{
+  "rows_original": 2668723,
+  "symbols": 819,
+  "date_min": "2007-09-24 00:00:00",
+  "date_max": "2024-01-10 00:00:00",
+  "duplicate_keys": 0,
+  "invalid_ohlc_rows": 0,
+  "zero_or_missing_volume_rows": 90890,
+  "nulls": {
+    "datetime": 0,
+    "open": 0,
+    "high": 0,
+    "low": 0,
+    "close": 0,
+    "volume": 0,
+    "turnover": 0,
+    "open_interest": 0,
+    "vwap": 0,
+    "vt_symbol": 0
+  },
+  "filters_symbols": 819,
+  "eligible_research_rows": 895685,
+  "eligible_daily_stock_counts": {
+    "min": 204.0,
+    "median": 291.0,
+    "max": 300.0
+  }
+}

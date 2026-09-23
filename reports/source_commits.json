@@ -1,0 +1,17 @@
+[
+  {
+    "module": "vnpy",
+    "commit": "fa5206fe63836f3f8cd1ebd7168fbd19a5e2ff09",
+    "origin": "https://github.com/vnpy/vnpy.git"
+  },
+  {
+    "module": "vnpy_ctp",
+    "commit": "ad76250cf87cf5b03604336fde8c7489bdc0d0d7",
+    "origin": "https://github.com/vnpy/vnpy_ctp.git"
+  },
+  {
+    "module": "vnpy_ctastrategy",
+    "commit": "6ef76981624bf55b2ea978f8587f74d633aafc72",
+    "origin": "https://github.com/vnpy/vnpy_ctastrategy.git"
+  }
+]

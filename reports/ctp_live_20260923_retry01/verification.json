@@ -1,0 +1,87 @@
+{
+  "started_at": "2026-09-23T00:19:16.845505+08:00",
+  "last_event_at": "2026-09-23T00:20:16.887136+08:00",
+  "summary": {
+    "counts": {
+      "starting": 1,
+      "connected": 2,
+      "login_succeeded": 2,
+      "subscription_requested": 4,
+      "authenticated": 1,
+      "subscription_response": 4,
+      "tick": 202,
+      "heartbeat": 6
+    },
+    "mode": "LIVE",
+    "status": "TICKS_RECEIVED",
+    "md_login_successes": 1,
+    "td_login_successes": 1,
+    "tick_counts": {
+      "rb2701": 1,
+      "au2612": 82,
+      "ag2612": 93,
+      "cu2610": 26
+    },
+    "latest_session_volumes": {
+      "rb2701": 248945,
+      "au2612": 50196,
+      "ag2612": 66801,
+      "cu2610": 21929
+    },
+    "elapsed_seconds": 60.11,
+    "orders_sent": 0
+  },
+  "per_symbol": {
+    "rb2701": {
+      "count": 1,
+      "first_exchange_time": "23:00:00.000",
+      "last_exchange_time": "23:00:00.000",
+      "first_action_day": "20260922",
+      "last_action_day": "20260922",
+      "volume_increase": 0,
+      "first_price": 3123.0,
+      "last_price": 3123.0,
+      "different_exchange_timestamps": 1
+    },
+    "au2612": {
+      "count": 82,
+      "first_exchange_time": "00:19:14.500",
+      "last_exchange_time": "00:20:15.500",
+      "first_action_day": "20260923",
+      "last_action_day": "20260923",
+      "volume_increase": 97,
+      "first_price": 937.6800000000001,
+      "last_price": 937.9,
+      "different_exchange_timestamps": 82
+    },
+    "ag2612": {
+      "count": 93,
+      "first_exchange_time": "00:19:15.500",
+      "last_exchange_time": "00:20:15.500",
+      "first_action_day": "20260923",
+      "last_action_day": "20260923",
+      "volume_increase": 121,
+      "first_price": 16062.0,
+      "last_price": 16066.0,
+      "different_exchange_timestamps": 93
+    },
+    "cu2610": {
+      "count": 26,
+      "first_exchange_time": "00:19:07.000",
+      "last_exchange_time": "00:20:12.500",
+      "first_action_day": "20260923",
+      "last_action_day": "20260923",
+      "volume_increase": 14,
+      "first_price": 111590.0,
+      "last_price": 111590.0,
+      "different_exchange_timestamps": 26
+    }
+  },
+  "successful_subscriptions": [
+    "rb2701",
+    "au2612",
+    "ag2612",
+    "cu2610"
+  ],
+  "errors": []
+}
