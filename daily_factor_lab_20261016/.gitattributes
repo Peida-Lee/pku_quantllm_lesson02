@@ -1,0 +1,2 @@
+# Frozen computation SHA256 values require identical Python bytes on Windows.
+*.py text eol=lf

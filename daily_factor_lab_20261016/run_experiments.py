@@ -83,6 +83,10 @@ def make_snapshot(result, complete=False):
             queries["research_"+name]={"rows":research.get(name,[]),"source":research_source,
                  "methods":[{"language":"python","code":"python research.py; see study protocol.json, selection_frozen_before_2025.json and validation.json"}]}
         previous["research"]=research
+    from research_v4 import attach_snapshot
+    attach_snapshot(previous)
+    from v4_snapshot import attach_diagnostics
+    attach_diagnostics(previous)
     save_json(path, previous)
 
 def build_dashboard():

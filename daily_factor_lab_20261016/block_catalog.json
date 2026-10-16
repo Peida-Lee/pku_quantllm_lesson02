@@ -2238,6 +2238,1098 @@
         "args": [],
         "params": {}
       }
+    },
+    {
+      "id": "v4_amihud_w010",
+      "label": "V4 · 10日低单位金额价格冲击代理",
+      "category": "factors",
+      "description": "-(mean_w(abs(r)/(A/1e8)))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amihud_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amihud_w020",
+      "label": "V4 · 20日低单位金额价格冲击代理",
+      "category": "factors",
+      "description": "-(mean_w(abs(r)/(A/1e8)))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amihud_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amihud_w060",
+      "label": "V4 · 60日低单位金额价格冲击代理",
+      "category": "factors",
+      "description": "-(mean_w(abs(r)/(A/1e8)))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amihud_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_stability_w010",
+      "label": "V4 · 10日低成交额对数波动",
+      "category": "factors",
+      "description": "-(std_w(log1p(A),ddof=1))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_stability_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_stability_w020",
+      "label": "V4 · 20日低成交额对数波动",
+      "category": "factors",
+      "description": "-(std_w(log1p(A),ddof=1))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_stability_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_stability_w060",
+      "label": "V4 · 60日低成交额对数波动",
+      "category": "factors",
+      "description": "-(std_w(log1p(A),ddof=1))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_stability_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_trend_w010",
+      "label": "V4 · 10日短期成交额扩张",
+      "category": "factors",
+      "description": "(log(mean_5(A)/mean_w(A)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_trend_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_trend_w020",
+      "label": "V4 · 20日短期成交额扩张",
+      "category": "factors",
+      "description": "(log(mean_5(A)/mean_w(A)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_trend_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_amount_trend_w060",
+      "label": "V4 · 60日短期成交额扩张",
+      "category": "factors",
+      "description": "(log(mean_5(A)/mean_w(A)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_amount_trend_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_average_trade_value_w010",
+      "label": "V4 · 10日高平均每笔成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A/N)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_average_trade_value_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_average_trade_value_w020",
+      "label": "V4 · 20日高平均每笔成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A/N)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_average_trade_value_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_average_trade_value_w060",
+      "label": "V4 · 60日高平均每笔成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A/N)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_average_trade_value_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_channel_position_w010",
+      "label": "V4 · 10日历史区间位置",
+      "category": "factors",
+      "description": "((C[t]-min_w(L))/(max_w(H)-min_w(L)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_channel_position_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_channel_position_w020",
+      "label": "V4 · 20日历史区间位置",
+      "category": "factors",
+      "description": "((C[t]-min_w(L))/(max_w(H)-min_w(L)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_channel_position_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_channel_position_w060",
+      "label": "V4 · 60日历史区间位置",
+      "category": "factors",
+      "description": "((C[t]-min_w(L))/(max_w(H)-min_w(L)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_channel_position_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_closing_position_w010",
+      "label": "V4 · 10日日内收盘强度",
+      "category": "factors",
+      "description": "(mean_w((2*C-H-L)/(H-L)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_closing_position_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_closing_position_w020",
+      "label": "V4 · 20日日内收盘强度",
+      "category": "factors",
+      "description": "(mean_w((2*C-H-L)/(H-L)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_closing_position_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_closing_position_w060",
+      "label": "V4 · 60日日内收盘强度",
+      "category": "factors",
+      "description": "(mean_w((2*C-H-L)/(H-L)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_closing_position_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_downside_risk_w010",
+      "label": "V4 · 10日低下行均方风险",
+      "category": "factors",
+      "description": "-(sqrt(mean_w(min(r,0)^2)))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_downside_risk_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_downside_risk_w020",
+      "label": "V4 · 20日低下行均方风险",
+      "category": "factors",
+      "description": "-(sqrt(mean_w(min(r,0)^2)))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_downside_risk_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_downside_risk_w060",
+      "label": "V4 · 60日低下行均方风险",
+      "category": "factors",
+      "description": "-(sqrt(mean_w(min(r,0)^2)))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_downside_risk_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_gap_volatility_w010",
+      "label": "V4 · 10日低隔夜缺口波动",
+      "category": "factors",
+      "description": "-(std_w(O[t]/C[t-1]-1,ddof=1))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_gap_volatility_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_gap_volatility_w020",
+      "label": "V4 · 20日低隔夜缺口波动",
+      "category": "factors",
+      "description": "-(std_w(O[t]/C[t-1]-1,ddof=1))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_gap_volatility_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_gap_volatility_w060",
+      "label": "V4 · 60日低隔夜缺口波动",
+      "category": "factors",
+      "description": "-(std_w(O[t]/C[t-1]-1,ddof=1))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_gap_volatility_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_high_position_w010",
+      "label": "V4 · 10日接近历史高点",
+      "category": "factors",
+      "description": "(C[t]/max_w(H)-1)；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_high_position_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_high_position_w020",
+      "label": "V4 · 20日接近历史高点",
+      "category": "factors",
+      "description": "(C[t]/max_w(H)-1)；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_high_position_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_high_position_w060",
+      "label": "V4 · 60日接近历史高点",
+      "category": "factors",
+      "description": "(C[t]/max_w(H)-1)；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_high_position_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_trend_w010",
+      "label": "V4 · 10日日内收益延续",
+      "category": "factors",
+      "description": "(mean_w(C/O-1))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_trend_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_trend_w020",
+      "label": "V4 · 20日日内收益延续",
+      "category": "factors",
+      "description": "(mean_w(C/O-1))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_trend_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_trend_w060",
+      "label": "V4 · 60日日内收益延续",
+      "category": "factors",
+      "description": "(mean_w(C/O-1))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_trend_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_volatility_w010",
+      "label": "V4 · 10日低日内收益波动",
+      "category": "factors",
+      "description": "-(std_w(C/O-1,ddof=1))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_volatility_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_volatility_w020",
+      "label": "V4 · 20日低日内收益波动",
+      "category": "factors",
+      "description": "-(std_w(C/O-1,ddof=1))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_volatility_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_intraday_volatility_w060",
+      "label": "V4 · 60日低日内收益波动",
+      "category": "factors",
+      "description": "-(std_w(C/O-1,ddof=1))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_intraday_volatility_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_liquidity_w010",
+      "label": "V4 · 10日高平均成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_liquidity_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_liquidity_w020",
+      "label": "V4 · 20日高平均成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_liquidity_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_liquidity_w060",
+      "label": "V4 · 60日高平均成交额",
+      "category": "factors",
+      "description": "(log1p(mean_w(A)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_liquidity_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowrange_w010",
+      "label": "V4 · 10日低日内振幅",
+      "category": "factors",
+      "description": "-(mean_w((H-L)/C))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowrange_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowrange_w020",
+      "label": "V4 · 20日低日内振幅",
+      "category": "factors",
+      "description": "-(mean_w((H-L)/C))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowrange_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowrange_w060",
+      "label": "V4 · 60日低日内振幅",
+      "category": "factors",
+      "description": "-(mean_w((H-L)/C))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowrange_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowvol_w010",
+      "label": "V4 · 10日低收益波动",
+      "category": "factors",
+      "description": "-(std_w(r,ddof=1))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowvol_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowvol_w020",
+      "label": "V4 · 20日低收益波动",
+      "category": "factors",
+      "description": "-(std_w(r,ddof=1))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowvol_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_lowvol_w060",
+      "label": "V4 · 60日低收益波动",
+      "category": "factors",
+      "description": "-(std_w(r,ddof=1))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_lowvol_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_mean_reversion_w010",
+      "label": "V4 · 10日价格均线偏离反转",
+      "category": "factors",
+      "description": "-(C[t]/mean_w(C)-1)；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_mean_reversion_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_mean_reversion_w020",
+      "label": "V4 · 20日价格均线偏离反转",
+      "category": "factors",
+      "description": "-(C[t]/mean_w(C)-1)；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_mean_reversion_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_mean_reversion_w060",
+      "label": "V4 · 60日价格均线偏离反转",
+      "category": "factors",
+      "description": "-(C[t]/mean_w(C)-1)；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_mean_reversion_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_skip5_w020",
+      "label": "V4 · 20日跳过5日动量",
+      "category": "factors",
+      "description": "(C[t-5]/C[t-w-5]-1)；完整历史需求26行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_skip5_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_skip5_w060",
+      "label": "V4 · 60日跳过5日动量",
+      "category": "factors",
+      "description": "(C[t-5]/C[t-w-5]-1)；完整历史需求66行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_skip5_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_skip5_w120",
+      "label": "V4 · 120日跳过5日动量",
+      "category": "factors",
+      "description": "(C[t-5]/C[t-w-5]-1)；完整历史需求126行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_skip5_w120",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_w020",
+      "label": "V4 · 20日收盘动量",
+      "category": "factors",
+      "description": "(C[t]/C[t-w]-1)；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_w060",
+      "label": "V4 · 60日收盘动量",
+      "category": "factors",
+      "description": "(C[t]/C[t-w]-1)；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_momentum_w120",
+      "label": "V4 · 120日收盘动量",
+      "category": "factors",
+      "description": "(C[t]/C[t-w]-1)；完整历史需求121行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_momentum_w120",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_overnight_reversal_w010",
+      "label": "V4 · 10日隔夜缺口反转",
+      "category": "factors",
+      "description": "-(mean_w(O[t]/C[t-1]-1))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_overnight_reversal_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_overnight_reversal_w020",
+      "label": "V4 · 20日隔夜缺口反转",
+      "category": "factors",
+      "description": "-(mean_w(O[t]/C[t-1]-1))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_overnight_reversal_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_overnight_reversal_w060",
+      "label": "V4 · 60日隔夜缺口反转",
+      "category": "factors",
+      "description": "-(mean_w(O[t]/C[t-1]-1))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_overnight_reversal_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_positive_fraction_w010",
+      "label": "V4 · 10日上涨日期占比",
+      "category": "factors",
+      "description": "(mean_w(1[r>0]))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_positive_fraction_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_positive_fraction_w020",
+      "label": "V4 · 20日上涨日期占比",
+      "category": "factors",
+      "description": "(mean_w(1[r>0]))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_positive_fraction_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_positive_fraction_w060",
+      "label": "V4 · 60日上涨日期占比",
+      "category": "factors",
+      "description": "(mean_w(1[r>0]))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_positive_fraction_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_range_surprise_w010",
+      "label": "V4 · 10日低当日振幅冲击",
+      "category": "factors",
+      "description": "-(((H[t]-L[t])/C[t])/mean_w((H-L)/C))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_range_surprise_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_range_surprise_w020",
+      "label": "V4 · 20日低当日振幅冲击",
+      "category": "factors",
+      "description": "-(((H[t]-L[t])/C[t])/mean_w((H-L)/C))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_range_surprise_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_range_surprise_w060",
+      "label": "V4 · 60日低当日振幅冲击",
+      "category": "factors",
+      "description": "-(((H[t]-L[t])/C[t])/mean_w((H-L)/C))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_range_surprise_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_amount_corr_w010",
+      "label": "V4 · 10日低收益成交额相关",
+      "category": "factors",
+      "description": "-(corr_w(r,log1p(A)))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_amount_corr_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_amount_corr_w020",
+      "label": "V4 · 20日低收益成交额相关",
+      "category": "factors",
+      "description": "-(corr_w(r,log1p(A)))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_amount_corr_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_amount_corr_w060",
+      "label": "V4 · 60日低收益成交额相关",
+      "category": "factors",
+      "description": "-(corr_w(r,log1p(A)))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_amount_corr_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_to_risk_w010",
+      "label": "V4 · 10日收益波动比",
+      "category": "factors",
+      "description": "(mean_w(r)/std_w(r,ddof=1))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_to_risk_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_to_risk_w020",
+      "label": "V4 · 20日收益波动比",
+      "category": "factors",
+      "description": "(mean_w(r)/std_w(r,ddof=1))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_to_risk_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_return_to_risk_w060",
+      "label": "V4 · 60日收益波动比",
+      "category": "factors",
+      "description": "(mean_w(r)/std_w(r,ddof=1))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_return_to_risk_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_reversal_w001",
+      "label": "V4 · 1日收盘收益反转",
+      "category": "factors",
+      "description": "-(C[t]/C[t-w]-1)；完整历史需求2行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_reversal_w001",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_reversal_w005",
+      "label": "V4 · 5日收盘收益反转",
+      "category": "factors",
+      "description": "-(C[t]/C[t-w]-1)；完整历史需求6行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_reversal_w005",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_reversal_w010",
+      "label": "V4 · 10日收盘收益反转",
+      "category": "factors",
+      "description": "-(C[t]/C[t-w]-1)；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_reversal_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_tail_return_w010",
+      "label": "V4 · 10日较高左尾收益",
+      "category": "factors",
+      "description": "(quantile_w(r,q=0.1,interpolation=linear))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_tail_return_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_tail_return_w020",
+      "label": "V4 · 20日较高左尾收益",
+      "category": "factors",
+      "description": "(quantile_w(r,q=0.1,interpolation=linear))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_tail_return_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_tail_return_w060",
+      "label": "V4 · 60日较高左尾收益",
+      "category": "factors",
+      "description": "(quantile_w(r,q=0.1,interpolation=linear))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_tail_return_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trade_intensity_w010",
+      "label": "V4 · 10日高平均成交笔数",
+      "category": "factors",
+      "description": "(log1p(mean_w(N)))；完整历史需求10行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trade_intensity_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trade_intensity_w020",
+      "label": "V4 · 20日高平均成交笔数",
+      "category": "factors",
+      "description": "(log1p(mean_w(N)))；完整历史需求20行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trade_intensity_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trade_intensity_w060",
+      "label": "V4 · 60日高平均成交笔数",
+      "category": "factors",
+      "description": "(log1p(mean_w(N)))；完整历史需求60行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trade_intensity_w060",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trend_efficiency_w010",
+      "label": "V4 · 10日趋势路径效率",
+      "category": "factors",
+      "description": "((C[t]/C[t-w]-1)/sum_w(abs(r)))；完整历史需求11行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trend_efficiency_w010",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trend_efficiency_w020",
+      "label": "V4 · 20日趋势路径效率",
+      "category": "factors",
+      "description": "((C[t]/C[t-w]-1)/sum_w(abs(r)))；完整历史需求21行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trend_efficiency_w020",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "v4_trend_efficiency_w060",
+      "label": "V4 · 60日趋势路径效率",
+      "category": "factors",
+      "description": "((C[t]/C[t-w]-1)/sum_w(abs(r)))；完整历史需求61行；截至t收盘计算，最早t+1执行；无历史ST真值、官方限价、竞价深度证明。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "v4_trend_efficiency_w060",
+        "args": [],
+        "params": {}
+      }
     }
   ],
   "limits": {

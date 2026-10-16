@@ -3,19 +3,21 @@ import { DataComponent, DataTable, EvidenceChart, SectionHeader, SortableItem, S
 import { StrategyBuilder } from "./StrategyBuilder.jsx";
 import { capitalLabel, ResearchParameterPresets } from "./ResearchParameterPresets.jsx";
 import { ResearchWorkbench } from "./ResearchWorkbench.jsx";
+import { FactorExplorer } from "./FactorExplorer.jsx";
+import { executionConfigError, isFiniteNumber, numericInputValue, scaledNumber } from "./execution-config.js";
 import "./dashboard.css";
 
 const FACTORS = [["momentum60","60日动量（跳过5日）"],["reversal5","5日反转"],["lowvol20","20日低波动"],["liquidity20","20日成交金额"],["combo","四因子等权"]];
 const LABELS=Object.fromEntries(FACTORS);
 const COLORS={"60日动量（跳过5日）":"#4f6fed","5日反转":"#d99538","20日低波动":"#25a08e","20日成交金额":"#a168c2","四因子等权":"#dc657a","动态股票池等权参考（无费用，非指数）":"#8994a7"};
 const DEFAULTS={start:"2025-01-02",end:"2025-12-31",capital:1000000000,top_n:100,rebalance:"weekly",commission:.0001,min_commission:5,slippage:.0005,min_avg_amount:20000000,min_active_days20:18,min_history:120,min_price:2,open_guard:.048,execution_model:"daily_conservative",st_policy:"price_proxy",universe:"all_a",liquidity_top_n:0,risk_proxy_window:20,max_participation:.01,max_daily_participation:.01,liquidate_end:true,wind_down_days:0};
-const pct=v=>v==null||!Number.isFinite(+v)?"—":`${(+v*100).toFixed(2)}%`;
-const num=(v,d=2)=>v==null||!Number.isFinite(+v)?"—":(+v).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct=v=>!isFiniteNumber(v)?"—":`${(v*100).toFixed(2)}%`;
+const num=(v,d=2)=>!isFiniteNumber(v)?"—":v.toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});
 const nameOf=r=>r.factor==="reference"?"动态股票池等权参考（无费用，非指数）":r.name||LABELS[r.factor]||r.factor;
 const scenarioName=s=>({base:"基准费用",gross:"零费用",stress:"压力费用"}[s]||s);
 const columns=[{key:"name",label:"策略"},{key:"total_return",label:"累计收益",renderCell:pct},{key:"annual_return",label:"年化收益",renderCell:pct},{key:"sharpe",label:"夏普比率",renderCell:v=>num(v)},{key:"max_drawdown",label:"最大回撤",renderCell:pct}];
 const annualColumns=[{key:"year",label:"年份"},{key:"name",label:"策略"},{key:"return",label:"年度收益",renderCell:pct}];
-const icColumns=[{key:"name",label:"因子"},{key:"mean_rank_ic",label:"平均 Rank IC",renderCell:v=>num(v,4)},{key:"ci95_low",label:"95%区间下限",renderCell:v=>num(v,4)},{key:"ci95_high",label:"95%区间上限",renderCell:v=>num(v,4)},{key:"p_raw_hac_normal",label:"原始 P（HAC）",renderCell:v=>v==null?"—":+v<.0001?(+v).toExponential(2):num(v,4)},{key:"n_dates",label:"有效日期数",renderCell:v=>num(v,0)}];
+const icColumns=[{key:"name",label:"因子"},{key:"mean_rank_ic",label:"平均 Rank IC",renderCell:v=>num(v,4)},{key:"ci95_low",label:"95%区间下限",renderCell:v=>num(v,4)},{key:"ci95_high",label:"95%区间上限",renderCell:v=>num(v,4)},{key:"p_raw_hac_normal",label:"原始 P（HAC）",renderCell:v=>!isFiniteNumber(v)?"—":v<.0001?v.toExponential(2):num(v,4)},{key:"n_dates",label:"有效日期数",renderCell:v=>num(v,0)}];
 function flattenFiles(files,prefix=""){
   if(!files)return [];
   if(typeof files==="string")return [{key:prefix,path:files,label:prefix}];
@@ -27,15 +29,15 @@ function Field({label,children}){return <label className="factor-field"><span>{l
 
 export function DashboardContent(){
   const {snapshot,queries}=useDataApp();
-  const {activeTabId}=useDashboardTabs([{id:"dashboard",label:"回测结果"},{id:"strategy-blocks",label:"策略积木"},{id:"research-2025",label:"2025研究"}]);
-  const [status,setStatus]=useState({busy:false}),[latest,setLatest]=useState(null),[apiError,setApiError]=useState("");
+  const {activeTabId}=useDashboardTabs([{id:"dashboard",label:"回测结果"},{id:"strategy-blocks",label:"策略积木"},{id:"research-2025",label:"2025研究"},{id:"factor-explorer",label:"因子探索"}]);
+  const [status,setStatus]=useState({busy:null}),[latest,setLatest]=useState(null),[apiError,setApiError]=useState(""),[statusConnection,setStatusConnection]=useState("");
   const [config,setConfig]=useState({...DEFAULTS,...snapshot.config}),[selected,setSelected]=useState("combo"),[showReference,setShowReference]=useState(false),[posting,setPosting]=useState(false);
   const [runs,setRuns]=useState([]),[requestedRun,setRequestedRun]=useState(snapshot.run_id||"");
-  const mounted=useRef(true),knownRun=useRef(null);
+  const mounted=useRef(true),knownRun=useRef(null),queueRevision=useRef(0),actionPending=useRef(false);
   const set=(key,value)=>setConfig(c=>({...c,[key]:value}));
   useEffect(()=>{mounted.current=true;let timer;
     async function result(){const res=await fetch("/api/result",{cache:"no-store"});if(res.ok){const body=await res.json();if(mounted.current&&body?.run_id){setLatest(body);knownRun.current=body.run_id}}}
-    async function poll(){try{const response=await fetch("/api/status",{cache:"no-store"});if(!response.ok)throw Error();const body=await response.json();if(!mounted.current)return;setStatus(body);setApiError("");const id=typeof body.latest_run==="object"?body.latest_run?.run_id:body.latest_run;if(id&&id!==knownRun.current)await result();timer=setTimeout(poll,body.busy?2500:12000)}catch{if(mounted.current){setApiError("本地服务暂不可用；保留已保存结果。");timer=setTimeout(poll,12000)}}}
+    async function poll(){const revision=queueRevision.current;try{const response=await fetch("/api/status",{cache:"no-store"});if(!response.ok)throw Error();const body=await response.json();if(typeof body.busy!=="boolean"||body.busy&&(!body.job_id||!body.job_kind))throw Error();if(!mounted.current)return;if(revision===queueRevision.current){setStatus(body);setStatusConnection("")}const id=typeof body.latest_run==="object"?body.latest_run?.run_id:body.latest_run;if(id&&id!==knownRun.current)await result();timer=setTimeout(poll,body.busy||revision!==queueRevision.current?2500:12000)}catch{if(mounted.current){setStatusConnection("本地队列状态暂不可用；保留已保存结果，恢复连接后才能提交任务。");timer=setTimeout(poll,12000)}}}
     result().catch(()=>{});fetch("/api/runs",{cache:"no-store"}).then(r=>r.json()).then(d=>setRuns(d.runs??[])).catch(()=>{});poll();return()=>{mounted.current=false;clearTimeout(timer)};
   },[]);
   const summary=queries.summary?.rows??[],curves=queries.curves?.rows??[],yearly=queries.yearly?.rows??[],ic=queries.ic?.rows??[];
@@ -49,15 +51,17 @@ export function DashboardContent(){
   const annualRows=yearly.filter(r=>r.scenario==="base"&&r.factor!=="reference"&&/^\d{4}$/.test(String(r.year))).map(r=>({...r,name:nameOf(r),"年度收益 (%)":r.return==null?null:r.return*100}));
   const feeRows=summary.filter(r=>r.factor===selectedFactor).map(r=>({...r,scenarioLabel:scenarioName(r.scenario),"年化收益 (%)":r.annual_return==null?null:r.annual_return*100}));
   const icRows=ic.filter(r=>r.factor!=="reference").map(r=>({...r,name:nameOf(r),n_dates:r.days??r.n_dates??r.n??r.count}));
-  const matchingResult=latest?.run_id===snapshot.run_id?latest:null;
-  const evidence=matchingResult||snapshot;
+  const evidence=snapshot;
   const files=flattenFiles({...evidence.files,strategies:evidence.strategies??evidence.files?.strategies});
   const needsReload=latest?.run_id&&latest.run_id!==snapshot.run_id;
-  const busy=status.busy||posting;
-  const progress=typeof status.progress==="object"?status.progress?.message||JSON.stringify(status.progress):status.progress;
-  async function run(e){e.preventDefault();setPosting(true);setApiError("");try{const res=await fetch("/api/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(config)});const body=await res.json();if(!res.ok)throw Error(body.error||`HTTP ${res.status}`);setStatus(s=>({...s,busy:true,progress:"任务已提交"}))}catch(e){setApiError(e.message)}finally{setPosting(false)}}
-  async function activateRun(){if(!requestedRun||requestedRun===snapshot.run_id)return;setPosting(true);try{const res=await fetch("/api/runs/activate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({run_id:requestedRun})});const body=await res.json();if(!res.ok)throw Error(body.error||"历史结果加载失败");setStatus(s=>({...s,busy:true,progress:"正在加载历史结果"}))}catch(e){setApiError(e.message)}finally{setPosting(false)}}
-  const numberInput=(key,min,max,step=1)=><input type="number" value={config[key]} min={min} max={max} step={step} required onChange={e=>set(key,+e.target.value)}/>;
+  const queueUnavailable=status.busy===null||!!statusConnection;
+  const busy=status.busy===true||posting||queueUnavailable;
+  const configError=executionConfigError(config);
+  const progress=queueUnavailable?(statusConnection||"正在读取本地队列状态…"):typeof status.progress==="object"?status.progress?.message||JSON.stringify(status.progress):status.progress;
+  function markTaskStarted(identity,message="任务已提交"){if(!mounted.current)return;queueRevision.current++;setStatus(s=>({...s,...identity,busy:true,status:"queued",progress:message,error:null}));setStatusConnection("")}
+  async function run(e){e.preventDefault();if(actionPending.current||busy)return;if(configError){setApiError(configError);return}actionPending.current=true;queueRevision.current++;setPosting(true);setApiError("");try{const res=await fetch("/api/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(config)});const body=await res.json();if(!res.ok)throw Error(body.error||`HTTP ${res.status}`);markTaskStarted(body)}catch(e){setApiError(e.message)}finally{actionPending.current=false;setPosting(false)}}
+  async function activateRun(){if(actionPending.current||busy||!requestedRun||requestedRun===snapshot.run_id)return;actionPending.current=true;queueRevision.current++;setPosting(true);setApiError("");try{const res=await fetch("/api/runs/activate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({run_id:requestedRun})});const body=await res.json();if(!res.ok)throw Error(body.error||"历史结果加载失败");markTaskStarted(body,"正在加载历史结果")}catch(e){setApiError(e.message)}finally{actionPending.current=false;setPosting(false)}}
+  const numberInput=(key,min,max,step=1)=><input type="number" value={config[key]??""} min={min} max={max} step={step} required onChange={e=>set(key,numericInputValue(e.target.value))}/>;
   const lineSpec={type:"line",x:"date",y:"nav_index",series:"name",stackable:false,colors:COLORS,valueDecimals:3,showXAxisLabel:false};
   const ddSpec={...lineSpec,y:"回撤 (%)",valueDecimals:2};
   const annualSpec={type:"bar",x:"year",y:"年度收益 (%)",series:"name",stackable:false,colors:COLORS,valueDecimals:2};
@@ -68,23 +72,24 @@ export function DashboardContent(){
     {id:"factor:statistics",items:["factor:ic","factor:fees"],header:<SectionHeader id="factor:statistics-heading" title="因子检验与费用敏感性"/>},
     {id:"factor:records",items:["factor:summary"],header:<SectionHeader id="factor:records-heading" title="策略指标与复核文件"/>},
   ];
-  if(activeTabId==="strategy-blocks")return <StrategyBuilder appId={snapshot.id} config={config} setConfig={setConfig} busy={busy} progress={progress} needsReload={needsReload} snapshotStrategy={snapshot.custom_strategy} onRunStarted={()=>setStatus(s=>({...s,busy:true,progress:"自定义策略已提交"}))}/>;
-  if(activeTabId==="research-2025")return <ResearchWorkbench/>;
+  if(activeTabId==="strategy-blocks")return <StrategyBuilder appId={snapshot.id} config={config} setConfig={setConfig} busy={busy} progress={progress} needsReload={needsReload} snapshotStrategy={snapshot.custom_strategy} onRunStarted={identity=>markTaskStarted(identity,"自定义策略已提交")}/>;
+  if(activeTabId==="research-2025")return <ResearchWorkbench externalBusy={busy} onTaskStarted={markTaskStarted}/>;
+  if(activeTabId==="factor-explorer")return <FactorExplorer externalBusy={busy} onTaskStarted={markTaskStarted}/>;
   return <article className="factor-lab">
     {runs.length>1&&<div className="factor-run-history"><label>已保存实验<select value={requestedRun} onChange={e=>setRequestedRun(e.target.value)}>{runs.map(r=><option key={r.run_id} value={r.run_id}>{r.name} · {r.config?.start}—{r.config?.end} · {r.run_id}</option>)}</select></label><button type="button" disabled={busy||requestedRun===snapshot.run_id} onClick={activateRun}>加载该实验</button></div>}
     <form className="factor-run-form" onSubmit={run} aria-label="回测参数">
-      <div className="factor-form-head"><strong>实验参数</strong><span>沪深日频 · 只做多 · {snapshot.custom_strategy?"当前为自定义策略结果":"固定因子方向"}</span><button className="factor-run" type="submit" disabled={busy}>{busy?"回测运行中…":snapshot.custom_strategy?"运行默认五策略":"运行回测"}</button></div>
+      <div className="factor-form-head"><strong>实验参数</strong><span>沪深日频 · 只做多 · {snapshot.custom_strategy?"当前为自定义策略结果":"固定因子方向"}</span><button className="factor-run" type="submit" disabled={busy||!!configError}>{queueUnavailable?"队列状态未就绪…":busy?"回测运行中…":snapshot.custom_strategy?"运行默认五策略":"运行回测"}</button></div>
       <ResearchParameterPresets config={config} setConfig={setConfig}/>
       <div className="factor-fields">
         <Field label="起始日期"><input type="date" value={config.start} min="2021-01-01" max={config.end} required onChange={e=>set("start",e.target.value)}/></Field>
         <Field label="结束日期"><input type="date" value={config.end} min={config.start} max="2026-10-16" required onChange={e=>set("end",e.target.value)}/></Field>
         <Field label="初始资金（元）">{numberInput("capital",10000,1e10,10000)}<small className="factor-parameter-hint">{capitalLabel(config.capital)}</small></Field>
-        <Field label="持仓数量">{numberInput("top_n",1,500,1)}</Field>
+        <Field label="目标入选只数">{numberInput("top_n",1,500,1)}</Field>
         <Field label="调仓频率"><select value={config.rebalance} onChange={e=>set("rebalance",e.target.value)}><option value="weekly">每周</option><option value="monthly">每月</option><option value="daily">每日</option></select></Field>
       </div>
       <details className="factor-advanced"><summary>费用与股票池参数</summary><div className="factor-fields factor-fields--advanced">
-        <Field label={`单边佣金率（${num(config.commission*10000)} bp）`}>{numberInput("commission",0,.01,.00001)}<small className="factor-parameter-hint">输入小数：0.0001 = 1bp</small></Field>
-        <Field label={`单边滑点（${num(config.slippage*10000)} bp）`}>{numberInput("slippage",0,.01,.00001)}</Field>
+        <Field label={`单边佣金率（${num(scaledNumber(config.commission,10000))} bp）`}>{numberInput("commission",0,.01,.00001)}<small className="factor-parameter-hint">输入小数：0.0001 = 1bp</small></Field>
+        <Field label={`单边滑点（${num(scaledNumber(config.slippage,10000))} bp）`}>{numberInput("slippage",0,.01,.00001)}</Field>
         <Field label="20日平均成交额下限（元）">{numberInput("min_avg_amount",0,1e11,1000000)}</Field>
         <Field label="开盘变动过滤阈值（小数）">{numberInput("open_guard",.001,.3,.001)}</Field>
         <Field label="执行模型"><select value={config.execution_model} onChange={e=>set("execution_model",e.target.value)}><option value="daily_conservative">保守日线执行</option><option value="legacy">原版执行（用于历史对照）</option></select></Field>
@@ -99,7 +104,7 @@ export function DashboardContent(){
       </div></details>
       <div className="factor-run-status" role="status"><span className={`factor-status-dot ${busy?"is-running":""}`}/>{busy?(progress||"正在计算，请稍候"):snapshot.run_id?`当前结果：${snapshot.run_id}`:summary.length?"已加载保存的实验结果":"等待首次回测"}<span className="factor-status-zone">Asia/Shanghai</span></div>
       {needsReload&&!busy&&<div className="factor-ready" role="status">新结果已就绪。<button type="button" onClick={()=>window.location.reload()}>加载已更新页面</button></div>}
-      {(apiError||status.error)&&<p className="factor-error" role="alert">{apiError||String(status.error)}</p>}
+      {(statusConnection||apiError||configError||status.error)&&<p className="factor-error" role="alert">{statusConnection||apiError||configError||String(status.error)}</p>}
     </form>
     <div className="factor-selection"><label>重点策略 <select value={selectedFactor} onChange={e=>setSelected(e.target.value)}>{availableFactors.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label><span>基准费用 · 净值起点 1.00</span></div>
     <DataComponent id="factor:metrics" queryId="summary" kind="custom" title={`${selectedLabel} · 基准费用`} sourceRows={chosen?[chosen]:[]} displayRows={chosen?[chosen]:[]}>

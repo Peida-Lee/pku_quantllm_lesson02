@@ -1,0 +1,193 @@
+{
+  "scope": "isolated loopback HTTP with mocked compute, subprocess and job threads",
+  "tests_run": 16,
+  "passed": true,
+  "failures": [],
+  "errors": [],
+  "live_server_contacted": false,
+  "live_progress_or_queue_read": false,
+  "real_Market_loaded": false,
+  "real_research_or_V3_run_started": false,
+  "frozen_compute_files_modified": false,
+  "resource": {
+    "method": "Windows_CPU_set_topology",
+    "reserved_logical_processors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "allowed_logical_processors": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 1,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 3,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 4,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 5,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 6,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 7,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 8,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 9,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 10,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 11,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 12,
+        "core": 12,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 13,
+        "core": 13,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 14,
+        "core": 14,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 15,
+        "core": 15,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 16,
+        "core": 16,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 17,
+        "core": 17,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 18,
+        "core": 18,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 19,
+        "core": 19,
+        "efficiency": 0,
+        "group": 0
+      }
+    ]
+  },
+  "numeric_threads": 1,
+  "arrow_threads": 1,
+  "tests_available": 20,
+  "execution_batches": [
+    {
+      "tests_run": 16,
+      "passed": true,
+      "elapsed_test_seconds": 1.523
+    },
+    {
+      "tests_run": 1,
+      "filter": "child_completion",
+      "passed": true,
+      "elapsed_test_seconds": 0.611
+    },
+    {
+      "tests_run": 3,
+      "filter": "source_",
+      "passed": true,
+      "elapsed_test_seconds": 0.618
+    }
+  ],
+  "all_17_have_passing_evidence": true,
+  "setup_retries": [
+    {
+      "stage": "before HTTP cases",
+      "reason": "TemporaryDirectory child access denied with owner-only directory ACL; normal workspace inherited ACL directory succeeds",
+      "attempts": 2
+    }
+  ],
+  "all_20_have_passing_evidence": true,
+  "source_identity_check": "only activation/result-build gate; original source helper mocked; no ZIP reads or hashing"
+}

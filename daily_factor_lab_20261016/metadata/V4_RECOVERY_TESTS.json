@@ -1,0 +1,11 @@
+{
+  "scope": "Mock-only checkpoint, disk-error, protocol and recovery checks; no live research queue was read or changed",
+  "tests_run": 16,
+  "passed": 15,
+  "expected_failures": 1,
+  "unexpected_failures": 0,
+  "test_script": "tests/test_v4_recovery.py",
+  "open_defensive_issue": "choose_training assumes training-only input; directly passing mixed evaluation records could override a training record. The production runner invokes it before evaluation begins and the independent validator checks the frozen training selection.",
+  "policy": "The expected failure is retained and disclosed; it is not presented as a passed assertion or evidence of an observed production leak.",
+  "source": "Independent engine-audit subagent execution report, 2026-10-17 Asia/Shanghai"
+}

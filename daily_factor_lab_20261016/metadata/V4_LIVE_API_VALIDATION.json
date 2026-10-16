@@ -1,0 +1,69 @@
+{
+  "created_at": "2026-10-17T00:41:42.584871+08:00",
+  "passed": true,
+  "scope": "Real 127.0.0.1 API GET/static validation/invalid requests only; no runnable job, actual AI model, saved strategy or live queue monitoring submitted",
+  "checks": [
+    {
+      "name": "real_v4_catalog_78",
+      "passed": true
+    },
+    {
+      "name": "real_native_library_78",
+      "passed": true
+    },
+    {
+      "name": "real_static_validation_retains_inherited_selection",
+      "passed": true
+    },
+    {
+      "name": "unknown_library_entry_rejected",
+      "passed": true
+    },
+    {
+      "name": "real_reject_bool_workers",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "real_reject_unknown_queue_field",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "real_reject_negative_exit",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "real_reject_legacy_exit",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "real_reject_unknown_nested_field",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "real_reject_unavailable_true_ST",
+      "passed": true,
+      "http_status": 400
+    },
+    {
+      "name": "cross_origin_post_rejected",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_JSON_rejected",
+      "passed": true
+    },
+    {
+      "name": "AI_status_read_only_and_no_credentials",
+      "passed": true
+    },
+    {
+      "name": "real_AI_local_only_with_V4_constraints",
+      "passed": true
+    }
+  ]
+}

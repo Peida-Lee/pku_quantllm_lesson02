@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-17T01:13:00.546210+08:00",
+  "study_id": "v4_20261017_002058",
+  "snapshot_revision": "c99284cfd92e748599b67211d7446e0e150f84bc4a7c13eacdb98f2f448bd637",
+  "api_candidate_count": 1404,
+  "reviewed_candidate_rows": 1404,
+  "neighbor_rows": 1404,
+  "buildStatus": "complete",
+  "build_manifest": {
+    "version": 1,
+    "kind": "separate-data-v1",
+    "html": {
+      "path": "index.html",
+      "sha256": "fe7d1ca8257fd07f0db47bd2de16cfd61e156d7134c65a948c8048709e92fb7c",
+      "bytes": 2991145
+    },
+    "snapshot": {
+      "path": "snapshot.25e25876349b27088c4afeb121a7934d199733748d2f35fb680914a8bc4a4d9d.json",
+      "sha256": "25e25876349b27088c4afeb121a7934d199733748d2f35fb680914a8bc4a4d9d",
+      "bytes": 61666320
+    },
+    "runtimeSha256": "9e3ede84b28aded3c7379b6e6a5611f0d95b9977eb0f781e279ceefabfcbd27e",
+    "sourceSnapshotSha256": "25e25876349b27088c4afeb121a7934d199733748d2f35fb680914a8bc4a4d9d"
+  },
+  "actual_activation_job": {
+    "job_id": "activate_a952d9395dd642a484e612e413ff41af",
+    "job_kind": "activate",
+    "status": "complete",
+    "snapshot_built": true
+  },
+  "browser_visual_qa_passed": false,
+  "ui_screenshot_count": 0,
+  "scope": "API/frozen data/build artifact checks only; no rendered visual claim"
+}

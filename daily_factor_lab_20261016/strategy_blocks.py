@@ -114,6 +114,12 @@ for _op, _label, _desc in [
     _add(_op, _label, "factors", description=_desc)
 
 
+from v4_factors import catalog as _v4_catalog
+for _v4_spec in _v4_catalog():
+    _add("v4_" + _v4_spec["id"], "V4 · " + _v4_spec["name"], "factors",
+         description=_v4_spec["formula"] + "；完整历史需求" + str(_v4_spec["required_history_rows"]) + "行；" + _v4_spec["boundaries"][2])
+
+
 def catalog():
     return {"format": "daily-factor-block-catalog", "version": 1, "categories": copy.deepcopy(CATEGORIES),
             "blocks": copy.deepcopy(list(BLOCKS.values())),
@@ -400,6 +406,9 @@ def _evaluate(node, market, universe, cache=None):
 def _evaluate_uncached(node, market, universe, cache):
     op, p = node["op"], node["params"]
     shape = market.close.shape
+    if op.startswith("v4_"):
+        from v4_factors import compute_factor
+        return compute_factor(market, op[3:])
     if op in ("open", "close"):
         return _safe(getattr(market, op))
     if op in ("high", "low"):

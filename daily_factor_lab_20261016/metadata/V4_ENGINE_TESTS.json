@@ -1,0 +1,167 @@
+{
+  "status": "passed",
+  "tests": 28,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "created_at": "2026-10-17T00:12:23.398316+08:00",
+  "scope": "Execution-only synthetic hand calculations and counterfactual tests; old research and full source backtests were not rerun",
+  "numeric_threads": 1,
+  "arrow_cpu_threads": 1,
+  "resource_policy": {
+    "method": "Windows_CPU_set_topology",
+    "reserved_logical_processors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "allowed_logical_processors": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 1,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 3,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 4,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 5,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 6,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 7,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 8,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 9,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 10,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 11,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 12,
+        "core": 12,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 13,
+        "core": 13,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 14,
+        "core": 14,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 15,
+        "core": 15,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 16,
+        "core": 16,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 17,
+        "core": 17,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 18,
+        "core": 18,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 19,
+        "core": 19,
+        "efficiency": 0,
+        "group": 0
+      }
+    ]
+  },
+  "source_sha256": {
+    "lab.py": "11f837651cf543760f4dae966b60029a962c96cc9103d9e5bb433447bb3ba7f3",
+    "execution_metadata.py": "d9ef9a018d3259258c968c072b33043dcb82a07e399e82b1fab37b591945f87d",
+    "tests/test_execution_precision.py": "03a24bff5083a922401db6f2ab3cccc7a859039bef864febc7df08034959d386",
+    "tests/test_v4_execution_audit.py": "44b7fb33e2894d1ffd3c224da4bcf5d953a0722fe47ffe3a1b95140aa040293a"
+  },
+  "output": "test_actual_fill_notional_controls_capacity_and_sell_taxes (test_execution_precision.ConservativeExecutionTests.test_actual_fill_notional_controls_capacity_and_sell_taxes) ... ok\ntest_capacity_is_minimum_of_lagged_and_posthoc_daily_caps (test_execution_precision.ConservativeExecutionTests.test_capacity_is_minimum_of_lagged_and_posthoc_daily_caps) ... ok\ntest_factor_jump_blocks_orders_without_destroying_total_return_value (test_execution_precision.ConservativeExecutionTests.test_factor_jump_blocks_orders_without_destroying_total_return_value) ... ok\ntest_frozen_order_quantity_ignores_execution_open_gap (test_execution_precision.ConservativeExecutionTests.test_frozen_order_quantity_ignores_execution_open_gap) ... ok\ntest_never_sells_more_than_owned_or_same_day_new_buy (test_execution_precision.ConservativeExecutionTests.test_never_sells_more_than_owned_or_same_day_new_buy) ... ok\ntest_outside_daily_range_slipped_fill_is_rejected (test_execution_precision.ConservativeExecutionTests.test_outside_daily_range_slipped_fill_is_rejected) ... ok\ntest_preplanned_exit_still_leaves_three_locked_limit_down_days (test_execution_precision.ConservativeExecutionTests.test_preplanned_exit_still_leaves_three_locked_limit_down_days) ... ok\ntest_preplanned_three_day_exit_clears_capacity_that_single_day_cannot (test_execution_precision.ConservativeExecutionTests.test_preplanned_three_day_exit_clears_capacity_that_single_day_cannot) ... ok\ntest_star_minimum_200_then_integer_increment (test_execution_precision.ConservativeExecutionTests.test_star_minimum_200_then_integer_increment) ... ok\ntest_terminal_limit_down_leaves_position_instead_of_fake_cash (test_execution_precision.ConservativeExecutionTests.test_terminal_limit_down_leaves_position_instead_of_fake_cash) ... ok\ntest_tick_slippage_and_cash_accounting_hand_calculation (test_execution_precision.ConservativeExecutionTests.test_tick_slippage_and_cash_accounting_hand_calculation) ... ok\ntest_true_last_day_liquidation_and_no_terminal_buy (test_execution_precision.ConservativeExecutionTests.test_true_last_day_liquidation_and_no_terminal_buy) ... ok\ntest_unknown_st_rounding_guard_catches_less_than_4_point_8_percent (test_execution_precision.ConservativeExecutionTests.test_unknown_st_rounding_guard_catches_less_than_4_point_8_percent) ... ok\ntest_wind_down_window_forbids_buys_and_zero_preserves_old_results (test_execution_precision.ConservativeExecutionTests.test_wind_down_window_forbids_buys_and_zero_preserves_old_results) ... ok\ntest_board_universe_and_point_in_time_liquidity_pool (test_execution_precision.MetadataAndUniverseTests.test_board_universe_and_point_in_time_liquidity_pool) ... ok\ntest_corporate_action_day_does_not_create_false_price_proxy (test_execution_precision.MetadataAndUniverseTests.test_corporate_action_day_does_not_create_false_price_proxy) ... ok\ntest_new_config_types_and_legacy_defaults (test_execution_precision.MetadataAndUniverseTests.test_new_config_types_and_legacy_defaults) ... ok\ntest_price_risk_proxy_is_not_true_st_and_is_prefix_causal (test_execution_precision.MetadataAndUniverseTests.test_price_risk_proxy_is_not_true_st_and_is_prefix_causal) ... ok\ntest_true_st_unavailable_strict_fails_closed (test_execution_precision.MetadataAndUniverseTests.test_true_st_unavailable_strict_fails_closed) ... ok\ntest_summary_cache_isolated_from_per_simulation_mutation_and_reset (test_v4_execution_audit.MetadataSummaryCacheTests.test_summary_cache_isolated_from_per_simulation_mutation_and_reset) ... ok\ntest_direct_invalid_config_cannot_bypass_public_simulation_validation (test_v4_execution_audit.V4ExecutionAuditTests.test_direct_invalid_config_cannot_bypass_public_simulation_validation) ... ok\ntest_factor_recovery_does_not_silently_skip_unknown_action_reference (test_v4_execution_audit.V4ExecutionAuditTests.test_factor_recovery_does_not_silently_skip_unknown_action_reference) ... ok\ntest_future_bar_changes_do_not_change_execution_prefix (test_v4_execution_audit.V4ExecutionAuditTests.test_future_bar_changes_do_not_change_execution_prefix) ... ok\ntest_negative_nonfinite_and_boolean_fee_multipliers_are_rejected (test_v4_execution_audit.V4ExecutionAuditTests.test_negative_nonfinite_and_boolean_fee_multipliers_are_rejected) ... ok\ntest_pending_buy_rechecks_finite_filter_and_keeps_old_target (test_v4_execution_audit.V4ExecutionAuditTests.test_pending_buy_rechecks_finite_filter_and_keeps_old_target) ... ok\ntest_successful_sale_exit_flag_requires_no_writeoff (test_v4_execution_audit.V4ExecutionAuditTests.test_successful_sale_exit_flag_requires_no_writeoff) ... ok\ntest_turnover_uses_tick_execution_amount_not_reference_open_amount (test_v4_execution_audit.V4ExecutionAuditTests.test_turnover_uses_tick_execution_amount_not_reference_open_amount) ... ok\ntest_writeoff_zero_positions_are_not_reported_as_trade_exit (test_v4_execution_audit.V4ExecutionAuditTests.test_writeoff_zero_positions_are_not_reported_as_trade_exit) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 0.394s\n\nOK\n"
+}

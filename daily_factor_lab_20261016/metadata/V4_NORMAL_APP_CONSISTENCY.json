@@ -1,0 +1,199 @@
+{
+  "format": "v4-normal-app-consistency",
+  "passed": true,
+  "experiment_id": "intraday_volatility_w010__liquid1000__n20__weekly",
+  "app_run": "D:\\quant\\daily_factor_lab_20261016\\outputs\\run_20261017_010935_658467",
+  "checks": {
+    "base_daily": {
+      "passed": true,
+      "data_rows": 243,
+      "columns": [
+        "date",
+        "nav",
+        "return",
+        "cash",
+        "positions",
+        "invested_fraction",
+        "cost",
+        "turnover",
+        "trades",
+        "blocked_attempts",
+        "writeoff_loss",
+        "stale_fraction",
+        "rebalance",
+        "terminal_liquidation",
+        "daily_capacity_used",
+        "daily_capacity_max_participation",
+        "wind_down"
+      ],
+      "comparison": "exact serialized cells in original order"
+    },
+    "base_metrics": {
+      "passed": true,
+      "fields": [
+        "annual_return",
+        "annual_two_sided_turnover",
+        "annual_vol",
+        "costs",
+        "days",
+        "final_nav",
+        "max_drawdown",
+        "max_stale_fraction",
+        "mean_invested",
+        "sharpe",
+        "total_return",
+        "trades",
+        "writeoff_loss"
+      ],
+      "comparison": "exact JSON numeric values"
+    },
+    "stress_daily": {
+      "passed": true,
+      "data_rows": 243,
+      "columns": [
+        "date",
+        "nav",
+        "return",
+        "cash",
+        "positions",
+        "invested_fraction",
+        "cost",
+        "turnover",
+        "trades",
+        "blocked_attempts",
+        "writeoff_loss",
+        "stale_fraction",
+        "rebalance",
+        "terminal_liquidation",
+        "daily_capacity_used",
+        "daily_capacity_max_participation",
+        "wind_down"
+      ],
+      "comparison": "exact serialized cells in original order"
+    },
+    "stress_metrics": {
+      "passed": true,
+      "fields": [
+        "annual_return",
+        "annual_two_sided_turnover",
+        "annual_vol",
+        "costs",
+        "days",
+        "final_nav",
+        "max_drawdown",
+        "max_stale_fraction",
+        "mean_invested",
+        "sharpe",
+        "total_return",
+        "trades",
+        "writeoff_loss"
+      ],
+      "comparison": "exact JSON numeric values"
+    },
+    "base_blocked_attempts": {
+      "passed": true
+    },
+    "base_terminal": {
+      "passed": true
+    },
+    "base_execution_diagnostics": {
+      "passed": true
+    },
+    "base_detailed_daily": {
+      "passed": true,
+      "data_rows": 243,
+      "columns": [
+        "date",
+        "nav",
+        "return",
+        "cash",
+        "positions",
+        "invested_fraction",
+        "cost",
+        "turnover",
+        "trades",
+        "blocked_attempts",
+        "writeoff_loss",
+        "stale_fraction",
+        "rebalance",
+        "terminal_liquidation",
+        "daily_capacity_used",
+        "daily_capacity_max_participation",
+        "wind_down"
+      ],
+      "comparison": "exact serialized cells in original order"
+    },
+    "base_detailed_trades": {
+      "passed": true,
+      "data_rows": 5821,
+      "columns": [
+        "date",
+        "signal_date",
+        "symbol",
+        "side",
+        "adjusted_units",
+        "raw_share_equivalent",
+        "open_raw",
+        "fill_price_raw",
+        "notional",
+        "execution_notional",
+        "commission",
+        "slippage",
+        "stamp",
+        "transfer",
+        "total",
+        "cash_after",
+        "board",
+        "execution_model",
+        "terminal",
+        "wind_down"
+      ],
+      "comparison": "exact serialized cells in original order"
+    },
+    "base_detailed_orders": {
+      "passed": true,
+      "data_rows": 7579,
+      "columns": [
+        "date",
+        "signal_date",
+        "symbol",
+        "side",
+        "requested_notional",
+        "requested_raw_share_equivalent",
+        "capacity_lagged",
+        "capacity_daily_posthoc",
+        "target_adjusted_units",
+        "terminal",
+        "wind_down",
+        "status",
+        "reason",
+        "filled_notional",
+        "requested_execution_notional",
+        "filled_execution_notional"
+      ],
+      "comparison": "exact serialized cells in original order"
+    },
+    "base_detailed_holdings": {
+      "passed": true,
+      "data_rows": 0,
+      "columns": [
+        "symbol",
+        "adjusted_units",
+        "value",
+        "weight",
+        "stale_days",
+        "raw_share_equivalent"
+      ],
+      "comparison": "exact serialized cells in original order"
+    }
+  },
+  "simulation_started": false,
+  "source_zip_read": false,
+  "scope": "base/stress full daily rows and shared metrics; base diagnostics; detailed base ledgers only when supplied",
+  "limitations": [
+    "App does not save stress trade/order/holding ledgers; no stress ledger equality claim.",
+    "No source ZIP rehash or external market/fill verification.",
+    "Current compute hashes match the frozen protocol; app artifacts do not independently attest execution-time code hashes.",
+    "Equality proves replay consistency within the declared historical model, not independent profitability evidence."
+  ]
+}

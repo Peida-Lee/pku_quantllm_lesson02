@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DataComponent, DataTable, EvidenceChart, SectionHeader, SortableItem, SortableRegion, useDataApp } from "../../data-app-public.jsx";
 import { capitalLabel } from "./ResearchParameterPresets.jsx";
+import { isFiniteNumber } from "./execution-config.js";
 import "./research-workbench.css";
 
-const pct=value=>value==null||!Number.isFinite(+value)?"暂无":`${(+value*100).toFixed(2)}%`;
-const number=(value,digits=0)=>value==null||!Number.isFinite(+value)?"暂无":(+value).toLocaleString("zh-CN",{maximumFractionDigits:digits});
-const money=value=>value==null||!Number.isFinite(+value)?"暂无":capitalLabel(value);
+const pct=value=>!isFiniteNumber(value)?"暂无":`${(value*100).toFixed(2)}%`;
+const number=(value,digits=0)=>!isFiniteNumber(value)?"暂无":value.toLocaleString("zh-CN",{maximumFractionDigits:digits});
+const money=value=>!isFiniteNumber(value)?"暂无":capitalLabel(value);
 const universeLabel=value=>({all_a:"全部A股",main_a:"主板A股",growth_a:"创业板与科创板"}[value]||value||"未提供范围");
 const frequency=value=>({daily:"日调仓",weekly:"周调仓",monthly:"月调仓"}[value]||value||"未提供频率");
 const scenarioLabel=value=>({base:"基准费用／末日单日退出（原对照）",gross:"零费用／末日单日退出",stress:"压力费用／末日单日退出",fees_only:"保留费用，滑点参数为0",capacity_tight:"容量收紧／末日单日退出",wind_down20:"提前20日连续退出（后验）",wind_down40:"提前40日连续退出（后验）",wind_down20_stress:"提前20日退出／压力费用（后验）",wind_down20_capacity_tight:"提前20日退出／容量收紧（后验）",wind_down40_capacity_tight:"提前40日退出／容量收紧（后验）"}[value]||value);
 const roleLabel=value=>({selection_2024:"2024选型",evaluation_2025:"2025回顾性评价",assignment_2025_2026sep:"作业延伸至2026-09-30"}[value]||value||"期间未提供");
 const periodKey=row=>`${row.period_role||"期间"}|${row.start||""}|${row.end||""}`;
-const experimentLabel=row=>`${row.name||row.factor||row.experiment_id} · ${row.universe_name||universeLabel(row.universe)} · ${row.top_n==null?"持仓数未提供":`${row.top_n}只`} · ${frequency(row.rebalance)}`;
-const sameVersion=(a,b)=>a&&b&&a.study_id===b.study_id&&a.generated_at===b.generated_at&&a.experiments?.length===b.experiments?.length&&a.curves?.length===b.curves?.length&&JSON.stringify(a.feasibility_repair??null)===JSON.stringify(b.feasibility_repair??null);
+const experimentLabel=row=>`${row.name||row.factor||row.experiment_id} · ${row.universe_name||universeLabel(row.universe)} · ${row.top_n==null?"目标只数未提供":`目标${row.top_n}只`} · ${frequency(row.rebalance)}`;
+const sameVersion=(a,b)=>a&&b&&a.study_id===b.study_id&&(a.snapshot_revision&&b.snapshot_revision?a.snapshot_revision===b.snapshot_revision:JSON.stringify(a)===JSON.stringify(b));
 const windDownDays=row=>row.wind_down_days??row.config?.wind_down_days??0;
 const liquidationState=row=>{
   const positions=row.terminal_positions??row.terminal?.residual_positions;
@@ -26,13 +27,13 @@ const liquidationState=row=>{
   }
   return reported===false?"仍有残仓":"暂无";
 };
-const writeoffMoney=value=>value==null||!Number.isFinite(+value)?"暂无":`${number(value,2)} 元`;
+const writeoffMoney=value=>!isFiniteNumber(value)?"暂无":`${number(value,2)} 元`;
 function fileList(files,prefix=""){if(typeof files==="string")return[{label:prefix||files,path:files}];if(!files||typeof files!=="object")return[];return Object.entries(files).flatMap(([name,value])=>fileList(value,prefix?`${prefix} / ${name}`:name))}
 function readable(value){if(value==null)return "未提供";if(typeof value==="object")return JSON.stringify(value,null,2);return String(value)}
 function NoEvidence({children="此项结果尚未提供。"}){return <div className="rw-empty">{children}</div>}
 
 const experimentColumns=[
-  {key:"name",label:"因子/策略"},{key:"universeLabel",label:"选股范围"},{key:"top_n",label:"持仓数"},{key:"rebalanceLabel",label:"调仓"},
+  {key:"name",label:"因子/策略"},{key:"universeLabel",label:"选股范围"},{key:"top_n",label:"目标只数"},{key:"rebalanceLabel",label:"调仓"},
   {key:"total_return",label:"累计收益",renderCell:pct},{key:"annual_return",label:"年化收益",renderCell:pct},{key:"sharpe",label:"夏普",renderCell:v=>number(v,2)},
   {key:"max_drawdown",label:"最大回撤",renderCell:pct},{key:"mean_invested",label:"平均实际仓位",renderCell:pct},
   {key:"blocked_attempts",label:"拒单尝试数",renderCell:v=>number(v)},{key:"terminal_position_value",label:"末日残仓市值",renderCell:money},{key:"writeoff_loss",label:"缺价减记（非成交）",renderCell:writeoffMoney},
@@ -43,18 +44,18 @@ const liquidationColumns=[{key:"scenarioLabel",label:"退出与费用情景"},{k
 const executionColumns=[{key:"reason",label:"执行/拒单原因"},{key:"count",label:"次数",renderCell:v=>number(v)},{key:"notional",label:"对应金额",renderCell:money}];
 const stColumns=[{key:"scope",label:"覆盖范围",renderCell:roleLabel},{key:"total_code_days",label:"代码×日期总数",renderCell:v=>number(v)},{key:"known_st",label:"已知ST",renderCell:v=>number(v)},{key:"known_non_st",label:"已知非ST",renderCell:v=>number(v)},{key:"unknown",label:"状态未知",renderCell:v=>number(v)},{key:"actualCoverage",label:"真实状态覆盖率",renderCell:pct},{key:"proxy_excluded_code_days",label:"代理排除代码日",renderCell:v=>number(v)}];
 
-export function ResearchWorkbench(){
+export function ResearchWorkbench({externalBusy=false,onTaskStarted=()=>{}}){
   const {snapshot,queries}=useDataApp();
   const frozen=snapshot.research??null;
   const [apiResearch,setApiResearch]=useState(null),[connection,setConnection]=useState(""),[period,setPeriod]=useState("auto"),[scenario,setScenario]=useState("auto"),[universe,setUniverse]=useState("all"),[inspected,setInspected]=useState("");
   const [queue,setQueue]=useState({busy:null,progress:"",error:null}),[submitting,setSubmitting]=useState(false),[queueFinished,setQueueFinished]=useState(false),[queueConnection,setQueueConnection]=useState(""),[submissionError,setSubmissionError]=useState("");
-  const queueWasBusy=useRef(false);
+  const trackedJob=useRef(null),submissionPending=useRef(false),queueRevision=useRef(0);
   useEffect(()=>{let active=true,timer;async function refresh(){try{const response=await fetch("/api/research",{cache:"no-store"});if(!response.ok)throw Error();const value=await response.json();if(!active)return;setApiResearch(value);setConnection("");timer=setTimeout(refresh,/running|pending|building/.test(value.status||"")?4000:20000)}catch{if(active){setConnection("研究接口暂不可用，当前显示已保存快照。");timer=setTimeout(refresh,20000)}}}refresh();return()=>{active=false;clearTimeout(timer)}},[]);
-  useEffect(()=>{let active=true,timer;async function pollQueue(){try{const response=await fetch("/api/status",{cache:"no-store"});if(!response.ok)throw Error();const value=await response.json();if(!active)return;if(queueWasBusy.current&&!value.busy)setQueueFinished(true);queueWasBusy.current=!!value.busy;setQueue(value);setQueueConnection("");timer=setTimeout(pollQueue,value.busy?3000:10000)}catch{if(active){setQueueConnection("队列状态暂不可读，请保留页面等待服务恢复。");timer=setTimeout(pollQueue,10000)}}}pollQueue();return()=>{active=false;clearTimeout(timer)}},[]);
-  const research=sameVersion(apiResearch,frozen)?apiResearch:frozen;
+  useEffect(()=>{let active=true,timer;async function pollQueue(){const revision=queueRevision.current;try{const response=await fetch("/api/status",{cache:"no-store"});if(!response.ok)throw Error();const value=await response.json();if(typeof value.busy!=="boolean"||value.busy&&(!value.job_id||!value.job_kind))throw Error();if(!active)return;if(revision!==queueRevision.current){timer=setTimeout(pollQueue,3000);return}if(value.busy&&value.job_kind==="research_v3"&&value.job_id)trackedJob.current=value.job_id;if(trackedJob.current&&value.job_id===trackedJob.current&&value.job_kind==="research_v3"&&!value.busy&&["complete","partial","failed","interrupted"].includes(value.status))setQueueFinished(true);setQueue(value);setQueueConnection("");timer=setTimeout(pollQueue,value.busy?3000:10000)}catch{if(active){setQueueConnection("队列状态暂不可读，请保留页面等待服务恢复。");timer=setTimeout(pollQueue,10000)}}}pollQueue();return()=>{active=false;clearTimeout(timer)}},[]);
+  const research=frozen;
   const activeStudyId=apiResearch?.study_id||frozen?.study_id;
   const freshAvailable=!!(apiResearch?.study_id&&apiResearch.generated_at&&["complete","partial"].includes(apiResearch.status)&&(!frozen||!sameVersion(apiResearch,frozen)));
-  async function requestFullStudy(){setSubmitting(true);setSubmissionError("");setQueueFinished(false);try{const response=await fetch("/api/research/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({confirmed_full_study:true})});const value=await response.json();if(!response.ok)throw Error(value.error||`研究请求失败（HTTP ${response.status}）`);queueWasBusy.current=true;setQueue({busy:true,progress:"已提交固定120候选研究，等待后台计算。",error:null})}catch(error){setSubmissionError(error.message)}finally{setSubmitting(false)}}
+  async function requestFullStudy(){if(submissionPending.current||externalBusy||queue.busy!==false||queueConnection)return;submissionPending.current=true;queueRevision.current++;setSubmitting(true);setSubmissionError("");setQueueFinished(false);try{const response=await fetch("/api/research/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({confirmed_full_study:true})});const value=await response.json();if(!response.ok)throw Error(value.error||`研究请求失败（HTTP ${response.status}）`);trackedJob.current=value.job_kind==="research_v3"?value.job_id:null;queueRevision.current++;onTaskStarted(value,"V3研究已提交");setQueue({busy:true,job_id:value.job_id,job_kind:value.job_kind,progress:"已提交固定120候选研究，等待后台计算。",error:null})}catch(error){setSubmissionError(error.message)}finally{submissionPending.current=false;setSubmitting(false)}}
   const experiments=queries.research_experiments?.rows??research?.experiments??[];
   const curves=queries.research_curves?.rows??research?.curves??[];
   const splits=queries.research_splits?.rows??research?.splits??[];
@@ -104,7 +105,7 @@ export function ResearchWorkbench(){
   return <article className="research-workbench">
     <div className="rw-intro"><div><h2>2025研究工作台</h2><p>2024选型，保留全部2025结果；作业延伸至2026-09-30。</p></div><span>{generated?`${generated} · Asia/Shanghai`:`研究状态：${apiResearch?.status??"尚未生成"}`}{apiResearch?.status&&apiResearch.status!==research?.status?` · 后台：${apiResearch.status}`:""}</span></div>
     <div className="rw-protocol"><div><span>主回测</span><strong>2025-01-02 — 2025-12-31</strong></div><div><span>作业资金</span><strong>10亿元</strong></div><div><span>指定费用</span><strong>单边佣金1bp · 卖出印花税5bp</strong></div><div><span>信息边界</span><strong>仅原ZIP · 历史ST未知</strong></div></div>
-    <section className="rw-run-controls" aria-label="完整研究运行入口"><div><strong>完整研究队列</strong><p>固定120候选：2024选型、2025全部候选评价，再运行入围敏感性与作业延伸。预计约20分钟；计算期间保留旧结果，新审核快照就绪后手动加载。</p></div><button type="button" onClick={requestFullStudy} disabled={submitting||queue.busy===null||queue.busy||!!queueConnection}>{submitting?"正在提交…":queue.busy?"后台任务运行中…":queue.busy===null?"读取队列状态…":"重新运行完整研究"}</button><p className="rw-queue-status" role="status">{queue.busy===null?"正在读取本地队列状态…":queueConnection||queue.busy?(queueConnection||readable(queue.progress)||"后台计算中"):queueFinished?"后台任务已结束；研究结果与审核快照就绪后可手动加载。":"队列空闲；点击按钮将启动完整研究。"}</p>{(submissionError||queue.error)&&<p className="rw-queue-error" role="alert">{submissionError||readable(queue.error)}</p>}</section>
+    <section className="rw-run-controls" aria-label="完整研究运行入口"><div><strong>完整研究队列</strong><p>固定120候选：2024选型、2025全部候选评价，再运行入围敏感性与作业延伸。预计约20分钟；计算期间保留旧结果，新审核快照就绪后手动加载。</p></div><button type="button" onClick={requestFullStudy} disabled={submitting||externalBusy||queue.busy!==false||!!queueConnection}>{submitting?"正在提交…":queue.busy?"后台任务运行中…":queue.busy===null?"读取队列状态…":"重新运行完整研究"}</button><p className="rw-queue-status" role="status">{queueConnection?queueConnection:queue.busy===null?"正在读取本地队列状态…":queue.busy?(queueConnection||readable(queue.progress)||"后台计算中"):queueFinished?"后台任务已结束；研究结果与审核快照就绪后可手动加载。":"队列空闲；点击按钮将启动完整研究。"}</p>{(submissionError||queue.error)&&<p className="rw-queue-error" role="alert">{submissionError||readable(queue.error)}</p>}</section>
     {connection&&<p className="rw-status" role="status">{connection}</p>}
     {freshAvailable&&!queue.busy&&<div className="factor-ready" role="status">研究结果已更新；重新载入可同步图表与来源记录。<button type="button" disabled={!activeStudyId} onClick={()=>{if(activeStudyId&&freshAvailable)window.location.reload()}}>加载已更新研究</button></div>}
     {!research||!queryReady("research_experiments")?<NoEvidence>研究结果尚未写入审核快照。完成计算后显示实际实验、执行诊断和ST覆盖；此处不填入示例结果。</NoEvidence>:<>

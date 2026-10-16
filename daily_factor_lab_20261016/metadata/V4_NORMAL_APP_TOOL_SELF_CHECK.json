@@ -1,0 +1,12 @@
+{
+  "checks_passed": 3,
+  "checks": [
+    "matching mock artifacts accepted",
+    "changed NAV rejected",
+    "missing required metric rejected"
+  ],
+  "source_zip_read": false,
+  "real_study_read": false,
+  "simulations": 0,
+  "scope": "stdlib artifact-tool self-check only"
+}

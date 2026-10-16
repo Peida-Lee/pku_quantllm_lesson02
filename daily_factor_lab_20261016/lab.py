@@ -21,6 +21,7 @@ pa.set_cpu_count(4)
 pa.set_io_thread_count(2)
 ROOT = Path(__file__).resolve().parent
 SOURCE = Path(os.environ.get("FACTOR_DATA_ZIP", str(ROOT.parent / "feathers.zip")))
+ENGINE_VERSION = "4.0.0"
 FACTOR_INFO = {
     "momentum60": {"name": "60日动量（跳过5日）", "formula": "C_adj[t-5]/C_adj[t-65]-1", "hypothesis": "中期趋势延续，越高越优"},
     "reversal5": {"name": "5日反转", "formula": "-(C_adj[t]/C_adj[t-5]-1)", "hypothesis": "短期下跌后反弹，越高越优"},
@@ -221,6 +222,12 @@ def performance(daily, capital):
             "writeoff_loss": float(daily.writeoff_loss.sum()), "max_stale_fraction": float(daily.stale_fraction.max())}
 
 def simulate(m, score, cfg, cost_multiplier=1., keep_trades=True, progress=None):
+    # Public callers may construct Config directly instead of from_dict.
+    # Revalidate once at the boundary, never credit negative fee multipliers.
+    cfg = Config.from_dict(asdict(cfg))
+    if isinstance(cost_multiplier, (bool, np.bool_)) or not isinstance(cost_multiplier, (int, float, np.integer, np.floating)) or not math.isfinite(cost_multiplier) or cost_multiplier < 0:
+        raise ValueError("cost_multiplier须为有限非负数，0仅表示gross情景，不接受布尔值")
+    cost_multiplier = float(cost_multiplier)
     if cfg.execution_model == "daily_conservative":
         return _simulate_daily_conservative(m, score, cfg, cost_multiplier, keep_trades, progress)
     if cfg.st_policy == "strict":
@@ -373,6 +380,7 @@ def _simulate_daily_conservative(m, score, cfg, cost_multiplier=1., keep_trades=
     eligible = m.eligible(cfg)
     schedule = rebalance_days(m.dates, indices, cfg.rebalance)
     boards, actions = board_labels(m.symbols), corporate_action_mask(m)
+    previous_factor = m.raw["cumadj"]
     n = len(m.symbols)
     units, targets, marks = np.zeros(n), np.zeros(n), np.zeros(n)
     stale_age, last_buy = np.zeros(n, dtype=int), np.full(n, -1, dtype=int)
@@ -430,10 +438,12 @@ def _simulate_daily_conservative(m, score, cfg, cost_multiplier=1., keep_trades=
                 reason, fill = None, None
                 if exit_day and side == "BUY": reason = "terminal_no_buys"
                 elif side == "BUY" and not eligible[i-1,j]: reason = "no_longer_signal_eligible"
+                elif side == "BUY" and not np.isfinite(score[i-1,j]): reason = "no_longer_finite_score_or_filter"
                 elif boards[j] == "unknown": reason = "unknown_board"
                 elif not open_valid[j]: reason = "missing_open_or_factor"
                 elif today_amount[j] <= 0: reason = "no_daily_turnover_posthoc_audit"
                 elif actions[i,j]: reason = "factor_jump_posthoc_action_audit"
+                elif not np.isfinite(previous_factor[i-1,j]) or previous_factor[i-1,j] <= 0: reason = "unverified_previous_factor_reference"
                 elif not np.isfinite(reference[j]) or reference[j] <= 0: reason = "missing_previous_reference"
                 elif not np.isfinite(m.raw["high"][i,j]) or not np.isfinite(m.raw["low"][i,j]): reason = "missing_ohlc_posthoc_audit"
                 elif side == "SELL" and last_buy[j] == i: reason = "T_plus_1"
@@ -501,7 +511,7 @@ def _simulate_daily_conservative(m, score, cfg, cost_multiplier=1., keep_trades=
                 if abs(cash) < 1e-8: cash = 0.
                 used[j] += execution_notional
                 clipped_total += max(0., desired_execution - min(desired_execution, available))
-                day_cost, turnover, trades = day_cost + fee["total"], turnover + notional, trades + 1
+                day_cost, turnover, trades = day_cost + fee["total"], turnover + execution_notional, trades + 1
                 status = "partial" if qty < requested_units - 1e-7 else "full"
                 filled_reasons[status] += 1
                 if ending and status == "partial":
@@ -546,13 +556,17 @@ def _simulate_daily_conservative(m, score, cfg, cost_multiplier=1., keep_trades=
                          "weight": float(units[j]*marks[j]/prev_nav) if prev_nav else 0., "stale_days": int(stale_age[j]),
                          "raw_share_equivalent": float(units[j]*m.scale[indices[-1],j]) if np.isfinite(m.scale[indices[-1],j]) else None})
     diagnostics = metadata_summary(m, cfg, indices)
-    diagnostics.update({"execution_model": cfg.execution_model, "target_timing": "previous-close NAV and price; no opening-price sizing",
+    diagnostics.update({"execution_model": cfg.execution_model, "engine_version": ENGINE_VERSION,
+                        "target_timing": "previous-close NAV and price; no opening-price sizing",
                         "posthoc_audits": ["current daily amount cap", "current OHLC rejection", "current factor-jump rejection"],
                         "posthoc_not_opening_information": True, "opening_liquidity_verified": False,
                         "max_realized_daily_participation": max_participation, "max_combined_capacity_excess": max_capacity_excess,
                         "requested_notional_capacity_clipped": clipped_total, "filled_order_types": dict(filled_reasons),
                         "tick_slippage": "buy ceil/sell floor to 0.01; expense equals tick fill minus raw open",
                         "ledger_notional_definition": "notional=raw-open reference amount; execution_notional=tick fill amount; fees and capacities use execution_notional",
+                        "turnover_definition": "sum of execution_notional divided by opening NAV; includes both buy and sell sides",
+                        "pending_buy_policy": "frozen targets; require previous-close base eligibility AND finite current score/filter; no reranking until rebalance",
+                        "max_actual_positions": int(daily.positions.max()), "top_n_is_target_not_hard_holding_cap": True,
                         "unknown_main_board_ST_guard": "rounded hypothetical 5% guards, not official ST labels"})
     terminal = {"requested": bool(cfg.liquidate_end or wind_down_count), "date": str(m.dates[indices[-1]].date()), "residual_positions": len(holdings),
                 "residual_value": float(sum(h["value"] for h in holdings)), "fully_liquidated": bool(not holdings) if (cfg.liquidate_end or wind_down_count) else None,
@@ -560,6 +574,10 @@ def _simulate_daily_conservative(m, score, cfg, cost_multiplier=1., keep_trades=
                 "wind_down_start": str(m.dates[wind_down_start].date()) if wind_down_count else None,
                 "wind_down_days_requested": cfg.wind_down_days, "wind_down_days": wind_down_count,
                 "wind_down_rejections": dict(wind_down_rejections),
+                "model_position_zero": bool(not holdings),
+                "fully_exited_by_trades": bool(not holdings and daily.writeoff_loss.sum() == 0.) if (cfg.liquidate_end or wind_down_count) else None,
+                "writeoff_loss": float(daily.writeoff_loss.sum()),
+                "fully_liquidated_semantics": "compatibility field: zero remaining synthetic model positions, possibly after write-off; use fully_exited_by_trades for exit claims",
                 "liquidation_attempt_days": wind_down_count if wind_down_count else int(cfg.liquidate_end),
                 "wind_down_schedule_basis": "last N source trading dates in the declared interval, preplanned calendar only; no future price or turnover selection"}
     trade_columns = ["date", "signal_date", "symbol", "side", "adjusted_units", "raw_share_equivalent", "open_raw", "fill_price_raw",

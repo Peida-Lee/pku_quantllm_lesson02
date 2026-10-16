@@ -3,6 +3,7 @@
 No external security master is read. Historical ST status and official price
 limits remain unknown. A price pattern is a risk proxy, never a true ST label.
 """
+import copy
 import numpy as np
 import pandas as pd
 
@@ -108,10 +109,16 @@ def theoretical_limits(market, index, boards=None):
 
 def metadata_summary(market, cfg, indices=None):
     rows = np.arange(len(market.dates)) if indices is None else np.asarray(indices)
+    cache = getattr(market, "_execution_metadata_cache", None)
+    if cache is None:
+        cache = market._execution_metadata_cache = {}
+    key = ("metadata_summary", tuple(np.asarray(rows, dtype=int).tolist()), cfg.st_policy, cfg.risk_proxy_window, cfg.universe)
+    if key in cache:
+        return copy.deepcopy(cache[key])
     observed = np.isfinite(market.raw["close"][rows])
     proxy = price_risk_proxy(market, cfg.risk_proxy_window)[rows] if cfg.st_policy == "price_proxy" else np.zeros(observed.shape, dtype=bool)
     boards = board_labels(market.symbols)
-    return {"source": "provided zip daily matrices only", "historical_st_known_observations": 0,
+    result = {"source": "provided zip daily matrices only", "historical_st_known_observations": 0,
             "historical_st_unknown_observations": int(observed.sum()),
             "historical_st_known_symbols": 0, "historical_st_status": "unavailable",
             "official_price_limits": "unavailable; only board-based theoretical prices",
@@ -121,3 +128,10 @@ def metadata_summary(market, cfg, indices=None):
             "board_counts": {name: int(np.count_nonzero(boards == name)) for name in ["main", "growth", "star", "unknown"]},
             "universe": cfg.universe,
             "corporate_actions": "synthetic total-return adjusted units; action-day orders rejected; not a physical settlement ledger"}
+    cache[key] = result
+    summary_keys = [item for item in cache if isinstance(item, tuple) and item and item[0] == "metadata_summary"]
+    for stale in summary_keys[:-16]:
+        cache.pop(stale)
+    # Per-run diagnostics are augmented by the caller. Never let that mutate a
+    # cached source-data summary and leak scenario-specific results into others.
+    return copy.deepcopy(result)

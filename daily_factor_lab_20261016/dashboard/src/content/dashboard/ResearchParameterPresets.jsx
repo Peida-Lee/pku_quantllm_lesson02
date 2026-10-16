@@ -1,4 +1,5 @@
 import React from "react";
+import { isFiniteNumber } from "./execution-config.js";
 
 export const RESEARCH_PARAMETER_PRESETS = [
   {id:"research-2025",label:"2025 主回测",start:"2025-01-02",end:"2025-12-31"},
@@ -6,7 +7,7 @@ export const RESEARCH_PARAMETER_PRESETS = [
 ];
 
 export function capitalLabel(value){
-  if(!Number.isFinite(+value))return "";
+  if(!isFiniteNumber(value))return "暂无";
   if(+value>=100000000)return `${(+value/100000000).toLocaleString("zh-CN",{maximumFractionDigits:4})} 亿元`;
   if(+value>=10000)return `${(+value/10000).toLocaleString("zh-CN",{maximumFractionDigits:2})} 万元`;
   return `${(+value).toLocaleString("zh-CN")} 元`;

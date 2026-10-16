@@ -19,6 +19,8 @@ CONFIG_KEYS = {
     "start", "end", "capital", "top_n", "rebalance", "min_history", "min_price", "min_avg_amount",
     "min_active_days20", "commission", "min_commission", "slippage", "cash_buffer", "max_participation",
     "open_guard", "writeoff_missing_days",
+    "execution_model", "st_policy", "universe", "liquidity_top_n", "risk_proxy_window",
+    "max_daily_participation", "liquidate_end", "wind_down_days",
 }
 SYSTEM_PROMPT = """You provide a read-only second opinion on a daily A-share research strategy.
 The attached strategy has passed a deterministic typed AST validator. That
@@ -141,7 +143,7 @@ def confirm_strategy(strategy, question="", config=None):
     selection.setdefault("direction", "desc")
     local = {
         "summary": "策略已通过本地白名单AST静态校验。按" + ("低分优先" if selection["direction"] == "asc" else "高分优先")
-                   + "选择最多" + str(selection["top_n"]) + "只，调仓频率=" + str(selection["rebalance"]) + "；此处未运行回测、未改变或执行策略。",
+                   + "每次目标入选" + str(selection["top_n"]) + "只，调仓频率=" + str(selection["rebalance"]) + "；旧仓未能卖出时实际同时持仓可更多。此处未运行回测、未改变或执行策略。",
         "meta": validated["meta"], "selection": selection,
         "semantics": ["收盘t计算信号，最早t+1开盘执行；仅使用当前及过去观测。",
                       "先计算基础资格与筛选，再在最终范围内计算评分横截面；筛选内横截面使用基础资格范围。",
@@ -150,9 +152,18 @@ def confirm_strategy(strategy, question="", config=None):
                       "日线不证明开盘真实可成交；涨跌幅保守门禁、整手、费用和缺失减记由研究引擎处理。",
                       "复权份额为合成记账，不能替代现金分红与真实股份企业行动账簿。"],
     }
+    from v4_factors import FACTOR_SPECS
+    factor_definitions=[]
+    for op in validated["meta"]["operations"]:
+        if op.startswith("v4_") and op[3:] in FACTOR_SPECS:
+            spec=FACTOR_SPECS[op[3:]]
+            factor_definitions.append({key:spec[key] for key in ("id","name","formula","direction","required_history_rows","required_fields","signal_timing","boundaries")})
+    local["factor_definitions"]=factor_definitions
     context = {"purpose": "只读策略信息确认，不执行或修改策略，不提供收益保证", "strategy": normalized,
                "static_meta": validated["meta"], "effective_selection": selection, "execution_config": safe_config,
-               "execution_semantics": local["semantics"], "question": question}
+               "execution_semantics": local["semantics"], "factor_definitions": factor_definitions,
+               "source_limits": {"historical_ST_verified":False,"opening_auction_verified":False,"corporate_actions":"synthetic total-return units only"},
+               "question": question}
     settings = _settings()
     response = {"mode": "local_rules", "used_ai": False, "local_confirmation": local,
                 "ai_confirmation": None, "warnings": [], "connection_status": settings["reason"] or "not_attempted",
