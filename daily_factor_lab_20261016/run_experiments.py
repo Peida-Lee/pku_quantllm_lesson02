@@ -6,7 +6,7 @@ import subprocess
 import shutil
 import sys
 import traceback
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -38,10 +38,10 @@ def make_snapshot(result, complete=False):
         "files": ["feathers.zip", "lab.py", "config.json", f"outputs/{run}/result.json"],
         "executedAt": result["generated_at"], "timezone": "Asia/Shanghai",
         "coverage": {"start": result["config"]["start"], "end": result["config"]["end"]},
-        "filters": ["前一日信号、下一日开盘；动态历史股票池；固定因子方向与参数"],
+        "filters": ["前一日信号、下一日开盘；动态历史股票池；规则与参数按每次运行保存"],
         "caveats": result["limitations"],
         "evidenceFlow": [{"title": "读取课程原始矩阵", "detail": "源feathers.zip内open/high/low/close/amt/cumadj；原数据未改动"},
-                         {"title": "因子与执行", "detail": "固定4因子及等权组合；过去窗口构建信号；复权份额、费用、买卖门禁及缺失减记，详见lab.py"},
+                         {"title": "因子与执行", "detail": ("用户积木策略；完整规则见strategy.json和strategy_manifest.json；" if result.get("custom_strategy") else "固定4因子及等权组合；")+"过去窗口构建信号；复权份额、费用、买卖门禁及缺失减记，详见lab.py"},
                          {"title": "当前运行", "detail": json.dumps(result["config"], ensure_ascii=False)}],
     }
     definitions = {
@@ -59,6 +59,7 @@ def make_snapshot(result, complete=False):
                         "methods": [{"language": "python", "code": "python run_experiments.py --config config.json; see lab.py and this run's config.json"}]}
     previous.update({"surface": "dashboard", "title": "日频多因子回测", "generatedAt": result["generated_at"],
                      "run_id": run, "config": result["config"], "files": result["files"], "strategies": result["strategies"], "diagnostics": result["diagnostics"],
+                     "custom_strategy": result.get("custom_strategy"), "strategy_manifest": result.get("strategy_manifest"),
                      "status": "reviewed", "buildStatus": "complete" if complete else "updating", "filters": [], "queries": queries})
     save_json(path, previous)
 
@@ -88,10 +89,20 @@ LIMITATIONS = [
     "最后一日两只股票缺因子，相关因子/价格不填补。成交笔数末日缺失，本轮四因子不依赖该字段。",
     "动态股票池等权参考是无费用的描述性收盘收益序列，缺收益按0，未模拟减记/成交门禁；不是沪深300或可交易基准，不能把相对它的差额称为严格可交易alpha。",
     "RankIC使用有完整未来开盘结果的股票对，存在结果缺失选择；输出配对覆盖率。5日收益窗口重叠，用HAC滞后5给近似区间和原始P，多因子探索不视作确认性检验。",
-    "2021–2023与2024至末日分别列出时间段，后者作为本次预先指定的时间留出观察；所有历史仍为同一数据源。2026年度尚未结束。",
+    "2021–2023与2024至末日分别列出时间段。V1是预先指定分段；自定义积木反复试验不能视为独立留出验证。所有历史为同一数据源，2026年度尚未结束。",
 ]
 
-def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=True):
+def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=True, custom_strategy=None):
+    strategy_document = None
+    strategy_manifest = None
+    factor_definitions = FACTOR_INFO
+    if custom_strategy is not None:
+        from strategy_blocks import validate_strategy
+        validation = validate_strategy(custom_strategy)
+        strategy_document = validation["strategy"]
+        selection = strategy_document.get("selection", {})
+        overrides = {k: selection[k] for k in ["top_n", "rebalance"] if k in selection}
+        cfg = replace(cfg, **overrides)
     cfg.validate()
     OUTPUTS.mkdir(exist_ok=True)
     now = datetime.now(ZoneInfo("Asia/Shanghai"))
@@ -99,17 +110,29 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
     out = OUTPUTS / run_id
     out.mkdir()
     save_json(out / "config.json", asdict(cfg))
-    save_json(out / "frozen_protocol.json", {"created_at": now.isoformat(), "factors": FACTOR_INFO,
-        "scenarios": {"base": 1, "gross": 0, "stress": 2}, "selection": "Report all, no winner or parameter selection", "config": asdict(cfg)})
+    if strategy_document is not None: save_json(out / "strategy.json", strategy_document)
+    save_json(out / "frozen_protocol.json", {"created_at": now.isoformat(), "factors": factor_definitions if strategy_document is None else {"custom": strategy_document},
+        "scenarios": {"base": 1, "gross": 0, "stress": 2}, "selection": "Report all scenarios; custom strategies are user-authored exploratory experiments", "config": asdict(cfg)})
     progress("读取数据与计算过去窗口因子")
     m = market or Market()
     if cfg.start < m.dates[0].strftime("%Y-%m-%d") or cfg.end > m.dates[-1].strftime("%Y-%m-%d"):
         raise ValueError("请求区间超出数据日期覆盖")
-    eligible, scores = m.scores(cfg)
+    if strategy_document is None:
+        eligible, scores = m.scores(cfg)
+    else:
+        from strategy_blocks import compile_strategy
+        progress("校验并编译策略积木")
+        compiled = compile_strategy(m, cfg, strategy_document)
+        eligible, scores = compiled["eligible"], {"custom": compiled["score"]}
+        strategy_manifest = compiled["meta"]
+        save_json(out / "strategy_manifest.json", strategy_manifest)
+        factor_definitions = {"custom": {"name": strategy_document["name"],
+            "formula": strategy_manifest.get("formula", json.dumps(strategy_document["score"], ensure_ascii=False)),
+            "hypothesis": "用户用积木组合定义的探索性规则；同样遵守信号滞后与交易可行性近似"}}
     summary, curve_frames, yearly, ic_records, failures = [], [], [], [], []
     diagnostics, strategies, ic_frames = {}, {}, []
     scenarios = [("base",1.), ("gross",0.), ("stress",2.)]
-    for factor, info in FACTOR_INFO.items():
+    for factor, info in factor_definitions.items():
         for scenario, multiplier in scenarios:
             progress(f"回测 {info['name']} / {scenario}")
             try:
@@ -166,36 +189,39 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
     pd.DataFrame(ic_records).to_csv(out / "ic_summary.csv", index=False, encoding="utf-8-sig")
     if ic_frames: pd.concat(ic_frames, ignore_index=True).to_csv(out / "ic_daily.csv", index=False, encoding="utf-8-sig")
     files = {key: f"{run_id}/{filename}" for key,filename in {"report":"report.md", "summary":"summary.csv", "curves":"curves.csv", "yearly":"yearly.csv", "ic":"ic_summary.csv", "config":"config.json"}.items()}
+    if strategy_document is not None:
+        files.update({"strategy":f"{run_id}/strategy.json", "strategy_manifest":f"{run_id}/strategy_manifest.json"})
     result = {"run_id": run_id, "generated_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(), "config": asdict(cfg),
         "summary": summary, "curves": json_rows(curves), "yearly": yearly, "ic": ic_records, "diagnostics": diagnostics,
         "strategies": strategies, "files": files, "failures": failures, "status": "complete" if not failures else "partial",
-        "factor_definitions": FACTOR_INFO, "limitations": LIMITATIONS,
+        "factor_definitions": factor_definitions, "limitations": LIMITATIONS,
+        "custom_strategy": strategy_document, "strategy_manifest": strategy_manifest,
         "source": {"file":"feathers.zip", "rows":len(m.dates), "symbols":len(m.symbols), "date_start":str(m.dates[0].date()), "date_end":str(m.dates[-1].date())}}
     report_lines = ["# 日频多因子回测初步实验", "", f"运行：`{run_id}`；生成时间：{result['generated_at']}（Asia/Shanghai）。", "",
         f"采用用户提供的课程日频数据，{len(m.dates):,}个日期、{len(m.symbols):,}个历史代码。初始资金{cfg.capital:,.0f}元，目标持有排名前{cfg.top_n}只，{cfg.rebalance}调仓，仅多头。", "",
-        "## 固定实验与执行协议", "", "参数和四个因子方向在执行前保存于frozen_protocol.json。全部报告，不按结果选方向、窗口、权重或策略。", ""]
-    for factor,info in FACTOR_INFO.items(): report_lines.append(f"- **{info['name']}**：`{info['formula']}`；{info['hypothesis']}。")
+        "## 实验与执行协议", "", "本次规则与参数在执行前保存于frozen_protocol.json；积木策略另保存完整strategy.json和编译清单。全部报告费用情景。交互式试验可能包含人为反复调参，不能当作未看结果的确认性验证。", ""]
+    for factor,info in factor_definitions.items(): report_lines.append(f"- **{info['name']}**：`{info['formula']}`；{info['hypothesis']}。")
     report_lines += ["", "信号在t日收盘形成，t+1日开盘尝试；排名并列按代码排序。股票池要求：至少120个有效历史价格观察、价格不低于2元、前20日平均成交金额至少1000万元且至少15日有成交；界面重跑时以本次config.json为准。", "",
         "费用假设：双边佣金3bp、单笔最低5元，双边滑点5bp，卖出印花税2023-08-28前10bp、之后5bp，双边过户费2022-04-29前0.2bp、之后0.1bp；均为研究假设，不代表用户券商合同。gross将全部费用/滑点置零，stress全部乘2。", "",
         "## 主结果（base，含费用）", "", "| 因子 | 总收益 | 年化收益 | 夏普 | 最大回撤 | 平均仓位 |", "|---|---:|---:|---:|---:|---:|"]
     for r in summary:
         if r["scenario"] == "base": report_lines.append(f"| {r['name']} | {r['total_return']:.2%} | {r['annual_return']:.2%} | {r['sharpe']:.3f} | {r['max_drawdown']:.2%} | {r['mean_invested']:.2%} |")
     report_lines += ["", "## 费用敏感性（年化收益）", "", "| 因子 | 零费用 | 基准费用 | 双倍费用/滑点 |", "|---|---:|---:|---:|"]
-    for f,info in FACTOR_INFO.items():
+    for f,info in factor_definitions.items():
         lookup = {r['scenario']:r['annual_return'] for r in summary if r['factor']==f}
         report_lines.append(f"| {info['name']} | " + " | ".join(f"{lookup[k]:.2%}" if k in lookup else "失败" for k in ["gross","base","stress"]) + " |")
     report_lines += ["", "## 因子5日RankIC", "", "区间为HAC(5)正态近似95%区间，P为未经多重校正的原始双侧P。正相关是预设方向的预测性描述，不能替代含费用可行组合收益。", "", "| 因子 | 平均RankIC | 95%区间 | 原始P | 日数 | 配对覆盖率 |", "|---|---:|---|---:|---:|---:|"]
     for r in ic_records:
         pv = f"{r['p_raw_hac_normal']:.4g}" if r['p_raw_hac_normal'] is not None else "缺失"
         report_lines.append(f"| {r['name']} | {r['mean_rank_ic']:.4f} | [{r['ci95_low']:.4f}, {r['ci95_high']:.4f}] | {pv} | {r['days']} | {r['mean_pair_coverage']:.2%} |")
-    report_lines += ["", "## 时间留出观察（base）", "", "2024年起为本轮预先指定的时间段，未据结果调参。它仍是相同数据源的历史观察，不是独立外部验证。", "", "| 因子 | 2021–2023区间收益 | 2024–末日区间收益 |", "|---|---:|---:|"]
-    for f,info in FACTOR_INFO.items():
+    report_lines += ["", "## 时间分段观察（base）", "", "2024年起为沿用V1的观察分段。自定义积木可反复试验，这些时间段不能自动当作严格留出样本；仍是同一数据源的历史观察。", "", "| 因子 | 2021–2023区间收益 | 2024–末日区间收益 |", "|---|---:|---:|"]
+    for f,info in factor_definitions.items():
         lookup = {r['year']:r['return'] for r in yearly if r['factor']==f and r['scenario']=='base'}
         report_lines.append(f"| {info['name']} | " + " | ".join(f"{lookup[k]:.2%}" if k in lookup else "无覆盖" for k in ["2021–2023","2024–末日"]) + " |")
     report_lines += ["", "## 可行性门禁与局限", ""] + [f"{i+1}. {text}" for i,text in enumerate(LIMITATIONS)]
     report_lines += ["", "## 审计与文件", "", "summary.csv为全部策略/费用情景；curves.csv为完整日净值；yearly.csv为年度及时间段；ic_summary.csv/ic_daily.csv为IC结果；base/<factor>/为逐日资金、交易账本、末日持仓和拒单计数。WRITE_OFF为估值损失，不能解释为成交。", "",
         "输入原压缩包不作修改。接口只提供本地历史回测，没有券商、行情联网或真实订单接口。复现：`python run_experiments.py --config config.json`。", "",
-        "本轮失败项：" + (json.dumps(failures,ensure_ascii=False) if failures else "无（15个策略/费用情景和5组IC完成）")]
+        "本轮失败项：" + (json.dumps(failures,ensure_ascii=False) if failures else f"无（{len(factor_definitions)*3}个策略/费用情景和{len(ic_records)}组IC完成）")]
     (out / "report.md").write_text("\n".join(report_lines)+"\n", encoding="utf-8")
     save_json(out / "result.json", result)
     save_json(OUTPUTS / "latest.json", {"run_id":run_id, "result":f"{run_id}/result.json"})
@@ -214,6 +240,8 @@ if __name__ == "__main__":
     parser.add_argument("--config", default=str(ROOT / "config.json"))
     parser.add_argument("--no-build", action="store_true")
     parser.add_argument("--complete", action="store_true")
+    parser.add_argument("--strategy", help="可选：策略积木JSON文件；不指定则运行V1五个固定因子")
     args = parser.parse_args()
     cfg = Config.from_dict(json.loads(Path(args.config).read_text(encoding="utf-8")))
-    run_suite(cfg, progress=lambda s:print(s,flush=True), dashboard_complete=args.complete, build=not args.no_build)
+    doc = json.loads(Path(args.strategy).read_text(encoding="utf-8")) if args.strategy else None
+    run_suite(cfg, progress=lambda s:print(s,flush=True), dashboard_complete=args.complete, build=not args.no_build, custom_strategy=doc)

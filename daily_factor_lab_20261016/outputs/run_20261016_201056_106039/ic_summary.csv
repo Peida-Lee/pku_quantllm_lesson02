@@ -1,0 +1,2 @@
+﻿factor,name,mean_rank_ic,ic_std,days,hac_lags,hac_se,ci95_low,ci95_high,p_raw_hac_normal,positive_fraction,mean_pair_coverage,definition
+custom,20日低波动,0.07442168156620589,0.19409481051281094,1394,5,0.010009549953972297,0.05480296365642019,0.09404039947599159,1.0451442056336899e-13,0.6664275466284074,0.9999979403701161,"Cross-sectional Spearman factor(t) vs adjusted open(t+6)/open(t+1)-1; complete outcome pairs; HAC lag5 normal inference, raw P only"

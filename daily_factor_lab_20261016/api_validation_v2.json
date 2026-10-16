@@ -1,0 +1,169 @@
+{
+  "checks": [
+    {
+      "check": "initial_server_idle_on_expected_main_run",
+      "passed": true
+    },
+    {
+      "check": "initial_main_result_available",
+      "passed": true
+    },
+    {
+      "check": "catalog_has_50_plus_unique_typed_blocks_and_examples",
+      "passed": true,
+      "observed_blocks": 79,
+      "observed_strategy_examples": 4
+    },
+    {
+      "check": "macro_document_normalized_and_expanded_with_causal_metadata",
+      "passed": true
+    },
+    {
+      "check": "strategy_json_export_import_roundtrip_is_lossless",
+      "passed": true
+    },
+    {
+      "check": "strategy_saved_with_server_generated_identifier",
+      "passed": true
+    },
+    {
+      "check": "saved_strategy_get_and_list_preserve_dynamic_name_and_document",
+      "passed": true
+    },
+    {
+      "check": "block_pack_json_import_adds_executable_catalog_entry",
+      "passed": true
+    },
+    {
+      "check": "block_pack_roundtrip_reimport_replaces_same_id_without_duplicate",
+      "passed": true
+    },
+    {
+      "check": "unknown_operation_rejected",
+      "passed": true
+    },
+    {
+      "check": "negative_lag_rejected",
+      "passed": true
+    },
+    {
+      "check": "executable_ast_key_rejected",
+      "passed": true
+    },
+    {
+      "check": "boolean_numeric_type_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "check": "numeric_filter_type_rejected",
+      "passed": true
+    },
+    {
+      "check": "excessive_expression_depth_rejected",
+      "passed": true
+    },
+    {
+      "check": "recursive_imported_macro_rejected",
+      "passed": true
+    },
+    {
+      "check": "nonfinite_json_number_rejected",
+      "passed": true
+    },
+    {
+      "check": "boolean_selection_count_rejected",
+      "passed": true
+    },
+    {
+      "check": "mutually_recursive_pack_import_rejected",
+      "passed": true
+    },
+    {
+      "check": "imported_pack_cannot_replace_builtin_operation",
+      "passed": true
+    },
+    {
+      "check": "cross_origin_mutating_routes_rejected_before_side_effects",
+      "passed": true
+    },
+    {
+      "check": "non_json_import_request_rejected",
+      "passed": true
+    },
+    {
+      "check": "oversize_request_body_rejected",
+      "passed": true
+    },
+    {
+      "check": "strategy_run_and_download_directory_escape_rejected",
+      "passed": true
+    },
+    {
+      "check": "real_macro_run_accepted_with_selection_overriding_config",
+      "passed": true
+    },
+    {
+      "check": "historical_activation_shares_busy_lock_with_backtest",
+      "passed": true
+    },
+    {
+      "check": "real_macro_run_and_dashboard_build_finish_without_error",
+      "passed": true
+    },
+    {
+      "check": "real_custom_result_has_new_identity_three_scenarios_one_ic",
+      "passed": true
+    },
+    {
+      "check": "custom_strategy_name_is_dynamic_in_result_and_ic",
+      "passed": true
+    },
+    {
+      "check": "short_interval_and_document_selection_applied_to_real_result",
+      "passed": true
+    },
+    {
+      "check": "strategy_document_and_causal_manifest_download_roundtrip",
+      "passed": true
+    },
+    {
+      "check": "actual_custom_trade_ledger_preserves_strict_signal_lag",
+      "passed": true,
+      "observed_executed_trades": 51
+    },
+    {
+      "check": "source_and_served_compiled_snapshot_match_custom_run_and_name",
+      "passed": true
+    },
+    {
+      "check": "history_lists_custom_qa_and_original_main_names",
+      "passed": true
+    },
+    {
+      "check": "restore_main_via_activation_api_accepted",
+      "passed": true
+    },
+    {
+      "check": "activation_rebuild_uses_same_busy_lock",
+      "passed": true
+    },
+    {
+      "check": "preferred_main_result_restored_without_direct_pointer_edit",
+      "passed": true
+    },
+    {
+      "check": "restored_source_and_compiled_snapshot_match_preferred_main",
+      "passed": true
+    }
+  ],
+  "passed": 38,
+  "total": 38,
+  "all_passed": true,
+  "before_run": "run_20261016_201056_106039",
+  "qa_run": "run_20261016_201508_195417",
+  "restored_run": "run_20261016_201056_106039",
+  "restored_via_api": true,
+  "saved_strategy_id": "strategy_98c2152e4954486a8a3cb9bd93939582",
+  "error": null,
+  "scope": "Real loopback V2 API and one real imported-macro historical run; no broker or real orders"
+}

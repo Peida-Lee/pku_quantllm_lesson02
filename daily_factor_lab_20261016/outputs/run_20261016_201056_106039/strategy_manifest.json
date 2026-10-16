@@ -1,0 +1,26 @@
+{
+  "node_count": 9,
+  "operations": [
+    "and",
+    "constant",
+    "daily_return",
+    "greater_equal",
+    "is_finite",
+    "negate",
+    "raw_close",
+    "rolling_std"
+  ],
+  "custom_blocks": 0,
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "causal": true,
+  "missing_boolean_policy": "strict propagation; missing final filter excluded",
+  "eligible_observations": 6976111,
+  "finite_score_observations": 6976111,
+  "filter_cross_section_universe": "base eligibility",
+  "score_cross_section_universe": "base eligibility AND final filter",
+  "execution_timing": "At close t signal, earliest execution at open t+1 by the research engine"
+}

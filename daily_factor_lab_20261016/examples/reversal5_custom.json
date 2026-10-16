@@ -1,0 +1,25 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "自定义积木示例：5日反转",
+  "score": {"op": "custom.short_reversal5", "args": [{"op": "close"}]},
+  "selection": {"top_n": 100, "rebalance": "weekly", "direction": "desc"},
+  "packs": [
+    {
+      "format": "daily-factor-block-pack",
+      "version": 1,
+      "id": "short-reversal",
+      "name": "短期反转",
+      "blocks": [
+        {
+          "id": "custom.short_reversal5",
+          "name": "任意序列的5日反转",
+          "inputs": [{"name": "x", "type": "series"}],
+          "template": {"op": "negate", "args": [
+            {"op": "pct_change", "args": [{"op": "input", "params": {"name": "x"}}], "params": {"period": 5}}
+          ]}
+        }
+      ]
+    }
+  ]
+}

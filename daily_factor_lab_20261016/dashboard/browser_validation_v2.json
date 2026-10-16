@@ -1,0 +1,46 @@
+{
+  "captured_at": "2026-10-16T20:20:45+08:00",
+  "timezone": "Asia/Shanghai",
+  "browser": "Microsoft Edge, official @oai/browser-desktop via mcp__browser_proxy__js",
+  "run_id": "run_20261016_201056_106039",
+  "screenshots": {
+    "strategy_blocks": "preview_v2.png",
+    "custom_strategy_results": "preview_v2_result.png"
+  },
+  "checks_completed_before_user_stopped_testing": {
+    "edge_tabs_enumeration": "passed",
+    "prebuilt_modules_rendered": "passed: 79 built-in modules; registered custom pack also appears",
+    "recursive_score_and_filter_slots": "passed",
+    "real_pointer_drag": "passed: official AX.drag from palette open-price block to score.0.0 changed the actual DOM block op from daily_return to open; no injected JavaScript or synthetic drop events used",
+    "drag_test_restored": "passed: undo restored original low-volatility expression",
+    "parameter_edit": "passed: rolling standard deviation window 20 changed to 30",
+    "undo": "passed: window restored to 20",
+    "static_strategy_validation": "passed through real local API",
+    "strategy_save": "passed: saved 20-day low-volatility strategy appeared in local library selector",
+    "type_incompatibility": "passed: boolean greater block rejected by numeric score slot with visible Chinese message",
+    "template_selection": "passed: restored 20-day low-volatility template, top_n 100, weekly",
+    "draft_persistence": "observed after reload; app-id localStorage draft retained",
+    "custom_result_display": "implemented with dynamic factors rather than fixed five-factor filtering"
+  },
+  "ai_increment": {
+    "implemented": "Read-only AI-assisted confirmation UI, explicit external-model configuration status, local-rules fallback label, optional question, server-environment setup instructions and no browser API-key field",
+    "external_model_configured": false,
+    "external_model_verified": false,
+    "ai_confirmation_button_tested": false,
+    "reason": "User explicitly required no more tests and submission within five minutes. AI addition was built and captured only; no AI confirmation call or remote model request was made."
+  },
+  "not_browser_tested": [
+    "Strategy JSON file import/export round-trip",
+    "Custom block-pack file chooser import round-trip",
+    "All node movement and input-reordering permutations",
+    "Mobile/touch viewport",
+    "V2 run button end-to-end flow; API backtest verification was handled separately by the parent team"
+  ],
+  "final_actions_after_testing_stop": [
+    "Loaded final parent-built application",
+    "Captured strategy-blocks screenshot including AI entry",
+    "Captured current real custom-strategy results screenshot",
+    "Wrote this factual validation record"
+  ],
+  "implementation_boundaries": "App-specific content only; protected Data runtime and stable app identity retained. No live broker or real order action."
+}

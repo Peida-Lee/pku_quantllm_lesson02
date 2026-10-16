@@ -1,0 +1,8 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "固定四因子等权组合",
+  "score": {"op": "factor_combo"},
+  "selection": {"top_n": 100, "rebalance": "weekly", "direction": "desc"},
+  "packs": []
+}

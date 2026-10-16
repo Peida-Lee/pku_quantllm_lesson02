@@ -1,0 +1,2256 @@
+{
+  "format": "daily-factor-block-catalog",
+  "version": 1,
+  "categories": [
+    {
+      "id": "data",
+      "label": "行情数据"
+    },
+    {
+      "id": "rolling",
+      "label": "历史与滚动"
+    },
+    {
+      "id": "arithmetic",
+      "label": "数值运算"
+    },
+    {
+      "id": "cross_section",
+      "label": "横截面"
+    },
+    {
+      "id": "comparison",
+      "label": "比较条件"
+    },
+    {
+      "id": "logic",
+      "label": "逻辑条件"
+    },
+    {
+      "id": "factors",
+      "label": "预制因子"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "open",
+      "label": "复权开盘价",
+      "category": "data",
+      "description": "复权开盘价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "open",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "high",
+      "label": "复权最高价",
+      "category": "data",
+      "description": "复权最高价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "high",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "low",
+      "label": "复权最低价",
+      "category": "data",
+      "description": "复权最低价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "low",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "close",
+      "label": "复权收盘价",
+      "category": "data",
+      "description": "复权收盘价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "raw_open",
+      "label": "原始开盘价",
+      "category": "data",
+      "description": "原始开盘价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "raw_open",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "raw_high",
+      "label": "原始最高价",
+      "category": "data",
+      "description": "原始最高价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "raw_high",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "raw_low",
+      "label": "原始最低价",
+      "category": "data",
+      "description": "原始最低价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "raw_low",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "raw_close",
+      "label": "原始收盘价",
+      "category": "data",
+      "description": "原始收盘价；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "raw_close",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "amount",
+      "label": "成交金额",
+      "category": "data",
+      "description": "成交金额；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "amount",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "adjustment_factor",
+      "label": "原始累计复权因子",
+      "category": "data",
+      "description": "原始累计复权因子；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "adjustment_factor",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "trade_count",
+      "label": "成交笔数",
+      "category": "data",
+      "description": "成交笔数；trade_count若源数据未提供则全为缺失，绝不填造。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "trade_count",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "history",
+      "label": "已有收盘观测天数",
+      "category": "data",
+      "description": "已有收盘观测天数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "history",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "daily_return",
+      "label": "复权日收益率",
+      "category": "data",
+      "description": "复权日收益率；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "daily_return",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "adjustment_scale",
+      "label": "归一化复权倍数",
+      "category": "data",
+      "description": "归一化复权倍数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "adjustment_scale",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "constant",
+      "label": "数值常量",
+      "category": "arithmetic",
+      "description": "数值常量；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [],
+      "params": {
+        "value": {
+          "type": "number",
+          "default": 1.0,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "constant",
+        "args": [],
+        "params": {
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "id": "add",
+      "label": "相加",
+      "category": "arithmetic",
+      "description": "相加；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "add",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "subtract",
+      "label": "相减",
+      "category": "arithmetic",
+      "description": "相减；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "subtract",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "multiply",
+      "label": "相乘",
+      "category": "arithmetic",
+      "description": "相乘；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "multiply",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "divide",
+      "label": "相除",
+      "category": "arithmetic",
+      "description": "相除；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "divide",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "power",
+      "label": "乘方",
+      "category": "arithmetic",
+      "description": "乘方；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "power",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "minimum",
+      "label": "逐点较小值",
+      "category": "arithmetic",
+      "description": "逐点较小值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "minimum",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "maximum",
+      "label": "逐点较大值",
+      "category": "arithmetic",
+      "description": "逐点较大值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "maximum",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "abs",
+      "label": "绝对值",
+      "category": "arithmetic",
+      "description": "绝对值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "abs",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "negate",
+      "label": "取相反数",
+      "category": "arithmetic",
+      "description": "取相反数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "negate",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "log",
+      "label": "自然对数",
+      "category": "arithmetic",
+      "description": "自然对数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "log",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "log1p",
+      "label": "log(1+x)",
+      "category": "arithmetic",
+      "description": "log(1+x)；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "log1p",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "sqrt",
+      "label": "平方根",
+      "category": "arithmetic",
+      "description": "平方根；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "sqrt",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "sign",
+      "label": "符号",
+      "category": "arithmetic",
+      "description": "符号；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "sign",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "reciprocal",
+      "label": "倒数",
+      "category": "arithmetic",
+      "description": "倒数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "reciprocal",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "square",
+      "label": "平方",
+      "category": "arithmetic",
+      "description": "平方；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "square",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "clip",
+      "label": "数值截断",
+      "category": "arithmetic",
+      "description": "数值截断；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "lower": {
+          "type": "number",
+          "default": -3.0,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        },
+        "upper": {
+          "type": "number",
+          "default": 3.0,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "clip",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "lower": -3.0,
+          "upper": 3.0
+        }
+      }
+    },
+    {
+      "id": "where",
+      "label": "按条件选择数值",
+      "category": "arithmetic",
+      "description": "按条件选择数值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "condition",
+          "type": "boolean"
+        },
+        {
+          "name": "yes",
+          "type": "series"
+        },
+        {
+          "name": "no",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "where",
+        "args": [
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "lag",
+      "label": "历史滞后值",
+      "category": "rolling",
+      "description": "历史滞后值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "period": {
+          "type": "integer",
+          "default": 5,
+          "min": 0,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "lag",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "period": 5
+        }
+      }
+    },
+    {
+      "id": "delta",
+      "label": "历史差值",
+      "category": "rolling",
+      "description": "历史差值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "period": {
+          "type": "integer",
+          "default": 5,
+          "min": 1,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "delta",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "period": 5
+        }
+      }
+    },
+    {
+      "id": "pct_change",
+      "label": "历史变化率",
+      "category": "rolling",
+      "description": "历史变化率；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "period": {
+          "type": "integer",
+          "default": 5,
+          "min": 1,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "pct_change",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "period": 5
+        }
+      }
+    },
+    {
+      "id": "rolling_mean",
+      "label": "滚动均值",
+      "category": "rolling",
+      "description": "滚动均值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_mean",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_sum",
+      "label": "滚动求和",
+      "category": "rolling",
+      "description": "滚动求和；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_sum",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_std",
+      "label": "滚动标准差",
+      "category": "rolling",
+      "description": "滚动标准差；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_std",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_var",
+      "label": "滚动方差",
+      "category": "rolling",
+      "description": "滚动方差；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_var",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_min",
+      "label": "滚动最小值",
+      "category": "rolling",
+      "description": "滚动最小值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_min",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_max",
+      "label": "滚动最大值",
+      "category": "rolling",
+      "description": "滚动最大值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_max",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_median",
+      "label": "滚动中位数",
+      "category": "rolling",
+      "description": "滚动中位数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_median",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_rank",
+      "label": "窗口内当前值百分位",
+      "category": "rolling",
+      "description": "窗口内当前值百分位；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_rank",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_zscore",
+      "label": "窗口内当前值标准分",
+      "category": "rolling",
+      "description": "窗口内当前值标准分；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_zscore",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_skew",
+      "label": "滚动偏度",
+      "category": "rolling",
+      "description": "滚动偏度；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_skew",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_kurt",
+      "label": "滚动超额峰度",
+      "category": "rolling",
+      "description": "滚动超额峰度；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_kurt",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_argmax",
+      "label": "窗口最大值距今天数",
+      "category": "rolling",
+      "description": "窗口最大值距今天数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_argmax",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_argmin",
+      "label": "窗口最小值距今天数",
+      "category": "rolling",
+      "description": "窗口最小值距今天数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_argmin",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "linear_decay",
+      "label": "线性加权均值",
+      "category": "rolling",
+      "description": "线性加权均值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "linear_decay",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "ema",
+      "label": "指数加权均值",
+      "category": "rolling",
+      "description": "指数加权均值；min_periods=window，标准差/方差ddof=1；窗口缺失不填零。EMA使用截至当日全部历史，span=window、adjust=False。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "ema",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_quantile",
+      "label": "滚动分位数",
+      "category": "rolling",
+      "description": "滚动分位数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        },
+        "q": {
+          "type": "number",
+          "default": 0.5,
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_quantile",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20,
+          "q": 0.5
+        }
+      }
+    },
+    {
+      "id": "rolling_corr",
+      "label": "滚动相关系数",
+      "category": "rolling",
+      "description": "滚动相关系数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_corr",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "rolling_cov",
+      "label": "滚动协方差",
+      "category": "rolling",
+      "description": "滚动协方差；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "window": {
+          "type": "integer",
+          "default": 20,
+          "min": 2,
+          "max": 252
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "rolling_cov",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    },
+    {
+      "id": "cs_rank",
+      "label": "横截面百分位排名",
+      "category": "cross_section",
+      "description": "横截面百分位排名；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "cs_rank",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "cs_zscore",
+      "label": "横截面标准分",
+      "category": "cross_section",
+      "description": "横截面标准分；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "cs_zscore",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "cs_demean",
+      "label": "横截面去均值",
+      "category": "cross_section",
+      "description": "横截面去均值；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "cs_demean",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "cs_scale",
+      "label": "横截面绝对值归一",
+      "category": "cross_section",
+      "description": "横截面绝对值归一；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "cs_scale",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "cs_median_distance",
+      "label": "偏离横截面中位数",
+      "category": "cross_section",
+      "description": "偏离横截面中位数；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "cs_median_distance",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "cs_winsorize",
+      "label": "横截面分位截尾",
+      "category": "cross_section",
+      "description": "横截面分位截尾；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "tail": {
+          "type": "number",
+          "default": 0.05,
+          "min": 0.0,
+          "max": 0.49
+        }
+      },
+      "output": "series",
+      "default": {
+        "op": "cs_winsorize",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "tail": 0.05
+        }
+      }
+    },
+    {
+      "id": "greater",
+      "label": "大于",
+      "category": "comparison",
+      "description": "大于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "greater",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "greater_equal",
+      "label": "大于等于",
+      "category": "comparison",
+      "description": "大于等于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "greater_equal",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "less",
+      "label": "小于",
+      "category": "comparison",
+      "description": "小于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "less",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "less_equal",
+      "label": "小于等于",
+      "category": "comparison",
+      "description": "小于等于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "less_equal",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "equal",
+      "label": "等于",
+      "category": "comparison",
+      "description": "等于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "equal",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "not_equal",
+      "label": "不等于",
+      "category": "comparison",
+      "description": "不等于；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        },
+        {
+          "name": "y",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "not_equal",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "is_finite",
+      "label": "数值有效",
+      "category": "comparison",
+      "description": "数值有效；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "is_finite",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "is_missing",
+      "label": "数值缺失",
+      "category": "comparison",
+      "description": "数值缺失；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "is_missing",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "between",
+      "label": "落在闭区间内",
+      "category": "comparison",
+      "description": "落在闭区间内；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "series"
+        }
+      ],
+      "params": {
+        "lower": {
+          "type": "number",
+          "default": 0.0,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        },
+        "upper": {
+          "type": "number",
+          "default": 1.0,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        }
+      },
+      "output": "boolean",
+      "default": {
+        "op": "between",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "lower": 0.0,
+          "upper": 1.0
+        }
+      }
+    },
+    {
+      "id": "and",
+      "label": "条件同时成立",
+      "category": "logic",
+      "description": "条件同时成立；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "boolean"
+        },
+        {
+          "name": "y",
+          "type": "boolean"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "and",
+        "args": [
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "or",
+      "label": "条件任一成立",
+      "category": "logic",
+      "description": "条件任一成立；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "boolean"
+        },
+        {
+          "name": "y",
+          "type": "boolean"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "or",
+        "args": [
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "xor",
+      "label": "条件恰有一个成立",
+      "category": "logic",
+      "description": "条件恰有一个成立；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "boolean"
+        },
+        {
+          "name": "y",
+          "type": "boolean"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "xor",
+        "args": [
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "not",
+      "label": "条件取反",
+      "category": "logic",
+      "description": "条件取反；只使用当前及历史观测，缺失值不填零。",
+      "inputs": [
+        {
+          "name": "x",
+          "type": "boolean"
+        }
+      ],
+      "params": {},
+      "output": "boolean",
+      "default": {
+        "op": "not",
+        "args": [
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "close",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_momentum60",
+      "label": "60日动量跳过5日",
+      "category": "factors",
+      "description": "close[t-5]/close[t-65]-1；越高越优。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_momentum60",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_reversal5",
+      "label": "5日反转",
+      "category": "factors",
+      "description": "-(close[t]/close[t-5]-1)；越高越优。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_reversal5",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_lowvol20",
+      "label": "20日低波动",
+      "category": "factors",
+      "description": "负的20日复权收益率样本标准差，ddof=1。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_lowvol20",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_liquidity20",
+      "label": "20日成交额因子",
+      "category": "factors",
+      "description": "log1p(20日成交额均值)。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_liquidity20",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_combo",
+      "label": "固定四因子等权",
+      "category": "factors",
+      "description": "四因子在最终可选股票范围内百分位排名的等权均值；任一缺失则缺失。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_combo",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_intraday_return",
+      "label": "日内复权收益",
+      "category": "factors",
+      "description": "close/open-1；当天收盘计算，最早次日执行。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_intraday_return",
+        "args": [],
+        "params": {}
+      }
+    },
+    {
+      "id": "factor_range",
+      "label": "日内振幅",
+      "category": "factors",
+      "description": "(high-low)/close；使用同一复权比例，最早次日执行。",
+      "inputs": [],
+      "params": {},
+      "output": "series",
+      "default": {
+        "op": "factor_range",
+        "args": [],
+        "params": {}
+      }
+    }
+  ],
+  "limits": {
+    "max_depth": 16,
+    "max_nodes": 128,
+    "max_expanded_nodes": 128,
+    "max_window": 252,
+    "max_json_bytes": 150000
+  },
+  "semantics": {
+    "missing_numeric": "Preserve NaN; never fill missing numeric values with zero.",
+    "missing_boolean": "Comparisons and logic propagate missing; final filter missing is false.",
+    "cross_section": "Score cross sections use base eligibility intersected with the evaluated filter.",
+    "rolling": "Trailing windows only; min_periods=window; std/var/cov ddof=1."
+  }
+}

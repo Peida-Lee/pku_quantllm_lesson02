@@ -1,0 +1,94 @@
+{
+  "created_at": "2026-10-16T20:10:56.106039+08:00",
+  "factors": {
+    "custom": {
+      "format": "daily-factor-strategy",
+      "version": 1,
+      "name": "20日低波动",
+      "score": {
+        "op": "negate",
+        "args": [
+          {
+            "op": "rolling_std",
+            "args": [
+              {
+                "op": "daily_return",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {
+              "window": 20
+            }
+          }
+        ],
+        "params": {}
+      },
+      "selection": {
+        "top_n": 100,
+        "rebalance": "weekly",
+        "direction": "desc"
+      },
+      "packs": [],
+      "filter": {
+        "op": "and",
+        "args": [
+          {
+            "op": "greater_equal",
+            "args": [
+              {
+                "op": "raw_close",
+                "args": [],
+                "params": {}
+              },
+              {
+                "op": "constant",
+                "args": [],
+                "params": {
+                  "value": 2
+                }
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "is_finite",
+            "args": [
+              {
+                "op": "daily_return",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    }
+  },
+  "scenarios": {
+    "base": 1,
+    "gross": 0,
+    "stress": 2
+  },
+  "selection": "Report all scenarios; custom strategies are user-authored exploratory experiments",
+  "config": {
+    "start": "2021-01-01",
+    "end": "2026-10-16",
+    "capital": 1000000,
+    "top_n": 100,
+    "rebalance": "weekly",
+    "min_history": 120,
+    "min_price": 2.0,
+    "min_avg_amount": 10000000,
+    "min_active_days20": 15,
+    "commission": 0.0003,
+    "min_commission": 5.0,
+    "slippage": 0.0005,
+    "cash_buffer": 0.01,
+    "max_participation": 0.01,
+    "open_guard": 0.048,
+    "writeoff_missing_days": 20
+  }
+}

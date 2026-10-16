@@ -1,0 +1,31 @@
+{
+  "run_id": "run_20261016_201056_106039",
+  "v1_run_id": "run_20261016_194950_230679",
+  "scenarios": [
+    {
+      "scenario": "base",
+      "trading_days": 1400,
+      "all_daily_accounting_columns_exactly_equal": true,
+      "max_nav_difference": 0.0,
+      "max_cash_difference": 0.0,
+      "all_trade_ledger_fields_exactly_equal": true,
+      "all_final_holdings_exactly_equal": true
+    },
+    {
+      "scenario": "gross",
+      "trading_days": 1400,
+      "all_daily_accounting_columns_exactly_equal": true,
+      "max_nav_difference": 0.0,
+      "max_cash_difference": 0.0
+    },
+    {
+      "scenario": "stress",
+      "trading_days": 1400,
+      "all_daily_accounting_columns_exactly_equal": true,
+      "max_nav_difference": 0.0,
+      "max_cash_difference": 0.0
+    }
+  ],
+  "success": true,
+  "all_daily_ic_and_pair_coverage_exactly_equal": true
+}

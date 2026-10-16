@@ -49,6 +49,10 @@ class Config:
     writeoff_missing_days: int = 20
 
     def validate(self):
+        for key in ["start", "end"]:
+            value=getattr(self,key)
+            if not isinstance(value,str) or pd.Timestamp(value).strftime("%Y-%m-%d")!=value:
+                raise ValueError("日期须为YYYY-MM-DD格式")
         if self.rebalance not in {"daily", "weekly", "monthly"}:
             raise ValueError("调仓频率仅支持 daily/weekly/monthly")
         if not 1 <= self.top_n <= 500 or not 10_000 <= self.capital <= 1e10:
@@ -88,7 +92,7 @@ class Market:
         self.source = str(source)
         self.raw = {}
         with zipfile.ZipFile(source) as z:
-            for f in ["open", "high", "low", "close", "amt", "cumadj"]:
+            for f in ["open", "high", "low", "close", "amt", "cumadj", "num_trades"]:
                 t = feather.read_table(pa.BufferReader(z.read(f"feathers/{f}.feather")))
                 dates = t["date"].to_numpy()
                 symbols = t.column_names[1:]

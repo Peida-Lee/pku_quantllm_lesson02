@@ -1,0 +1,14 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "60日动量，跳过最近5日",
+  "score": {"op": "subtract", "args": [
+    {"op": "divide", "args": [
+      {"op": "lag", "args": [{"op": "close"}], "params": {"period": 5}},
+      {"op": "lag", "args": [{"op": "close"}], "params": {"period": 65}}
+    ]},
+    {"op": "constant", "params": {"value": 1}}
+  ]},
+  "selection": {"top_n": 100, "rebalance": "weekly", "direction": "desc"},
+  "packs": []
+}

@@ -1,0 +1,65 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "20日低波动",
+  "score": {
+    "op": "negate",
+    "args": [
+      {
+        "op": "rolling_std",
+        "args": [
+          {
+            "op": "daily_return",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": [],
+  "filter": {
+    "op": "and",
+    "args": [
+      {
+        "op": "greater_equal",
+        "args": [
+          {
+            "op": "raw_close",
+            "args": [],
+            "params": {}
+          },
+          {
+            "op": "constant",
+            "args": [],
+            "params": {
+              "value": 2
+            }
+          }
+        ],
+        "params": {}
+      },
+      {
+        "op": "is_finite",
+        "args": [
+          {
+            "op": "daily_return",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    ],
+    "params": {}
+  }
+}
