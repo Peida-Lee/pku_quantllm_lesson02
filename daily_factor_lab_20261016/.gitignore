@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.feather
+*.zip
+delivery/publication/
+server*.log
+.dashboard-runtime/

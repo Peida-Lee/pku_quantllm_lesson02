@@ -1,0 +1,5 @@
+{
+  "thin_checkout_runtime_bootstrap": true,
+  "stable_artifact_identity_preserved": true,
+  "protected_runtime_build_verified": true
+}

@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-10-16T19:49:50.230679+08:00",
+  "factors": {
+    "momentum60": {
+      "name": "60日动量（跳过5日）",
+      "formula": "C_adj[t-5]/C_adj[t-65]-1",
+      "hypothesis": "中期趋势延续，越高越优"
+    },
+    "reversal5": {
+      "name": "5日反转",
+      "formula": "-(C_adj[t]/C_adj[t-5]-1)",
+      "hypothesis": "短期下跌后反弹，越高越优"
+    },
+    "lowvol20": {
+      "name": "20日低波动",
+      "formula": "-std(adjusted_daily_returns[t-19:t], ddof=1)",
+      "hypothesis": "较低历史波动对应较稳健表现，越高越优"
+    },
+    "liquidity20": {
+      "name": "20日成交金额",
+      "formula": "log(1+mean(amt[t-19:t]))",
+      "hypothesis": "偏好较高流动性，越高越优"
+    },
+    "combo": {
+      "name": "四因子等权",
+      "formula": "mean(cross_section_percentile_rank(each of the four factors))",
+      "hypothesis": "固定四个方向及等权，不按结果调权"
+    }
+  },
+  "scenarios": {
+    "base": 1,
+    "gross": 0,
+    "stress": 2
+  },
+  "selection": "Report all, no winner or parameter selection",
+  "config": {
+    "start": "2021-01-01",
+    "end": "2026-10-16",
+    "capital": 1000000,
+    "top_n": 100,
+    "rebalance": "weekly",
+    "min_history": 120,
+    "min_price": 2.0,
+    "min_avg_amount": 10000000,
+    "min_active_days20": 15,
+    "commission": 0.0003,
+    "min_commission": 5.0,
+    "slippage": 0.0005,
+    "cash_buffer": 0.01,
+    "max_participation": 0.01,
+    "open_guard": 0.048,
+    "writeoff_missing_days": 20
+  }
+}

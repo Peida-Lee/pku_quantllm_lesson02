@@ -1,0 +1,8 @@
+{
+  "start": "2021-01-01", "end": "2026-10-16", "capital": 1000000,
+  "top_n": 100, "rebalance": "weekly", "min_history": 120,
+  "min_price": 2.0, "min_avg_amount": 10000000, "min_active_days20": 15,
+  "commission": 0.0003, "min_commission": 5.0, "slippage": 0.0005,
+  "cash_buffer": 0.01, "max_participation": 0.01, "open_guard": 0.048,
+  "writeoff_missing_days": 20
+}

@@ -1,0 +1,34 @@
+{
+  "validated_at": "2026-10-16T20:01:47+08:00",
+  "timezone": "Asia/Shanghai",
+  "url": "http://127.0.0.1:8776/?view=1&tab=dashboard",
+  "browser": "Microsoft Edge via official @oai/browser-desktop and mcp__browser_proxy__js",
+  "run_id": "run_20261016_194950_230679",
+  "screenshot": "preview.png",
+  "checks": {
+    "actual_edge_tabs_enumerated": "passed",
+    "real_chart_marks_rendered": "passed",
+    "full_range_2021_to_2026": "passed",
+    "default_factor_combo_and_scenario_base": "passed",
+    "normalized_nav_index": "passed",
+    "drawdown_annual_and_fee_percentage_axes": "passed",
+    "dark_theme_label_contrast": "passed",
+    "five_factor_comparison": "passed",
+    "lowvol_selection_metrics_and_download_paths_update": "passed; 34.63% cumulative, 5.50% annual, -16.42% maximum drawdown",
+    "reference_toggle": "passed; sixth series carries non-index reference label",
+    "rank_ic_ci95_and_raw_p": "passed",
+    "source_inspector": "passed; Overview, Data preview and Evidence flow available; exact reporting period, files and limitations visible",
+    "chart_editor": "passed; Y-axis title edit saved and persisted after reload",
+    "chart_editor_test_change_restored": "passed; temporary Y title removed, saved, reloaded and absent from final AX state",
+    "final_default_view_restored": "passed; combo selected, reference off, current full-range run shown",
+    "console_errors": "none observed in inspected logs",
+    "runtime_integrity_build": "passed with installed prebuilt runtime; protected authored boundary verified"
+  },
+  "scope_notes": [
+    "No live broker or real trade action.",
+    "POST run end-to-end testing performed separately by parent agent; not repeated in this browser validation.",
+    "Several official browser click calls returned short CDP timeouts; subsequent fresh AX reads confirmed the requested action had completed. No alternate browser or raw CDP path used.",
+    "A transient API status warning after service restart cleared on the next poll; final page has no service-unavailable warning.",
+    "No mobile viewport or PDF export verification was performed."
+  ]
+}

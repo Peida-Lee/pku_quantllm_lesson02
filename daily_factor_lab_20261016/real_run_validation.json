@@ -1,0 +1,715 @@
+{
+  "run_id": "run_20261016_194950_230679",
+  "validated_at": "2026-10-16T19:53:22.547537+08:00",
+  "scope": "Five persisted base scenarios; independent CSV accounting and source date coverage; no simulation rerun",
+  "cash_tolerance_yuan": 1e-05,
+  "fee_tolerance_yuan": 1e-07,
+  "configured_start": "2021-01-01",
+  "configured_end": "2026-10-16",
+  "source_first_date": "2020-01-02",
+  "source_last_date": "2026-10-16",
+  "expected_first_date": "2021-01-04",
+  "expected_last_date": "2026-10-16",
+  "expected_trading_days": 1400,
+  "strategies": {
+    "momentum60": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "source_date_coverage_exact",
+          "passed": true,
+          "rows": 1400,
+          "actual_first_date": "2021-01-04",
+          "actual_last_date": "2026-10-16"
+        },
+        {
+          "name": "daily_dates_sorted_unique",
+          "passed": true
+        },
+        {
+          "name": "daily_cash_nonnegative",
+          "passed": true,
+          "min_cash": 42489.31550963985
+        },
+        {
+          "name": "daily_nav_finite_nonnegative",
+          "passed": true,
+          "min_nav": 239482.3907525186
+        },
+        {
+          "name": "daily_returns_finite",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_within_daily_calendar",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_nondecreasing",
+          "passed": true
+        },
+        {
+          "name": "ledger_sides_known",
+          "passed": true
+        },
+        {
+          "name": "signals_strictly_precede_execution",
+          "passed": true
+        },
+        {
+          "name": "main_board_buy_hundred_share_lots",
+          "passed": true,
+          "checked_buy_orders": 7710
+        },
+        {
+          "name": "star_board_buy_at_least_200_integer_shares",
+          "passed": true,
+          "checked_buy_orders": 90
+        },
+        {
+          "name": "positive_trade_notionals_and_quantities",
+          "passed": true
+        },
+        {
+          "name": "notional_equals_raw_open_times_share_equivalent",
+          "passed": true,
+          "max_absolute_error": 3.637978807091713e-12
+        },
+        {
+          "name": "fee_components_sum_to_total",
+          "passed": true,
+          "max_absolute_error": 7.105427357601002e-15
+        },
+        {
+          "name": "independently_recomputed_date_specific_fees",
+          "passed": true,
+          "max_absolute_error": 3.552713678800501e-15
+        },
+        {
+          "name": "displayed_fill_price_matches_slippage",
+          "passed": true
+        },
+        {
+          "name": "daily_costs_reconcile_to_trade_ledger",
+          "passed": true,
+          "max_absolute_error": 6.821210263296962e-13,
+          "total_ledger_fees": 130839.61834807148,
+          "total_daily_fees": 130839.6183480715
+        },
+        {
+          "name": "daily_trade_counts_exclude_writeoffs",
+          "passed": true,
+          "trade_rows": 14633,
+          "writeoff_rows": 0
+        },
+        {
+          "name": "writeoffs_have_no_fee_or_signal",
+          "passed": true
+        },
+        {
+          "name": "daily_writeoff_losses_reconcile",
+          "passed": true,
+          "total_writeoffs": 0.0
+        },
+        {
+          "name": "cash_after_each_ledger_row_recomputed",
+          "passed": true,
+          "max_absolute_error": 1.7462298274040222e-10
+        },
+        {
+          "name": "daily_cash_recomputed_from_starting_capital",
+          "passed": true,
+          "max_absolute_error": 3.958120942115784e-09
+        },
+        {
+          "name": "no_same_day_sale_after_buy",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "no_negative_adjusted_position_in_ledger",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "final_adjusted_positions_reconcile",
+          "passed": true,
+          "max_absolute_error": 2.2737367544323206e-13
+        },
+        {
+          "name": "final_cash_plus_holding_values_equals_nav",
+          "passed": true,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "summary_matches_persisted_ledger_and_daily",
+          "passed": true
+        }
+      ],
+      "days": 1400,
+      "trades": 14633,
+      "writeoffs": 0
+    },
+    "reversal5": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "source_date_coverage_exact",
+          "passed": true,
+          "rows": 1400,
+          "actual_first_date": "2021-01-04",
+          "actual_last_date": "2026-10-16"
+        },
+        {
+          "name": "daily_dates_sorted_unique",
+          "passed": true
+        },
+        {
+          "name": "daily_cash_nonnegative",
+          "passed": true,
+          "min_cash": 155.89219137372788
+        },
+        {
+          "name": "daily_nav_finite_nonnegative",
+          "passed": true,
+          "min_nav": 278395.1547127518
+        },
+        {
+          "name": "daily_returns_finite",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_within_daily_calendar",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_nondecreasing",
+          "passed": true
+        },
+        {
+          "name": "ledger_sides_known",
+          "passed": true
+        },
+        {
+          "name": "signals_strictly_precede_execution",
+          "passed": true
+        },
+        {
+          "name": "main_board_buy_hundred_share_lots",
+          "passed": true,
+          "checked_buy_orders": 22180
+        },
+        {
+          "name": "star_board_buy_at_least_200_integer_shares",
+          "passed": true,
+          "checked_buy_orders": 775
+        },
+        {
+          "name": "positive_trade_notionals_and_quantities",
+          "passed": true
+        },
+        {
+          "name": "notional_equals_raw_open_times_share_equivalent",
+          "passed": true,
+          "max_absolute_error": 5.4569682106375694e-12
+        },
+        {
+          "name": "fee_components_sum_to_total",
+          "passed": true,
+          "max_absolute_error": 7.105427357601002e-15
+        },
+        {
+          "name": "independently_recomputed_date_specific_fees",
+          "passed": true,
+          "max_absolute_error": 3.552713678800501e-15
+        },
+        {
+          "name": "displayed_fill_price_matches_slippage",
+          "passed": true
+        },
+        {
+          "name": "daily_costs_reconcile_to_trade_ledger",
+          "passed": true,
+          "max_absolute_error": 2.7284841053187847e-12,
+          "total_ledger_fees": 445851.6917232586,
+          "total_daily_fees": 445851.69172325864
+        },
+        {
+          "name": "daily_trade_counts_exclude_writeoffs",
+          "passed": true,
+          "trade_rows": 45093,
+          "writeoff_rows": 2
+        },
+        {
+          "name": "writeoffs_have_no_fee_or_signal",
+          "passed": true
+        },
+        {
+          "name": "daily_writeoff_losses_reconcile",
+          "passed": true,
+          "total_writeoffs": 6347.0
+        },
+        {
+          "name": "cash_after_each_ledger_row_recomputed",
+          "passed": true,
+          "max_absolute_error": 4.0745362639427185e-10
+        },
+        {
+          "name": "daily_cash_recomputed_from_starting_capital",
+          "passed": true,
+          "max_absolute_error": 6.402842700481415e-09
+        },
+        {
+          "name": "no_same_day_sale_after_buy",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "no_negative_adjusted_position_in_ledger",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "final_adjusted_positions_reconcile",
+          "passed": true,
+          "max_absolute_error": 2.8421709430404007e-13
+        },
+        {
+          "name": "final_cash_plus_holding_values_equals_nav",
+          "passed": true,
+          "absolute_error": 5.820766091346741e-11
+        },
+        {
+          "name": "summary_matches_persisted_ledger_and_daily",
+          "passed": true
+        }
+      ],
+      "days": 1400,
+      "trades": 45093,
+      "writeoffs": 2
+    },
+    "lowvol20": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "source_date_coverage_exact",
+          "passed": true,
+          "rows": 1400,
+          "actual_first_date": "2021-01-04",
+          "actual_last_date": "2026-10-16"
+        },
+        {
+          "name": "daily_dates_sorted_unique",
+          "passed": true
+        },
+        {
+          "name": "daily_cash_nonnegative",
+          "passed": true,
+          "min_cash": 4628.705472980904
+        },
+        {
+          "name": "daily_nav_finite_nonnegative",
+          "passed": true,
+          "min_nav": 925019.7770596672
+        },
+        {
+          "name": "daily_returns_finite",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_within_daily_calendar",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_nondecreasing",
+          "passed": true
+        },
+        {
+          "name": "ledger_sides_known",
+          "passed": true
+        },
+        {
+          "name": "signals_strictly_precede_execution",
+          "passed": true
+        },
+        {
+          "name": "main_board_buy_hundred_share_lots",
+          "passed": true,
+          "checked_buy_orders": 10959
+        },
+        {
+          "name": "star_board_buy_at_least_200_integer_shares",
+          "passed": true,
+          "checked_buy_orders": 180
+        },
+        {
+          "name": "positive_trade_notionals_and_quantities",
+          "passed": true
+        },
+        {
+          "name": "notional_equals_raw_open_times_share_equivalent",
+          "passed": true,
+          "max_absolute_error": 5.4569682106375694e-12
+        },
+        {
+          "name": "fee_components_sum_to_total",
+          "passed": true,
+          "max_absolute_error": 7.105427357601002e-15
+        },
+        {
+          "name": "independently_recomputed_date_specific_fees",
+          "passed": true,
+          "max_absolute_error": 3.552713678800501e-15
+        },
+        {
+          "name": "displayed_fill_price_matches_slippage",
+          "passed": true
+        },
+        {
+          "name": "daily_costs_reconcile_to_trade_ledger",
+          "passed": true,
+          "max_absolute_error": 1.5916157281026244e-12,
+          "total_ledger_fees": 281200.24482622347,
+          "total_daily_fees": 281200.24482622347
+        },
+        {
+          "name": "daily_trade_counts_exclude_writeoffs",
+          "passed": true,
+          "trade_rows": 20803,
+          "writeoff_rows": 0
+        },
+        {
+          "name": "writeoffs_have_no_fee_or_signal",
+          "passed": true
+        },
+        {
+          "name": "daily_writeoff_losses_reconcile",
+          "passed": true,
+          "total_writeoffs": 0.0
+        },
+        {
+          "name": "cash_after_each_ledger_row_recomputed",
+          "passed": true,
+          "max_absolute_error": 5.238689482212067e-10
+        },
+        {
+          "name": "daily_cash_recomputed_from_starting_capital",
+          "passed": true,
+          "max_absolute_error": 1.4260876923799515e-09
+        },
+        {
+          "name": "no_same_day_sale_after_buy",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "no_negative_adjusted_position_in_ledger",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "final_adjusted_positions_reconcile",
+          "passed": true,
+          "max_absolute_error": 1.8189894035458565e-12
+        },
+        {
+          "name": "final_cash_plus_holding_values_equals_nav",
+          "passed": true,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "summary_matches_persisted_ledger_and_daily",
+          "passed": true
+        }
+      ],
+      "days": 1400,
+      "trades": 20803,
+      "writeoffs": 0
+    },
+    "liquidity20": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "source_date_coverage_exact",
+          "passed": true,
+          "rows": 1400,
+          "actual_first_date": "2021-01-04",
+          "actual_last_date": "2026-10-16"
+        },
+        {
+          "name": "daily_dates_sorted_unique",
+          "passed": true
+        },
+        {
+          "name": "daily_cash_nonnegative",
+          "passed": true,
+          "min_cash": 64431.60995061199
+        },
+        {
+          "name": "daily_nav_finite_nonnegative",
+          "passed": true,
+          "min_nav": 418306.72066006187
+        },
+        {
+          "name": "daily_returns_finite",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_within_daily_calendar",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_nondecreasing",
+          "passed": true
+        },
+        {
+          "name": "ledger_sides_known",
+          "passed": true
+        },
+        {
+          "name": "signals_strictly_precede_execution",
+          "passed": true
+        },
+        {
+          "name": "main_board_buy_hundred_share_lots",
+          "passed": true,
+          "checked_buy_orders": 3344
+        },
+        {
+          "name": "star_board_buy_at_least_200_integer_shares",
+          "passed": true,
+          "checked_buy_orders": 5
+        },
+        {
+          "name": "positive_trade_notionals_and_quantities",
+          "passed": true
+        },
+        {
+          "name": "notional_equals_raw_open_times_share_equivalent",
+          "passed": true,
+          "max_absolute_error": 3.637978807091713e-12
+        },
+        {
+          "name": "fee_components_sum_to_total",
+          "passed": true,
+          "max_absolute_error": 7.105427357601002e-15
+        },
+        {
+          "name": "independently_recomputed_date_specific_fees",
+          "passed": true,
+          "max_absolute_error": 1.7763568394002505e-15
+        },
+        {
+          "name": "displayed_fill_price_matches_slippage",
+          "passed": true
+        },
+        {
+          "name": "daily_costs_reconcile_to_trade_ledger",
+          "passed": true,
+          "max_absolute_error": 1.1368683772161603e-13,
+          "total_ledger_fees": 55830.088191777315,
+          "total_daily_fees": 55830.088191777315
+        },
+        {
+          "name": "daily_trade_counts_exclude_writeoffs",
+          "passed": true,
+          "trade_rows": 6080,
+          "writeoff_rows": 0
+        },
+        {
+          "name": "writeoffs_have_no_fee_or_signal",
+          "passed": true
+        },
+        {
+          "name": "daily_writeoff_losses_reconcile",
+          "passed": true,
+          "total_writeoffs": 0.0
+        },
+        {
+          "name": "cash_after_each_ledger_row_recomputed",
+          "passed": true,
+          "max_absolute_error": 1.1641532182693481e-10
+        },
+        {
+          "name": "daily_cash_recomputed_from_starting_capital",
+          "passed": true,
+          "max_absolute_error": 1.6589183360338211e-09
+        },
+        {
+          "name": "no_same_day_sale_after_buy",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "no_negative_adjusted_position_in_ledger",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "final_adjusted_positions_reconcile",
+          "passed": true,
+          "max_absolute_error": 2.2737367544323206e-13
+        },
+        {
+          "name": "final_cash_plus_holding_values_equals_nav",
+          "passed": true,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "summary_matches_persisted_ledger_and_daily",
+          "passed": true
+        }
+      ],
+      "days": 1400,
+      "trades": 6080,
+      "writeoffs": 0
+    },
+    "combo": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "source_date_coverage_exact",
+          "passed": true,
+          "rows": 1400,
+          "actual_first_date": "2021-01-04",
+          "actual_last_date": "2026-10-16"
+        },
+        {
+          "name": "daily_dates_sorted_unique",
+          "passed": true
+        },
+        {
+          "name": "daily_cash_nonnegative",
+          "passed": true,
+          "min_cash": 301.5337708318825
+        },
+        {
+          "name": "daily_nav_finite_nonnegative",
+          "passed": true,
+          "min_nav": 599853.196057538
+        },
+        {
+          "name": "daily_returns_finite",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_within_daily_calendar",
+          "passed": true
+        },
+        {
+          "name": "ledger_dates_nondecreasing",
+          "passed": true
+        },
+        {
+          "name": "ledger_sides_known",
+          "passed": true
+        },
+        {
+          "name": "signals_strictly_precede_execution",
+          "passed": true
+        },
+        {
+          "name": "main_board_buy_hundred_share_lots",
+          "passed": true,
+          "checked_buy_orders": 21442
+        },
+        {
+          "name": "star_board_buy_at_least_200_integer_shares",
+          "passed": true,
+          "checked_buy_orders": 153
+        },
+        {
+          "name": "positive_trade_notionals_and_quantities",
+          "passed": true
+        },
+        {
+          "name": "notional_equals_raw_open_times_share_equivalent",
+          "passed": true,
+          "max_absolute_error": 5.4569682106375694e-12
+        },
+        {
+          "name": "fee_components_sum_to_total",
+          "passed": true,
+          "max_absolute_error": 1.4210854715202004e-14
+        },
+        {
+          "name": "independently_recomputed_date_specific_fees",
+          "passed": true,
+          "max_absolute_error": 5.329070518200751e-15
+        },
+        {
+          "name": "displayed_fill_price_matches_slippage",
+          "passed": true
+        },
+        {
+          "name": "daily_costs_reconcile_to_trade_ledger",
+          "passed": true,
+          "max_absolute_error": 2.2737367544323206e-12,
+          "total_ledger_fees": 473776.30078637134,
+          "total_daily_fees": 473776.3007863714
+        },
+        {
+          "name": "daily_trade_counts_exclude_writeoffs",
+          "passed": true,
+          "trade_rows": 41805,
+          "writeoff_rows": 0
+        },
+        {
+          "name": "writeoffs_have_no_fee_or_signal",
+          "passed": true
+        },
+        {
+          "name": "daily_writeoff_losses_reconcile",
+          "passed": true,
+          "total_writeoffs": 0.0
+        },
+        {
+          "name": "cash_after_each_ledger_row_recomputed",
+          "passed": true,
+          "max_absolute_error": 5.238689482212067e-10
+        },
+        {
+          "name": "daily_cash_recomputed_from_starting_capital",
+          "passed": true,
+          "max_absolute_error": 5.995389074087143e-09
+        },
+        {
+          "name": "no_same_day_sale_after_buy",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "no_negative_adjusted_position_in_ledger",
+          "passed": true,
+          "violations": []
+        },
+        {
+          "name": "final_adjusted_positions_reconcile",
+          "passed": true,
+          "max_absolute_error": 1.7053025658242404e-12
+        },
+        {
+          "name": "final_cash_plus_holding_values_equals_nav",
+          "passed": true,
+          "absolute_error": 0.0
+        },
+        {
+          "name": "summary_matches_persisted_ledger_and_daily",
+          "passed": true
+        }
+      ],
+      "days": 1400,
+      "trades": 41805,
+      "writeoffs": 0
+    }
+  },
+  "limitations": [
+    "Does not prove opening auction liquidity or actual fills; daily bars cannot establish this.",
+    "Adjusted units and raw share equivalents remain synthetic corporate-action accounting.",
+    "WRITE_OFF is a configured missing-data valuation policy, not verified legal delisting status.",
+    "No brokerage, external transfer, or real order is used."
+  ],
+  "passed": true,
+  "check_count": 135,
+  "failed_check_count": 0
+}

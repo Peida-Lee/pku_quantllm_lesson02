@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "check": "status_endpoint",
+      "passed": true
+    },
+    {
+      "check": "compiled_html",
+      "passed": true
+    },
+    {
+      "check": "full_initial_run",
+      "passed": true
+    },
+    {
+      "check": "download_path_escape_blocked",
+      "passed": true
+    },
+    {
+      "check": "summary_download",
+      "passed": true
+    },
+    {
+      "check": "invalid_params_rejected",
+      "passed": true
+    },
+    {
+      "check": "cross_origin_post_rejected",
+      "passed": true
+    },
+    {
+      "check": "non_json_post_rejected",
+      "passed": true
+    },
+    {
+      "check": "real_rerun_accepted",
+      "passed": true
+    },
+    {
+      "check": "simultaneous_job_rejected",
+      "passed": true
+    },
+    {
+      "check": "real_rerun_and_dashboard_build_completed",
+      "passed": true
+    },
+    {
+      "check": "new_run_identity",
+      "passed": true
+    },
+    {
+      "check": "requested_config_applied",
+      "passed": true
+    },
+    {
+      "check": "all_scenarios_and_ic_complete",
+      "passed": true
+    },
+    {
+      "check": "bounded_custom_interval",
+      "passed": true
+    },
+    {
+      "check": "snapshot_tracks_new_run",
+      "passed": true
+    }
+  ],
+  "passed": 16,
+  "before_run": "run_20261016_194950_230679",
+  "custom_run": "run_20261016_195532_360843",
+  "restoration_required": true
+}
