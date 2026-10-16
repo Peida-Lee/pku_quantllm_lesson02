@@ -1,0 +1,1320 @@
+{
+  "frozen_at": "2026-10-16T21:55:20.658380+08:00",
+  "input": "feathers.zip only; original unchanged",
+  "grid": [
+    {
+      "experiment_id": "dr5_momentum__all_liquid__n50__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__all_liquid__n50__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_momentum__all_liquid__n100__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__all_liquid__n100__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_momentum__main_liquid__n50__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__main_liquid__n50__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_momentum__main_liquid__n100__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__main_liquid__n100__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_momentum__liquid1000__n50__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__liquid1000__n50__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_momentum__liquid1000__n100__weekly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_momentum__liquid1000__n100__monthly",
+      "factor": "dr5_momentum",
+      "name": "5DR正向：5日涨幅高优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__all_liquid__n50__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__all_liquid__n50__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__all_liquid__n100__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__all_liquid__n100__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__main_liquid__n50__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__main_liquid__n50__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__main_liquid__n100__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__main_liquid__n100__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__liquid1000__n50__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__liquid1000__n50__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "dr5_reversal__liquid1000__n100__weekly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "dr5_reversal__liquid1000__n100__monthly",
+      "factor": "dr5_reversal",
+      "name": "5DR反向：5日跌幅大优先",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__all_liquid__n50__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__all_liquid__n50__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__all_liquid__n100__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__all_liquid__n100__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__main_liquid__n50__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__main_liquid__n50__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__main_liquid__n100__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__main_liquid__n100__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__liquid1000__n50__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__liquid1000__n50__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal1__liquid1000__n100__weekly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal1__liquid1000__n100__monthly",
+      "factor": "reversal1",
+      "name": "1日反转",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__all_liquid__n50__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__all_liquid__n50__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__all_liquid__n100__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__all_liquid__n100__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__main_liquid__n50__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__main_liquid__n50__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__main_liquid__n100__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__main_liquid__n100__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__liquid1000__n50__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__liquid1000__n50__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum20__liquid1000__n100__weekly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum20__liquid1000__n100__monthly",
+      "factor": "momentum20",
+      "name": "20日动量",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__all_liquid__n50__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__all_liquid__n50__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__all_liquid__n100__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__all_liquid__n100__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__main_liquid__n50__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__main_liquid__n50__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__main_liquid__n100__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__main_liquid__n100__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__liquid1000__n50__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__liquid1000__n50__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "momentum60__liquid1000__n100__weekly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "momentum60__liquid1000__n100__monthly",
+      "factor": "momentum60",
+      "name": "60日动量跳过5日",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__all_liquid__n50__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__all_liquid__n50__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__all_liquid__n100__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__all_liquid__n100__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__main_liquid__n50__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__main_liquid__n50__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__main_liquid__n100__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__main_liquid__n100__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__liquid1000__n50__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__liquid1000__n50__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowvol20__liquid1000__n100__weekly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowvol20__liquid1000__n100__monthly",
+      "factor": "lowvol20",
+      "name": "20日低波动",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__all_liquid__n50__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__all_liquid__n50__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__all_liquid__n100__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__all_liquid__n100__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__main_liquid__n50__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__main_liquid__n50__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__main_liquid__n100__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__main_liquid__n100__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__liquid1000__n50__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__liquid1000__n50__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "liquidity20__liquid1000__n100__weekly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "liquidity20__liquid1000__n100__monthly",
+      "factor": "liquidity20",
+      "name": "20日高成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__all_liquid__n50__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__all_liquid__n50__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__all_liquid__n100__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__all_liquid__n100__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__main_liquid__n50__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__main_liquid__n50__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__main_liquid__n100__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__main_liquid__n100__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__liquid1000__n50__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__liquid1000__n50__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "small_amount20__liquid1000__n100__weekly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "small_amount20__liquid1000__n100__monthly",
+      "factor": "small_amount20",
+      "name": "20日低成交额",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__all_liquid__n50__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__all_liquid__n50__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__all_liquid__n100__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__all_liquid__n100__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__main_liquid__n50__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__main_liquid__n50__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__main_liquid__n100__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__main_liquid__n100__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__liquid1000__n50__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__liquid1000__n50__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "lowrange20__liquid1000__n100__weekly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "lowrange20__liquid1000__n100__monthly",
+      "factor": "lowrange20",
+      "name": "20日低振幅",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__all_liquid__n50__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__all_liquid__n50__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__all_liquid__n100__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__all_liquid__n100__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "all_liquid",
+      "universe_name": "全部A股，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__main_liquid__n50__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__main_liquid__n50__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__main_liquid__n100__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__main_liquid__n100__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "main_liquid",
+      "universe_name": "主板，20日均额≥2000万元",
+      "top_n": 100,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__liquid1000__n50__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__liquid1000__n50__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 50,
+      "rebalance": "monthly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__liquid1000__n100__weekly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "weekly"
+    },
+    {
+      "experiment_id": "reversal_lowvol__liquid1000__n100__monthly",
+      "factor": "reversal_lowvol",
+      "name": "反转与低波动等权",
+      "universe": "liquid1000",
+      "universe_name": "全部A股，过去20日均额前1000",
+      "top_n": 100,
+      "rebalance": "monthly"
+    }
+  ],
+  "factors": {
+    "dr5_momentum": {
+      "name": "5DR正向：5日涨幅高优先",
+      "formula": "C_adj[t]/C_adj[t-5]-1"
+    },
+    "dr5_reversal": {
+      "name": "5DR反向：5日跌幅大优先",
+      "formula": "-(C_adj[t]/C_adj[t-5]-1)"
+    },
+    "reversal1": {
+      "name": "1日反转",
+      "formula": "-r_adj[t]"
+    },
+    "momentum20": {
+      "name": "20日动量",
+      "formula": "C_adj[t]/C_adj[t-20]-1"
+    },
+    "momentum60": {
+      "name": "60日动量跳过5日",
+      "formula": "C_adj[t-5]/C_adj[t-65]-1"
+    },
+    "lowvol20": {
+      "name": "20日低波动",
+      "formula": "-std(r_adj[t-19:t],ddof=1)"
+    },
+    "liquidity20": {
+      "name": "20日高成交额",
+      "formula": "log1p(mean(amt[t-19:t]))"
+    },
+    "small_amount20": {
+      "name": "20日低成交额",
+      "formula": "-log1p(mean(amt[t-19:t]))"
+    },
+    "lowrange20": {
+      "name": "20日低振幅",
+      "formula": "-mean((high-low)/close,20)"
+    },
+    "reversal_lowvol": {
+      "name": "反转与低波动等权",
+      "formula": "0.5*(rank(-5DR)+rank(-vol20))"
+    }
+  },
+  "periods": {
+    "selection_2024": [
+      "2024-01-02",
+      "2024-12-31"
+    ],
+    "evaluation_2025": [
+      "2025-01-02",
+      "2025-12-31"
+    ],
+    "assignment_2025_2026sep": [
+      "2025-01-02",
+      "2026-09-30"
+    ]
+  },
+  "base_config": {
+    "start": "2025-01-02",
+    "end": "2025-12-31",
+    "capital": 1000000000,
+    "top_n": 100,
+    "rebalance": "weekly",
+    "min_history": 120,
+    "min_price": 2.0,
+    "min_avg_amount": 20000000,
+    "min_active_days20": 18,
+    "commission": 0.0001,
+    "min_commission": 5.0,
+    "slippage": 0.0005,
+    "cash_buffer": 0.01,
+    "max_participation": 0.01,
+    "open_guard": 0.048,
+    "writeoff_missing_days": 20,
+    "execution_model": "daily_conservative",
+    "st_policy": "price_proxy",
+    "universe": "all_a",
+    "liquidity_top_n": 0,
+    "risk_proxy_window": 20,
+    "max_daily_participation": 0.01,
+    "liquidate_end": true
+  },
+  "resource_policy": {
+    "method": "Windows_CPU_set_topology",
+    "reserved_logical_processors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "allowed_logical_processors": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 1,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 3,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 4,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 5,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 6,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 7,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 8,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 9,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 10,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 11,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 12,
+        "core": 12,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 13,
+        "core": 13,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 14,
+        "core": 14,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 15,
+        "core": 15,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 16,
+        "core": 16,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 17,
+        "core": 17,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 18,
+        "core": 18,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 19,
+        "core": 19,
+        "efficiency": 0,
+        "group": 0
+      }
+    ]
+  },
+  "selection_rule": "2024 only, mean_invested>=.25,max_drawdown>=-.40,writeoff_loss=0; max sharpe,then return,then ID; explicit fallback",
+  "retrospective": true,
+  "true_ST_coverage": 0,
+  "quick_development_run": false
+}

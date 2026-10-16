@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-10-16T22:28:17.683795+08:00",
+  "factors": {
+    "custom": {
+      "format": "daily-factor-strategy",
+      "version": 1,
+      "name": "20日低振幅",
+      "score": {
+        "op": "negate",
+        "args": [
+          {
+            "op": "rolling_mean",
+            "args": [
+              {
+                "op": "factor_range",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {
+              "window": 20
+            }
+          }
+        ],
+        "params": {}
+      },
+      "selection": {
+        "top_n": 50,
+        "rebalance": "monthly",
+        "direction": "desc"
+      },
+      "packs": [],
+      "filter": {
+        "op": "is_finite",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {}
+      }
+    }
+  },
+  "scenarios": {
+    "base": 1,
+    "gross": 0,
+    "stress": 2
+  },
+  "selection": "Report all scenarios; custom strategies are user-authored exploratory experiments",
+  "config": {
+    "start": "2025-01-02",
+    "end": "2025-12-31",
+    "capital": 1000000000,
+    "top_n": 50,
+    "rebalance": "monthly",
+    "min_history": 120,
+    "min_price": 2.0,
+    "min_avg_amount": 20000000,
+    "min_active_days20": 18,
+    "commission": 0.0001,
+    "min_commission": 5.0,
+    "slippage": 0.0005,
+    "cash_buffer": 0.01,
+    "max_participation": 0.01,
+    "open_guard": 0.048,
+    "writeoff_missing_days": 20,
+    "execution_model": "daily_conservative",
+    "st_policy": "price_proxy",
+    "universe": "all_a",
+    "liquidity_top_n": 1000,
+    "risk_proxy_window": 20,
+    "max_daily_participation": 0.01,
+    "liquidate_end": true,
+    "wind_down_days": 20
+  }
+}

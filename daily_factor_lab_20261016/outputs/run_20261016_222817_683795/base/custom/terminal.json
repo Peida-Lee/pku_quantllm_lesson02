@@ -1,0 +1,18 @@
+{
+  "requested": true,
+  "date": "2025-12-31",
+  "residual_positions": 0,
+  "residual_value": 0.0,
+  "fully_liquidated": true,
+  "blocked_reasons": {},
+  "synthetic_fractional_share_equivalents_possible": true,
+  "wind_down_start": "2025-12-04",
+  "wind_down_days_requested": 20,
+  "wind_down_days": 20,
+  "wind_down_rejections": {
+    "partial_capacity_remaining": 159,
+    "slipped_price_outside_daily_range_posthoc_audit": 7
+  },
+  "liquidation_attempt_days": 20,
+  "wind_down_schedule_basis": "last N source trading dates in the declared interval, preplanned calendar only; no future price or turnover selection"
+}

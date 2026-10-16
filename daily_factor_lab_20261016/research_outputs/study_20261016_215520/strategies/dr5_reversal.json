@@ -1,0 +1,41 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "5DR反向：5日跌幅大优先",
+  "score": {
+    "op": "negate",
+    "args": [
+      {
+        "op": "pct_change",
+        "args": [
+          {
+            "op": "close",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "period": 5
+        }
+      }
+    ],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

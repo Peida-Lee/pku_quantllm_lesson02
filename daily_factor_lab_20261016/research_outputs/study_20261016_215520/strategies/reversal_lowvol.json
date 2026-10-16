@@ -1,0 +1,63 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "反转与低波动等权",
+  "score": {
+    "op": "divide",
+    "args": [
+      {
+        "op": "add",
+        "args": [
+          {
+            "op": "cs_rank",
+            "args": [
+              {
+                "op": "factor_reversal5",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          },
+          {
+            "op": "cs_rank",
+            "args": [
+              {
+                "op": "factor_lowvol20",
+                "args": [],
+                "params": {}
+              }
+            ],
+            "params": {}
+          }
+        ],
+        "params": {}
+      },
+      {
+        "op": "constant",
+        "args": [],
+        "params": {
+          "value": 2
+        }
+      }
+    ],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

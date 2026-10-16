@@ -61,6 +61,28 @@ def make_snapshot(result, complete=False):
                      "run_id": run, "config": result["config"], "files": result["files"], "strategies": result["strategies"], "diagnostics": result["diagnostics"],
                      "custom_strategy": result.get("custom_strategy"), "strategy_manifest": result.get("strategy_manifest"),
                      "status": "reviewed", "buildStatus": "complete" if complete else "updating", "filters": [], "queries": queries})
+    from research import latest_research
+    research = latest_research()
+    if research.get("study_id"):
+        research_source = {
+            "label":"同一课程feathers.zip的2024选型/2025评价；真实ST状态缺失",
+            "files":["feathers.zip","research.py","lab.py","execution_metadata.py",f"research_outputs/{research['study_id']}/result.json"],
+            "executedAt":research["generated_at"],"timezone":"Asia/Shanghai",
+            "coverage":{"selection":"2024-01-02至2024-12-31","primary":"2025-01-02至2025-12-31","assignment":"2025-01-02至2026-09-30"},
+            "caveats":research["limitations"],
+            "filters":["仅2024选型；2025全部候选透明报告；价格风险代理不是真实ST剔除"],
+            "metricDefinitions":[{"label":"总收益","definition":"末日NAV/10亿元-1，清算未成交残仓按末日收盘估值另列"},
+                                 {"label":"平均仓位","definition":"逐日1-现金/NAV均值，反映10亿元容量和拒单导致的闲置"},
+                                 {"label":"真实ST未知","definition":"区间有有效原始收盘的code-day全部未知；known-ST和known-non-ST均0"}],
+        }
+        if research.get("feasibility_repair"):
+            research_source["files"].extend([f"research_outputs/{research['study_id']}/feasibility_repair/feasibility_repair.json",
+                                               f"research_outputs/{research['study_id']}/feasibility_repair/feasibility_validation.json"])
+            research_source["filters"].append("退出补充为发现末日残仓后的后验执行修复；仍固定2024选型，仅按是否清空选择20/40日最短成功窗口")
+        for name in ("experiments","curves","splits","execution","st_coverage"):
+            queries["research_"+name]={"rows":research.get(name,[]),"source":research_source,
+                 "methods":[{"language":"python","code":"python research.py; see study protocol.json, selection_frozen_before_2025.json and validation.json"}]}
+        previous["research"]=research
     save_json(path, previous)
 
 def build_dashboard():
@@ -104,6 +126,10 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
         overrides = {k: selection[k] for k in ["top_n", "rebalance"] if k in selection}
         cfg = replace(cfg, **overrides)
     cfg.validate()
+    if cfg.execution_model == "daily_conservative":
+        from research import LIMITATIONS as active_limitations
+    else:
+        active_limitations = LIMITATIONS
     OUTPUTS.mkdir(exist_ok=True)
     now = datetime.now(ZoneInfo("Asia/Shanghai"))
     run_id = now.strftime("run_%Y%m%d_%H%M%S_%f")
@@ -140,13 +166,20 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
                 destination = out / scenario / factor
                 destination.mkdir(parents=True)
                 d = r["daily"]
-                d.to_csv(destination / "daily.csv", index=False, encoding="utf-8-sig")
+                d.to_csv(destination / "daily.csv", index=False, encoding="utf-8-sig",float_format="%.17g")
                 if scenario == "base":
-                    r["trades"].to_csv(destination / "trades.csv", index=False, encoding="utf-8-sig")
-                    r["holdings"].to_csv(destination / "holdings.csv", index=False, encoding="utf-8-sig")
+                    r["trades"].to_csv(destination / "trades.csv", index=False, encoding="utf-8-sig",float_format="%.17g")
+                    r["holdings"].to_csv(destination / "holdings.csv", index=False, encoding="utf-8-sig",float_format="%.17g")
                     strategies[factor] = {key: f"{run_id}/base/{factor}/{key}.csv" for key in ["daily", "trades", "holdings"]}
                     diagnostics[factor] = r["blocked"]
                     save_json(destination / "blocked_attempts.json", r["blocked"])
+                    if cfg.execution_model == "daily_conservative":
+                        r["orders"].to_csv(destination/"orders.csv",index=False,encoding="utf-8-sig",float_format="%.17g")
+                        save_json(destination/"execution_diagnostics.json",r["execution_diagnostics"])
+                        save_json(destination/"terminal.json",r["terminal"])
+                        strategies[factor].update({"orders":f"{run_id}/base/{factor}/orders.csv",
+                                                  "execution_diagnostics":f"{run_id}/base/{factor}/execution_diagnostics.json",
+                                                  "terminal":f"{run_id}/base/{factor}/terminal.json"})
                 summary.append({"factor": factor, "name": info["name"], "scenario": scenario, **r["metrics"]})
                 cf = d[["date", "nav"]].copy()
                 cf["factor"], cf["name"], cf["scenario"] = factor, info["name"], scenario
@@ -194,15 +227,15 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
     result = {"run_id": run_id, "generated_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(), "config": asdict(cfg),
         "summary": summary, "curves": json_rows(curves), "yearly": yearly, "ic": ic_records, "diagnostics": diagnostics,
         "strategies": strategies, "files": files, "failures": failures, "status": "complete" if not failures else "partial",
-        "factor_definitions": factor_definitions, "limitations": LIMITATIONS,
+        "factor_definitions": factor_definitions, "limitations": active_limitations,
         "custom_strategy": strategy_document, "strategy_manifest": strategy_manifest,
         "source": {"file":"feathers.zip", "rows":len(m.dates), "symbols":len(m.symbols), "date_start":str(m.dates[0].date()), "date_end":str(m.dates[-1].date())}}
     report_lines = ["# 日频多因子回测初步实验", "", f"运行：`{run_id}`；生成时间：{result['generated_at']}（Asia/Shanghai）。", "",
         f"采用用户提供的课程日频数据，{len(m.dates):,}个日期、{len(m.symbols):,}个历史代码。初始资金{cfg.capital:,.0f}元，目标持有排名前{cfg.top_n}只，{cfg.rebalance}调仓，仅多头。", "",
         "## 实验与执行协议", "", "本次规则与参数在执行前保存于frozen_protocol.json；积木策略另保存完整strategy.json和编译清单。全部报告费用情景。交互式试验可能包含人为反复调参，不能当作未看结果的确认性验证。", ""]
     for factor,info in factor_definitions.items(): report_lines.append(f"- **{info['name']}**：`{info['formula']}`；{info['hypothesis']}。")
-    report_lines += ["", "信号在t日收盘形成，t+1日开盘尝试；排名并列按代码排序。股票池要求：至少120个有效历史价格观察、价格不低于2元、前20日平均成交金额至少1000万元且至少15日有成交；界面重跑时以本次config.json为准。", "",
-        "费用假设：双边佣金3bp、单笔最低5元，双边滑点5bp，卖出印花税2023-08-28前10bp、之后5bp，双边过户费2022-04-29前0.2bp、之后0.1bp；均为研究假设，不代表用户券商合同。gross将全部费用/滑点置零，stress全部乘2。", "",
+    report_lines += ["", f"信号在t日收盘形成，t+1日开盘尝试；排名并列按代码排序。股票池要求：至少{cfg.min_history}个有效历史价格观察、价格不低于{cfg.min_price:g}元、前20日平均成交金额至少{cfg.min_avg_amount:g}元且至少{cfg.min_active_days20}日有成交；股票范围{cfg.universe}、流动性TopN={cfg.liquidity_top_n}（0不限），ST政策={cfg.st_policy}，执行模型={cfg.execution_model}，末日尝试清仓={cfg.liquidate_end}。真实ST身份缺失，价格代理不能视为真实非ST。", "",
+        f"费用假设：双边佣金{cfg.commission*10000:g}bp、单笔最低{cfg.min_commission:g}元，目标双边滑点{cfg.slippage*10000:g}bp，卖出印花税2023-08-28前10bp、之后5bp，双边过户费2022-04-29前0.2bp、之后0.1bp。daily_conservative使用不利0.01元价格刻度舍入后的真实本模型成交额计算税费和容量；notional为参考开盘额、execution_notional为成交额、slippage为价差成本，现金仍以参考额加减总成本对账。gross费用和目标滑点置零，stress费率乘2且目标滑点乘2后再按刻度舍入，实际滑点不保证线性翻倍。均为研究假设，不代表券商撮合或合同。", "",
         "## 主结果（base，含费用）", "", "| 因子 | 总收益 | 年化收益 | 夏普 | 最大回撤 | 平均仓位 |", "|---|---:|---:|---:|---:|---:|"]
     for r in summary:
         if r["scenario"] == "base": report_lines.append(f"| {r['name']} | {r['total_return']:.2%} | {r['annual_return']:.2%} | {r['sharpe']:.3f} | {r['max_drawdown']:.2%} | {r['mean_invested']:.2%} |")
@@ -218,7 +251,7 @@ def run_suite(cfg, market=None, progress=print, dashboard_complete=False, build=
     for f,info in factor_definitions.items():
         lookup = {r['year']:r['return'] for r in yearly if r['factor']==f and r['scenario']=='base'}
         report_lines.append(f"| {info['name']} | " + " | ".join(f"{lookup[k]:.2%}" if k in lookup else "无覆盖" for k in ["2021–2023","2024–末日"]) + " |")
-    report_lines += ["", "## 可行性门禁与局限", ""] + [f"{i+1}. {text}" for i,text in enumerate(LIMITATIONS)]
+    report_lines += ["", "## 可行性门禁与局限", ""] + [f"{i+1}. {text}" for i,text in enumerate(active_limitations)]
     report_lines += ["", "## 审计与文件", "", "summary.csv为全部策略/费用情景；curves.csv为完整日净值；yearly.csv为年度及时间段；ic_summary.csv/ic_daily.csv为IC结果；base/<factor>/为逐日资金、交易账本、末日持仓和拒单计数。WRITE_OFF为估值损失，不能解释为成交。", "",
         "输入原压缩包不作修改。接口只提供本地历史回测，没有券商、行情联网或真实订单接口。复现：`python run_experiments.py --config config.json`。", "",
         "本轮失败项：" + (json.dumps(failures,ensure_ascii=False) if failures else f"无（{len(factor_definitions)*3}个策略/费用情景和{len(ic_records)}组IC完成）")]

@@ -1,0 +1,107 @@
+{
+  "created_at": "2026-10-16T21:50:03.950025+08:00",
+  "source": "D:\\quant\\feathers.zip",
+  "network_used": false,
+  "source_modified": false,
+  "source_archive_bytes": 159096263,
+  "fields": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "amt",
+    "num_trades",
+    "cumadj"
+  ],
+  "source_date_count": 1643,
+  "source_symbol_count": 5451,
+  "source_dates_unique": true,
+  "source_dates_strictly_increasing": true,
+  "axes_match_all_seven_matrices": true,
+  "exchange_suffix_counts": {
+    "SZ": 3038,
+    "SH": 2413
+  },
+  "missing_truth_fields": [
+    "historical_isST",
+    "official_tradestatus",
+    "official_limit_up",
+    "official_limit_down",
+    "listing_and_delisting_effective_dates",
+    "opening_auction_volume",
+    "bid_ask_queue",
+    "cash_dividend_and_share_delivery_events"
+  ],
+  "historical_ST_known_cells": 0,
+  "unknown_ST_must_not_be_filled_from_current_names": true,
+  "periods": {
+    "2025": {
+      "requested_start": "2025-01-02",
+      "requested_end": "2025-12-31",
+      "date_count": 243,
+      "first_observed_date": "2025-01-02",
+      "last_observed_date": "2025-12-31",
+      "symbols_in_schema": 5451,
+      "expected_schema_cells": 1324593,
+      "capacity_source": {
+        "source_field": "amt",
+        "unit": "Archive metadata does not specify a currency unit; numeric amounts are reported in archive units",
+        "lagged_20day_mean_requires": "20 nonmissing observations within the preceding 20 package dates; shifted by one date",
+        "illustrative_liquidity_filter": "prior20_mean>=10000000 archive units and prior20 positive-amount dates>=15; not a verified CNY or ST rule",
+        "lagged_20day_mean_known_cells": 1249610,
+        "illustrative_liquid_cells": 1244113,
+        "prior_1pct_capacity_quantiles": {
+          "p25": 711599.7775850001,
+          "p50": 1438527.8769999999,
+          "p75": 3198317.14074,
+          "p95": 11619622.827702986
+        },
+        "posthoc_min_prior_1pct_and_current_1pct_quantiles": {
+          "p25": 540712.96655,
+          "p50": 1081947.0885,
+          "p75": 2423903.7650075005,
+          "p95": 9105957.86169
+        },
+        "posthoc_only_warning": "Current day final amount is not available at the open and does not establish auction depth or opening fills"
+      },
+      "ohlc_complete_positive_cells": 1251299,
+      "ohlc_order_violations": 0,
+      "close_symbols_with_any_valid_price": 5212
+    },
+    "supplement_2026_09_30": {
+      "requested_start": "2026-09-30",
+      "requested_end": "2026-09-30",
+      "date_count": 1,
+      "first_observed_date": "2026-09-30",
+      "last_observed_date": "2026-09-30",
+      "symbols_in_schema": 5451,
+      "expected_schema_cells": 5451,
+      "capacity_source": {
+        "source_field": "amt",
+        "unit": "Archive metadata does not specify a currency unit; numeric amounts are reported in archive units",
+        "lagged_20day_mean_requires": "20 nonmissing observations within the preceding 20 package dates; shifted by one date",
+        "illustrative_liquidity_filter": "prior20_mean>=10000000 archive units and prior20 positive-amount dates>=15; not a verified CNY or ST rule",
+        "lagged_20day_mean_known_cells": 5214,
+        "illustrative_liquid_cells": 5182,
+        "prior_1pct_capacity_quantiles": {
+          "p25": 577557.8529212499,
+          "p50": 1267235.9141225,
+          "p75": 3170035.0749724996,
+          "p95": 12922945.19564125
+        },
+        "posthoc_min_prior_1pct_and_current_1pct_quantiles": {
+          "p25": 406102.42,
+          "p50": 830406.3152,
+          "p75": 2076801.9531999999,
+          "p95": 9017269.878648993
+        },
+        "posthoc_only_warning": "Current day final amount is not available at the open and does not establish auction depth or opening fills"
+      },
+      "ohlc_complete_positive_cells": 5224,
+      "ohlc_order_violations": 0,
+      "close_symbols_with_any_valid_price": 5224
+    }
+  },
+  "transfer_hash_checks_performed": 0,
+  "resource_limit": "Arrow CPU4 IO2; no network or parallel workers"
+}

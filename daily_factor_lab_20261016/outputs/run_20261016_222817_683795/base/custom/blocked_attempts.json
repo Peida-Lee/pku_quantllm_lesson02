@@ -1,0 +1,12 @@
+{
+  "slipped_price_outside_daily_range_posthoc_audit": 699,
+  "below_lot_or_budget": 8504,
+  "factor_jump_posthoc_action_audit": 74,
+  "no_longer_signal_eligible": 614,
+  "no_daily_turnover_posthoc_audit": 26,
+  "unknown_ST_rounded_5pct_upper_guard": 5,
+  "missing_open_or_factor": 20,
+  "unknown_ST_rounded_5pct_lower_guard": 5,
+  "theoretical_lower_limit": 2,
+  "theoretical_upper_limit": 4
+}

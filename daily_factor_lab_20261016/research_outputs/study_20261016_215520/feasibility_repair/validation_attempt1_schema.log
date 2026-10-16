@@ -1,0 +1,61 @@
+PASS baseline_265_preserved_and_previously_independently_passed
+PASS repair_explicitly_posthoc_and_keeps_original_2024_selection
+PASS repair_complete_without_suppressed_failures
+FAIL only_predeclared_20_and_40_date_exit_windows
+PASS all_35_additional_scenarios_without_changing_frozen_baseline
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+PASS every_repair_case_has_full_reconstructable_ledger
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/evaluation_2025/wind_down20
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/evaluation_2025/wind_down40
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/assignment_2025_2026sep/wind_down20
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/assignment_2025_2026sep/wind_down40
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/evaluation_2025/wind_down20_stress
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/evaluation_2025/wind_down20_capacity_tight
+PASS independent_ledger:dr5_momentum__main_liquid__n50__weekly/evaluation_2025/wind_down40_capacity_tight
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/evaluation_2025/wind_down20
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/evaluation_2025/wind_down40
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/assignment_2025_2026sep/wind_down20
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/assignment_2025_2026sep/wind_down40
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/evaluation_2025/wind_down20_stress
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/evaluation_2025/wind_down20_capacity_tight
+D:\quant\daily_factor_lab_20261016\tests\verify_research.py:38: DtypeWarning: Columns (18,19) have mixed types. Specify dtype option on import or set low_memory=False.
+  return pd.read_csv(path, dtype={"symbol": str, "date": str, "signal_date": str}, float_precision="round_trip")
+PASS independent_ledger:dr5_reversal__liquid1000__n100__weekly/evaluation_2025/wind_down40_capacity_tight
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/evaluation_2025/wind_down20
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/evaluation_2025/wind_down40
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/assignment_2025_2026sep/wind_down20
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/assignment_2025_2026sep/wind_down40
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/evaluation_2025/wind_down20_stress
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/evaluation_2025/wind_down20_capacity_tight
+PASS independent_ledger:lowvol20__all_liquid__n50__monthly/evaluation_2025/wind_down40_capacity_tight
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/evaluation_2025/wind_down20
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/evaluation_2025/wind_down40
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/assignment_2025_2026sep/wind_down20
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/assignment_2025_2026sep/wind_down40
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/evaluation_2025/wind_down20_stress
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/evaluation_2025/wind_down20_capacity_tight
+PASS independent_ledger:lowvol20__main_liquid__n50__monthly/evaluation_2025/wind_down40_capacity_tight
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/evaluation_2025/wind_down20
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/evaluation_2025/wind_down40
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/assignment_2025_2026sep/wind_down20
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/assignment_2025_2026sep/wind_down40
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/evaluation_2025/wind_down20_stress
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/evaluation_2025/wind_down20_capacity_tight
+PASS independent_ledger:lowrange20__liquid1000__n50__monthly/evaluation_2025/wind_down40_capacity_tight
+PASS repair_configs_multipliers_calendars_metrics_and_freeze_match
+PASS all_35_repair_cash_and_NAV_ledgers_reconstructed
+PASS exit_choice_uses_20_then_40_days_zero_positions_not_2025_profit
+{"status": "failed", "passed": 43, "total": 44, "error": null}

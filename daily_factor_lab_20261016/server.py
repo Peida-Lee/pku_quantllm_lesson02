@@ -3,6 +3,8 @@ import argparse
 import json
 import mimetypes
 import re
+import subprocess
+import sys
 import threading
 import traceback
 import uuid
@@ -62,6 +64,55 @@ def latest():
     pointer = json.loads(index.read_text(encoding="utf-8"))
     return json.loads((OUTPUTS / pointer["result"]).read_text(encoding="utf-8"))
 
+
+def research_job():
+    global MARKET
+    try:
+        from research import run_research, RESEARCH_ROOT, write_report
+        def progress(s):
+            with LOCK: STATE["progress"] = s
+            print(s, flush=True)
+        study, MARKET = run_research(progress=progress)
+        progress("独立重建研究账本并验收")
+        folder=RESEARCH_ROOT/study["study_id"]
+        audit=subprocess.run([sys.executable,str(ROOT/"tests"/"verify_research.py"),str(folder)],
+                             capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=900)
+        (folder/"validation.log").write_text(audit.stdout+audit.stderr,encoding="utf-8")
+        audit_error=None
+        if audit.returncode==0:
+            from finalize_research import finalize
+            finalize(folder)
+            from repair_exit import run_repair, finalize_repair
+            progress("运行20/40日分批退出与容量压力补充")
+            run_repair(folder,progress=progress)
+            progress("独立验收分批退出账本")
+            repair_audit=subprocess.run([sys.executable,str(ROOT/"tests"/"verify_research.py"),str(folder),"--repair"],
+                                       capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=900)
+            (folder/"feasibility_repair"/"validation.log").write_text(repair_audit.stdout+repair_audit.stderr,encoding="utf-8")
+            if repair_audit.returncode==0:
+                finalize_repair(folder)
+            else:
+                audit_error="分批退出补充验收未通过，保留原结果及失败证据，未标记补充已验证"
+        else:
+            audit_error="独立账本验收未通过，请查看validation.json，结果未标记已验证"
+            if (folder/"validation.json").exists():
+                study["validation"]=json.loads((folder/"validation.json").read_text(encoding="utf-8"))
+                save_json(folder/"result.json",study)
+                write_report(folder,study)
+        current = latest()
+        if current:
+            make_snapshot(current, complete=True)
+            error = build_dashboard()
+            if error: raise RuntimeError(error)
+        with LOCK:
+            STATE["progress"] = "研究完成 " + study["study_id"]
+            STATE["error"] = audit_error or (None if not study["failures"] else "部分研究实验失败，完整队列结果已保留")
+    except Exception as exc:
+        with LOCK: STATE["error"] = str(exc)
+        print(traceback.format_exc(), flush=True)
+    finally:
+        with LOCK: STATE["busy"] = False
+
 def run_job(config, strategy=None):
     global MARKET
     try:
@@ -109,7 +160,7 @@ class Handler(BaseHTTPRequestHandler):
         target = (root / relative).resolve()
         if not target.is_relative_to(root) or not target.is_file():
             return self.payload(404, {"error":"文件不存在"})
-        if download and target.suffix.lower() not in {".csv", ".json", ".md", ".png"}:
+        if download and target.suffix.lower() not in {".csv", ".json", ".md", ".png", ".zip"}:
             return self.payload(403,{"error":"不支持该文件类型"})
         data = target.read_bytes()
         self.send_response(200)
@@ -145,6 +196,13 @@ class Handler(BaseHTTPRequestHandler):
             if not p.is_file(): return self.payload(404,{"error":"策略不存在"})
             return self.payload(200,{"id":key,"strategy":json.loads(p.read_text(encoding="utf-8"))})
         if path.path == "/api/runs": return self.payload(200,{"runs":available_runs()})
+        if path.path == "/api/research":
+            from research import latest_research
+            return self.payload(200,latest_research())
+        if path.path == "/api/research/download":
+            from research import RESEARCH_ROOT
+            relative = parse_qs(path.query).get("path",[""])[0]
+            return self.safe_file(RESEARCH_ROOT, relative, True)
         if path.path == "/api/download":
             relative = parse_qs(path.query).get("path",[""])[0]
             return self.safe_file(OUTPUTS,relative,True)
@@ -153,7 +211,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         route=urlparse(self.path).path
-        if route not in {"/api/run","/api/strategy/validate","/api/strategies","/api/block-packs","/api/runs/activate","/api/ai/confirm"}:
+        if route not in {"/api/run","/api/strategy/validate","/api/strategies","/api/block-packs","/api/runs/activate","/api/ai/confirm","/api/research/run"}:
             return self.payload(404,{"error":"接口不存在"})
         origin = self.headers.get("Origin")
         allowed = {f"http://127.0.0.1:{self.server.server_port}", f"http://localhost:{self.server.server_port}"}
@@ -165,6 +223,14 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < length <= 262144: raise ValueError("请求体大小不合法（最大256 KiB）")
             obj = json.loads(self.rfile.read(length),parse_constant=lambda x: (_ for _ in ()).throw(ValueError("非有限JSON数字不合法")))
             if not isinstance(obj,dict): raise ValueError("请求须为JSON对象")
+            if route == "/api/research/run":
+                if set(obj) - {"confirmed_full_study"} or obj.get("confirmed_full_study") is not True:
+                    raise ValueError("完整研究请明确提交confirmed_full_study=true")
+                with LOCK:
+                    if STATE["busy"]: return self.payload(409,{"error":"已有任务正在运行"})
+                    STATE.update({"busy":True,"progress":"准备120候选研究","error":None})
+                threading.Thread(target=research_job,daemon=True).start()
+                return self.payload(202,{"accepted":True,"scope":"2024选型、2025评价及2026年9月作业延伸"})
             if route == "/api/ai/confirm":
                 from ai_strategy import confirm_strategy
                 config=Config.from_dict(obj.get("config",{}))

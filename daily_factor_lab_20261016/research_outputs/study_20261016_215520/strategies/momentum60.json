@@ -1,0 +1,27 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "60日动量跳过5日",
+  "score": {
+    "op": "factor_momentum60",
+    "args": [],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

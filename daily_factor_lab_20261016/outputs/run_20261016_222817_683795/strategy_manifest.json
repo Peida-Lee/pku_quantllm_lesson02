@@ -1,0 +1,23 @@
+{
+  "node_count": 5,
+  "operations": [
+    "close",
+    "factor_range",
+    "is_finite",
+    "negate",
+    "rolling_mean"
+  ],
+  "custom_blocks": 0,
+  "selection": {
+    "top_n": 50,
+    "rebalance": "monthly",
+    "direction": "desc"
+  },
+  "causal": true,
+  "missing_boolean_policy": "strict propagation; missing final filter excluded",
+  "eligible_observations": 1524000,
+  "finite_score_observations": 1524000,
+  "filter_cross_section_universe": "base eligibility",
+  "score_cross_section_universe": "base eligibility AND final filter",
+  "execution_timing": "At close t signal, earliest execution at open t+1 by the research engine"
+}

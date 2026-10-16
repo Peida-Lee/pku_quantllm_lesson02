@@ -1,0 +1,39 @@
+{
+  "source": "provided zip daily matrices only",
+  "historical_st_known_observations": 0,
+  "historical_st_unknown_observations": 1251299,
+  "historical_st_known_symbols": 0,
+  "historical_st_status": "unavailable",
+  "official_price_limits": "unavailable; only board-based theoretical prices",
+  "st_policy": "price_proxy",
+  "proxy_excluded_observations": 26843,
+  "proxy_excluded_symbols": 379,
+  "proxy_cannot_establish_non_st": true,
+  "board_counts": {
+    "main": 3379,
+    "growth": 1451,
+    "star": 621,
+    "unknown": 0
+  },
+  "universe": "all_a",
+  "corporate_actions": "synthetic total-return adjusted units; action-day orders rejected; not a physical settlement ledger",
+  "execution_model": "daily_conservative",
+  "target_timing": "previous-close NAV and price; no opening-price sizing",
+  "posthoc_audits": [
+    "current daily amount cap",
+    "current OHLC rejection",
+    "current factor-jump rejection"
+  ],
+  "posthoc_not_opening_information": true,
+  "opening_liquidity_verified": false,
+  "max_realized_daily_participation": 0.009999999546501229,
+  "max_combined_capacity_excess": 0.0,
+  "requested_notional_capacity_clipped": 12445046803.36234,
+  "filled_order_types": {
+    "partial": 1970,
+    "full": 246
+  },
+  "tick_slippage": "buy ceil/sell floor to 0.01; expense equals tick fill minus raw open",
+  "ledger_notional_definition": "notional=raw-open reference amount; execution_notional=tick fill amount; fees and capacities use execution_notional",
+  "unknown_main_board_ST_guard": "rounded hypothetical 5% guards, not official ST labels"
+}

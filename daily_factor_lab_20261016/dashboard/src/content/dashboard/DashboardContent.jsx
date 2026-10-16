@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DataComponent, DataTable, EvidenceChart, SectionHeader, SortableItem, SortableRegion, useDataApp, useDashboardTabs } from "../../data-app-public.jsx";
 import { StrategyBuilder } from "./StrategyBuilder.jsx";
+import { capitalLabel, ResearchParameterPresets } from "./ResearchParameterPresets.jsx";
+import { ResearchWorkbench } from "./ResearchWorkbench.jsx";
 import "./dashboard.css";
 
 const FACTORS = [["momentum60","60日动量（跳过5日）"],["reversal5","5日反转"],["lowvol20","20日低波动"],["liquidity20","20日成交金额"],["combo","四因子等权"]];
 const LABELS=Object.fromEntries(FACTORS);
 const COLORS={"60日动量（跳过5日）":"#4f6fed","5日反转":"#d99538","20日低波动":"#25a08e","20日成交金额":"#a168c2","四因子等权":"#dc657a","动态股票池等权参考（无费用，非指数）":"#8994a7"};
-const DEFAULTS={start:"2021-01-01",end:"2026-10-16",capital:1000000,top_n:100,rebalance:"weekly",commission:.0003,slippage:.0005,min_avg_amount:10000000,open_guard:.048};
+const DEFAULTS={start:"2025-01-02",end:"2025-12-31",capital:1000000000,top_n:100,rebalance:"weekly",commission:.0001,min_commission:5,slippage:.0005,min_avg_amount:20000000,min_active_days20:18,min_history:120,min_price:2,open_guard:.048,execution_model:"daily_conservative",st_policy:"price_proxy",universe:"all_a",liquidity_top_n:0,risk_proxy_window:20,max_participation:.01,max_daily_participation:.01,liquidate_end:true,wind_down_days:0};
 const pct=v=>v==null||!Number.isFinite(+v)?"—":`${(+v*100).toFixed(2)}%`;
 const num=(v,d=2)=>v==null||!Number.isFinite(+v)?"—":(+v).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});
 const nameOf=r=>r.factor==="reference"?"动态股票池等权参考（无费用，非指数）":r.name||LABELS[r.factor]||r.factor;
@@ -25,7 +27,7 @@ function Field({label,children}){return <label className="factor-field"><span>{l
 
 export function DashboardContent(){
   const {snapshot,queries}=useDataApp();
-  const {activeTabId}=useDashboardTabs([{id:"dashboard",label:"回测结果"},{id:"strategy-blocks",label:"策略积木"}]);
+  const {activeTabId}=useDashboardTabs([{id:"dashboard",label:"回测结果"},{id:"strategy-blocks",label:"策略积木"},{id:"research-2025",label:"2025研究"}]);
   const [status,setStatus]=useState({busy:false}),[latest,setLatest]=useState(null),[apiError,setApiError]=useState("");
   const [config,setConfig]=useState({...DEFAULTS,...snapshot.config}),[selected,setSelected]=useState("combo"),[showReference,setShowReference]=useState(false),[posting,setPosting]=useState(false);
   const [runs,setRuns]=useState([]),[requestedRun,setRequestedRun]=useState(snapshot.run_id||"");
@@ -67,22 +69,33 @@ export function DashboardContent(){
     {id:"factor:records",items:["factor:summary"],header:<SectionHeader id="factor:records-heading" title="策略指标与复核文件"/>},
   ];
   if(activeTabId==="strategy-blocks")return <StrategyBuilder appId={snapshot.id} config={config} setConfig={setConfig} busy={busy} progress={progress} needsReload={needsReload} snapshotStrategy={snapshot.custom_strategy} onRunStarted={()=>setStatus(s=>({...s,busy:true,progress:"自定义策略已提交"}))}/>;
+  if(activeTabId==="research-2025")return <ResearchWorkbench/>;
   return <article className="factor-lab">
     {runs.length>1&&<div className="factor-run-history"><label>已保存实验<select value={requestedRun} onChange={e=>setRequestedRun(e.target.value)}>{runs.map(r=><option key={r.run_id} value={r.run_id}>{r.name} · {r.config?.start}—{r.config?.end} · {r.run_id}</option>)}</select></label><button type="button" disabled={busy||requestedRun===snapshot.run_id} onClick={activateRun}>加载该实验</button></div>}
     <form className="factor-run-form" onSubmit={run} aria-label="回测参数">
       <div className="factor-form-head"><strong>实验参数</strong><span>沪深日频 · 只做多 · {snapshot.custom_strategy?"当前为自定义策略结果":"固定因子方向"}</span><button className="factor-run" type="submit" disabled={busy}>{busy?"回测运行中…":snapshot.custom_strategy?"运行默认五策略":"运行回测"}</button></div>
+      <ResearchParameterPresets config={config} setConfig={setConfig}/>
       <div className="factor-fields">
         <Field label="起始日期"><input type="date" value={config.start} min="2021-01-01" max={config.end} required onChange={e=>set("start",e.target.value)}/></Field>
         <Field label="结束日期"><input type="date" value={config.end} min={config.start} max="2026-10-16" required onChange={e=>set("end",e.target.value)}/></Field>
-        <Field label="初始资金（元）">{numberInput("capital",10000,1e10,10000)}</Field>
+        <Field label="初始资金（元）">{numberInput("capital",10000,1e10,10000)}<small className="factor-parameter-hint">{capitalLabel(config.capital)}</small></Field>
         <Field label="持仓数量">{numberInput("top_n",1,500,1)}</Field>
         <Field label="调仓频率"><select value={config.rebalance} onChange={e=>set("rebalance",e.target.value)}><option value="weekly">每周</option><option value="monthly">每月</option><option value="daily">每日</option></select></Field>
       </div>
       <details className="factor-advanced"><summary>费用与股票池参数</summary><div className="factor-fields factor-fields--advanced">
-        <Field label="佣金率（小数）">{numberInput("commission",0,.01,.0001)}</Field>
-        <Field label="单边滑点（小数）">{numberInput("slippage",0,.01,.0001)}</Field>
+        <Field label={`单边佣金率（${num(config.commission*10000)} bp）`}>{numberInput("commission",0,.01,.00001)}<small className="factor-parameter-hint">输入小数：0.0001 = 1bp</small></Field>
+        <Field label={`单边滑点（${num(config.slippage*10000)} bp）`}>{numberInput("slippage",0,.01,.00001)}</Field>
         <Field label="20日平均成交额下限（元）">{numberInput("min_avg_amount",0,1e11,1000000)}</Field>
         <Field label="开盘变动过滤阈值（小数）">{numberInput("open_guard",.001,.3,.001)}</Field>
+        <Field label="执行模型"><select value={config.execution_model} onChange={e=>set("execution_model",e.target.value)}><option value="daily_conservative">保守日线执行</option><option value="legacy">原版执行（用于历史对照）</option></select></Field>
+        <Field label="ST信息与代理"><select value={config.st_policy} onChange={e=>set("st_policy",e.target.value)}><option value="price_proxy">价格风险代理（非真实ST标签）</option><option value="legacy">原版股票池规则</option></select><small className="factor-parameter-hint">原ZIP无历史ST标签，真实ST剔除不可用。</small></Field>
+        <Field label="A股范围"><select value={config.universe} onChange={e=>set("universe",e.target.value)}><option value="all_a">全部A股</option><option value="main_a">主板A股</option><option value="growth_a">创业板与科创板</option></select></Field>
+        <Field label="流动性前N只（0=不限制）">{numberInput("liquidity_top_n",0,6000,1)}</Field>
+        <Field label="价格风险代理窗口（交易日）">{numberInput("risk_proxy_window",1,120,1)}</Field>
+        <Field label="前均额容量上限（小数）">{numberInput("max_participation",.0001,.1,.0001)}</Field>
+        <Field label="当日成交额审计上限（小数）">{numberInput("max_daily_participation",.0001,.1,.0001)}</Field>
+        <Field label="末日处理"><span className="factor-parameter-check"><input type="checkbox" checked={config.liquidate_end} onChange={e=>set("liquidate_end",e.target.checked)}/>尝试清仓（仍可能残留）</span></Field>
+        <Field label="预定提前退出天数（0=关闭）">{numberInput("wind_down_days",0,120,1)}<small className="factor-parameter-hint">保守日线模型：最后N个源交易日目标归零、禁止买入；0沿用末日设置。</small></Field>
       </div></details>
       <div className="factor-run-status" role="status"><span className={`factor-status-dot ${busy?"is-running":""}`}/>{busy?(progress||"正在计算，请稍候"):snapshot.run_id?`当前结果：${snapshot.run_id}`:summary.length?"已加载保存的实验结果":"等待首次回测"}<span className="factor-status-zone">Asia/Shanghai</span></div>
       {needsReload&&!busy&&<div className="factor-ready" role="status">新结果已就绪。<button type="button" onClick={()=>window.location.reload()}>加载已更新页面</button></div>}

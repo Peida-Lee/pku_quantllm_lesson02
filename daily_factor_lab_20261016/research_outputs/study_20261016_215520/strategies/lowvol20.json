@@ -1,0 +1,27 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "20日低波动",
+  "score": {
+    "op": "factor_lowvol20",
+    "args": [],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

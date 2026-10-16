@@ -1,0 +1,41 @@
+{
+  "frozen_at": "2026-10-16T22:01:16.957056+08:00",
+  "selected_id": "lowrange20__liquid1000__n50__monthly",
+  "shortlist": [
+    "lowrange20__liquid1000__n50__monthly",
+    "lowvol20__main_liquid__n50__monthly",
+    "lowvol20__all_liquid__n50__monthly",
+    "dr5_momentum__main_liquid__n50__weekly",
+    "dr5_reversal__liquid1000__n100__weekly"
+  ],
+  "selected_on": "selection_2024",
+  "selection_is_retrospective": true,
+  "criterion": "2024平均仓位≥25%、最大回撤不超过40%、无减记；按2024夏普降序、收益降序、ID排序。若无人满足则显式放宽安全筛选，仍仅按2024选择。",
+  "safety_screen_fallback": false,
+  "admissible_count": 66,
+  "candidate_count": 120,
+  "factor_representatives": {
+    "dr5_momentum": "dr5_momentum__main_liquid__n50__weekly",
+    "dr5_reversal": "dr5_reversal__liquid1000__n100__weekly",
+    "reversal1": "reversal1__liquid1000__n100__monthly",
+    "momentum20": "momentum20__liquid1000__n100__monthly",
+    "momentum60": "momentum60__all_liquid__n100__monthly",
+    "lowvol20": "lowvol20__main_liquid__n50__monthly",
+    "liquidity20": "liquidity20__all_liquid__n50__monthly",
+    "small_amount20": "small_amount20__all_liquid__n100__monthly",
+    "lowrange20": "lowrange20__liquid1000__n50__monthly",
+    "reversal_lowvol": "reversal_lowvol__main_liquid__n50__monthly"
+  },
+  "factor_safety_screen_fallback": {
+    "dr5_momentum": false,
+    "dr5_reversal": false,
+    "reversal1": false,
+    "momentum20": true,
+    "momentum60": false,
+    "lowvol20": false,
+    "liquidity20": false,
+    "small_amount20": false,
+    "lowrange20": false,
+    "reversal_lowvol": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "1日反转",
+  "score": {
+    "op": "negate",
+    "args": [
+      {
+        "op": "daily_return",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

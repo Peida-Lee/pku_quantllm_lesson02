@@ -1,0 +1,31 @@
+{
+  "frozen_at": "2026-10-16T22:15:49.210719+08:00",
+  "posthoc": true,
+  "diagnosis": "原始单日退出留下大额残仓，不能声称已清空兑现。",
+  "factor_selection_unchanged": true,
+  "selected_id": "lowrange20__liquid1000__n50__monthly",
+  "original_shortlist": [
+    "lowrange20__liquid1000__n50__monthly",
+    "lowvol20__main_liquid__n50__monthly",
+    "lowvol20__all_liquid__n50__monthly",
+    "dr5_momentum__main_liquid__n50__weekly",
+    "dr5_reversal__liquid1000__n100__weekly"
+  ],
+  "wind_down_windows": [
+    20,
+    40
+  ],
+  "normal_roles": [
+    "evaluation_2025",
+    "assignment_2025_2026sep"
+  ],
+  "evaluation_2025_extra_scenarios": [
+    "wind_down20_stress",
+    "wind_down20_capacity_tight",
+    "wind_down40_capacity_tight"
+  ],
+  "selection_rule": "每个原入围候选/区间先20日，40日其次；只按残仓≤0.001元且0持仓选最短成功窗口，不按收益，未成功则不选。",
+  "calendar_assumption": "按源交易日历预排区间最后20/40个交易日期；没有使用未来价格或成交额选择开始日。",
+  "baseline_study": "study_20261016_215520",
+  "expected_scenarios": 35
+}

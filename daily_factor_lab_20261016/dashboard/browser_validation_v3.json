@@ -1,0 +1,33 @@
+{
+  "status": "observed",
+  "observed_date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "browser": "Edge",
+  "runtime": "official @oai/browser-desktop via mcp__browser_proxy",
+  "browser_inventory_id": "3",
+  "tab_id": "1266996985",
+  "url": "http://127.0.0.1:8776/?view=1&tab=research-2025",
+  "scope": "Final saved dashboard DOM and native screenshot inspection only; no new numerical simulation or test run.",
+  "observed_checks": [
+    "Edge inventory and actual tab enumeration succeeded before reading the page.",
+    "The research tab loaded with 2025-01-02 through 2025-12-31 and capital 1,000,000,000 yuan (10 yi yuan).",
+    "Default displayed scenario is scheduled 20-source-trading-day unwind, explicitly marked post-hoc.",
+    "Five saved shortlist rows appear with total returns -20.24%, 42.41%, 5.14%, 5.40%, and 10.97%.",
+    "The 5DR reversal row displays maximum drawdown -26.32%, average invested 88.71%, zero book residual, and non-trade writeoff 10,726,830 yuan.",
+    "The selected low-range row displays maximum drawdown -6.89%, average invested 89.20%, zero book residual, and non-trade writeoff 12,853,227 yuan.",
+    "The capital panel says book residual zero including writeoff, and explicitly displays 12,853,227 yuan non-trade writeoff and unverified opening liquidity.",
+    "The exit comparison table distinguishes residual positions from zero book residual including writeoff.",
+    "The ST coverage table displays true historical ST coverage 0.00% for every saved period and states that the price proxy cannot prove actual ST exclusion.",
+    "All five shortlist rows and their writeoff column are readable in the first screenshot.",
+    "The capital panel, writeoff disclosure, rejection reasons and all three ST-coverage rows are readable in the second screenshot."
+  ],
+  "screenshots": [
+    {"path": "dashboard/preview_v3_research.png", "native_full_page_clip": {"x": 0, "y": 755, "width": 1496, "height": 965}},
+    {"path": "dashboard/preview_v3_execution.png", "native_full_page_clip": {"x": 0, "y": 2650, "width": 1496, "height": 1160}}
+  ],
+  "limitations": [
+    "This records actual observed rendering and displayed rounded numbers, not a substitute for the separate full-precision ledger audits.",
+    "No external market/ST data or real opening auction fills were verified.",
+    "The existing strategy-block and AI connection interfaces are preserved; a real AI model is not configured or verified by this browser observation."
+  ]
+}

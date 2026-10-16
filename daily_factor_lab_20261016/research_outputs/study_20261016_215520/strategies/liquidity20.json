@@ -1,0 +1,27 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "20日高成交额",
+  "score": {
+    "op": "factor_liquidity20",
+    "args": [],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

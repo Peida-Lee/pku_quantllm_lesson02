@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "research": "study_20261016_215520/wind_down20",
+  "app_run": "run_20261016_222817_683795",
+  "checks": {
+    "daily": {
+      "rows": 243,
+      "exactly_equal": true
+    },
+    "trades": {
+      "rows": 2217,
+      "exactly_equal": true
+    },
+    "holdings": {
+      "rows": 0,
+      "exactly_equal": true
+    },
+    "orders": {
+      "rows": 12169,
+      "exactly_equal": true
+    }
+  },
+  "scope": "Actual new strategy-block application run versus independently audited research, exact persisted frame equality"
+}

@@ -1,0 +1,4 @@
+﻿scope,total_code_days,known_st,known_non_st,unknown,proxy_excluded_code_days,note
+selection_2024,1236211,0,0,1236211,32652,分母为区间有有效原始收盘的code-day；代理剔除见每个实验诊断，不代表真实ST状态。
+evaluation_2025,1251299,0,0,1251299,26843,分母为区间有有效原始收盘的code-day；代理剔除见每个实验诊断，不代表真实ST状态。
+assignment_2025_2026sep,2192594,0,0,2192594,47076,分母为区间有有效原始收盘的code-day；代理剔除见每个实验诊断，不代表真实ST状态。

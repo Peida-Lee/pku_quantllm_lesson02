@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-10-16T21:59:59.2036221+08:00",
+  "study_id": "study_20261016_215520",
+  "stage": "2024 selection still running; no 2025 evaluation inspected",
+  "bootstrap": {
+    "block_length": 10,
+    "seed": 20251016,
+    "repetitions": 2000,
+    "scope": "saved detailed 2025 base factor representatives and shortlist",
+    "method": "circular block bootstrap, fixed portfolio, no reselection"
+  },
+  "rank_ic": {
+    "p": "raw two-sided normal approximation",
+    "horizon": "next open through sixth next open",
+    "scope": "2024-selected shortlist only",
+    "hac_lags": 5
+  },
+  "note": "Supplement freezes uncertainty calculation settings already present in source before 2025 evaluation, without changing the candidate grid or selection."
+}

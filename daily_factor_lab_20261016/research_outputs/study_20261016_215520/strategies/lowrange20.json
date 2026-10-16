@@ -1,0 +1,41 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "20日低振幅",
+  "score": {
+    "op": "negate",
+    "args": [
+      {
+        "op": "rolling_mean",
+        "args": [
+          {
+            "op": "factor_range",
+            "args": [],
+            "params": {}
+          }
+        ],
+        "params": {
+          "window": 20
+        }
+      }
+    ],
+    "params": {}
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

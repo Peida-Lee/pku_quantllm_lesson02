@@ -1,0 +1,35 @@
+{
+  "format": "daily-factor-strategy",
+  "version": 1,
+  "name": "5DR正向：5日涨幅高优先",
+  "score": {
+    "op": "pct_change",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {
+      "period": 5
+    }
+  },
+  "filter": {
+    "op": "is_finite",
+    "args": [
+      {
+        "op": "close",
+        "args": [],
+        "params": {}
+      }
+    ],
+    "params": {}
+  },
+  "selection": {
+    "top_n": 100,
+    "rebalance": "weekly",
+    "direction": "desc"
+  },
+  "packs": []
+}

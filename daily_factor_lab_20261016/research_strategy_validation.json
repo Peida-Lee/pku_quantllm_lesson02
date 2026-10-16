@@ -1,0 +1,1459 @@
+{
+  "passed": true,
+  "checks": 254,
+  "failed_checks": 0,
+  "validated_at": "2026-10-16T22:02:46.325559+08:00",
+  "source": "D:\\quant\\feathers.zip",
+  "read_only_source": true,
+  "subset": {
+    "date_start": "2024-07-01",
+    "date_end": "2025-12-31",
+    "dates": 368,
+    "symbols": 1603,
+    "symbol_selection": "1600 deterministic evenly spaced source columns plus four named anchors",
+    "symbol_list_sha256": "f41d327f7f73d25324aef6669b98e36f72f738c2bcb7fedc1b0bc5688033a4eb",
+    "cutoff": "2025-06-30",
+    "future_perturbed_fields": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "amt",
+      "cumadj"
+    ]
+  },
+  "factor_count": 10,
+  "universe_count": 3,
+  "coverage": {
+    "all_liquid": {
+      "min": 1340,
+      "median": 1431.0,
+      "max": 1468
+    },
+    "main_liquid": {
+      "min": 832,
+      "median": 874.0,
+      "max": 889
+    },
+    "liquid1000": {
+      "min": 1000,
+      "median": 1000.0,
+      "max": 1000
+    }
+  },
+  "target_signal_comparisons": 2040,
+  "affinity": {
+    "method": "Windows_CPU_set_topology",
+    "reserved_logical_processors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "allowed_logical_processors": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 1,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 3,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 4,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 5,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 6,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 7,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 8,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 9,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 10,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 11,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 12,
+        "core": 12,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 13,
+        "core": 13,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 14,
+        "core": 14,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 15,
+        "core": 15,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 16,
+        "core": 16,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 17,
+        "core": 17,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 18,
+        "core": 18,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 19,
+        "core": 19,
+        "efficiency": 0,
+        "group": 0
+      }
+    ]
+  },
+  "numeric_threads": 1,
+  "tolerance": {
+    "absolute": 1e-12,
+    "relative": 1e-12
+  },
+  "manual_5DR": {
+    "symbol": "000001.SZ",
+    "date_t": "2025-06-12",
+    "date_t_minus_5_sessions": "2025-06-05",
+    "close_raw_t": 11.68,
+    "cumadj_t": 118.424,
+    "close_raw_t_minus_5": 11.67,
+    "cumadj_t_minus_5": 114.826,
+    "formula": "(close_raw_t*cumadj_t)/(close_raw_t_minus_5*cumadj_t_minus_5)-1",
+    "manual_5DR": 0.03221811516731621,
+    "research_dr5_momentum": 0.03221811516731621,
+    "research_dr5_reversal": -0.03221811516731621,
+    "crosses_factor_change": true,
+    "direction": "momentum ranks larger signed 5DR first; reversal ranks negative 5DR first (larger prior losses preferred)",
+    "not_holding_period": "Five-session lookback; portfolio holding duration is determined separately by weekly/monthly rebalancing and fills."
+  },
+  "details": [
+    {
+      "name": "prepare_clears_preexisting_caches",
+      "passed": true
+    },
+    {
+      "name": "raw_factor_prefix:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "raw_factor_prefix:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "eligible_prefix:all_liquid",
+      "passed": true
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:dr5_momentum",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_momentum:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_momentum:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_momentum:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_momentum:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:dr5_reversal",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_reversal:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_reversal:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_reversal:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:dr5_reversal:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:reversal1",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal1:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal1:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal1:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal1:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:momentum20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:momentum60",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum60:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum60:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum60:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:momentum60:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:lowvol20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowvol20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowvol20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowvol20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowvol20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:liquidity20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:liquidity20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:liquidity20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:liquidity20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:liquidity20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:small_amount20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:small_amount20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:small_amount20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:small_amount20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:small_amount20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 4.163336342344337e-17
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:lowrange20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowrange20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowrange20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowrange20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:lowrange20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:all_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:all_liquid:reversal_lowvol",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:all_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:all_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal_lowvol:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal_lowvol:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal_lowvol:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:all_liquid:reversal_lowvol:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "eligible_prefix:main_liquid",
+      "passed": true
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:dr5_momentum",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_momentum:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_momentum:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_momentum:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_momentum:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:dr5_reversal",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_reversal:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_reversal:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_reversal:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:dr5_reversal:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:reversal1",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal1:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal1:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal1:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal1:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:momentum20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:momentum60",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum60:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum60:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum60:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:momentum60:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:lowvol20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowvol20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowvol20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowvol20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowvol20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:liquidity20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:liquidity20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:liquidity20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:liquidity20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:liquidity20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:small_amount20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:small_amount20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:small_amount20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:small_amount20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:small_amount20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:lowrange20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowrange20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowrange20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowrange20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:lowrange20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:main_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:main_liquid:reversal_lowvol",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:main_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:main_liquid:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal_lowvol:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal_lowvol:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal_lowvol:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:main_liquid:reversal_lowvol:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "eligible_prefix:liquid1000",
+      "passed": true
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:dr5_momentum",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:dr5_momentum",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_momentum:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_momentum:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_momentum:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_momentum:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:dr5_reversal",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:dr5_reversal",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_reversal:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_reversal:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_reversal:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:dr5_reversal:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:reversal1",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:reversal1",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal1:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal1:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal1:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal1:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:momentum20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:momentum20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:momentum60",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:momentum60",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum60:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum60:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum60:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:momentum60:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:lowvol20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:lowvol20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowvol20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowvol20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowvol20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowvol20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:liquidity20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:liquidity20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:liquidity20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:liquidity20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:liquidity20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:liquidity20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:small_amount20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:small_amount20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:small_amount20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:small_amount20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:small_amount20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:small_amount20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:lowrange20",
+      "passed": true,
+      "max_absolute_error": 4.163336342344337e-17
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:lowrange20",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:lowrange20",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowrange20:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowrange20:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowrange20:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:lowrange20:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "factor_AST_equivalence:liquid1000:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "export_filter_eligible_equivalence:liquid1000:reversal_lowvol",
+      "passed": true
+    },
+    {
+      "name": "score_prefix:liquid1000:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "compiled_AST_prefix:liquid1000:reversal_lowvol",
+      "passed": true,
+      "max_absolute_error": 0.0
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal_lowvol:n50:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal_lowvol:n50:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal_lowvol:n100:weekly",
+      "passed": true,
+      "rebalance_signals": 27
+    },
+    {
+      "name": "frozen_target_prefix:liquid1000:reversal_lowvol:n100:monthly",
+      "passed": true,
+      "rebalance_signals": 7
+    },
+    {
+      "name": "real_stock_5DR_endpoint_hand_calculation",
+      "passed": true,
+      "max_absolute_error": 0.0
+    }
+  ],
+  "limits": [
+    "No backtest or real model/provider call was run.",
+    "This validates a deterministic real-data submatrix, not every stock on the full source axis.",
+    "Frozen target comparisons use fixed reference capital; they do not simulate realized portfolio NAV or executions.",
+    "No true historical ST labels are available; proxy accuracy is not established."
+  ]
+}
