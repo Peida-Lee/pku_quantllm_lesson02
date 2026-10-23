@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "check_count": 4651,
+  "failed_checks": [],
+  "independence": "Reads original ZIP independently; reconstructs all pools, all dates; OLS statsmodels and pair-distance Bartlett kernel independently verify every 201 market and 18 relative fits. Never imports market_beta_alpha or Market.",
+  "source_calendar_gap_demonstration": {
+    "calendar_se": 0.00045826020065976224,
+    "compressed_se": 0.0004577744099835206,
+    "excluded_dates": [
+      "2025-02-10"
+    ]
+  },
+  "valid_new_member_first_days_included": {
+    "all_liquid": 24648,
+    "main_liquid": 16783,
+    "liquid1000": 28469
+  }
+}

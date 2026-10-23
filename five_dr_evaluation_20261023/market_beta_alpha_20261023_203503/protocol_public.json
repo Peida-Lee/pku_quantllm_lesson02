@@ -1,0 +1,327 @@
+{
+  "frozen_at": "2026-10-23T20:35:03.629290+08:00",
+  "status": "frozen_before_computation",
+  "source_identity": {
+    "size_bytes": 159096263,
+    "sha256": "5766950f2a105244867b842709cf4bad890e4e11df0eebeeaa4fec42dc05803d"
+  },
+  "script_sha256": "dfaa29787d4bd472b9e7277fc8eafdb5f760283daaf10f75a9aab1ec5b66aa09",
+  "input_daily_and_paired_sha256": {
+    "evaluation_20261023_200711\\execution\\evaluation_2025__5dr__base\\daily.csv": "c19de42fe664714e155c3daaad742c7995088d8f8894591ddda2820cd98a2165",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__5dr__capacity_0p1pct\\daily.csv": "287ca87c6b9ececdbc809f8773858a486ee6a9dc85733b2a667045dcb67f018d",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__5dr__double_cost\\daily.csv": "2370bfe2159e4f815ba4d09860b1459b34af0d79d155f96766331d54f1ed04a3",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__5dr_lag1__base\\daily.csv": "efd3d5e5e0cf664f28dd983ff8032c8285ffdbdcc90ad90187c5c071c2c735fb",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__added_combo__base\\daily.csv": "da05ab37db73c27c229e72bdc33e35ef94e44eadbe4ed935f8de3992e658da79",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__added_combo__capacity_0p1pct\\daily.csv": "7a2f84d920c1ff85c7205a8399d338af91a9424482439a07d9d13ac5de8fa384",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__added_combo__double_cost\\daily.csv": "4c30001d3afaebd2c35c43687f465b6a86e3083fe857527cca8a2ae69b2c51b3",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__base_combo__base\\daily.csv": "da75d86193e9c6a4defc2edb28bad78080c5399aae314429e686098c79520012",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__base_combo__capacity_0p1pct\\daily.csv": "dea1c71f6323051bd92b1ff1f8095b57da6ca1cfaa82ada66dd09d3e45bff2c6",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__base_combo__double_cost\\daily.csv": "4799f60c8b39ffa30092e9c86eec612c6f8581f1d541301067701811f88a8095",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__5dr__base\\daily.csv": "7b45878e8ef311bd828044dae076e356b088f2294209b68d108706e1da8fec29",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__5dr__capacity_0p1pct\\daily.csv": "1e192a96fa835cd642f6184cefa99b60ec3f7ed681ffb7853a55e7fc47f12be6",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__5dr__double_cost\\daily.csv": "e017465e8057b7dc1822a53bd39dff32c1f2a69aab5866b899e7b3ad4f6405f0",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__5dr_lag1__base\\daily.csv": "2a432750d91b6ce9860ed9349eb2fbf3992b6ae421a1a6cf5a69b89858da7859",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__added_combo__base\\daily.csv": "c4ee7ce3632c8693bc16f96a7a7371edd525f1b6d6110fc1659669f1252c04f5",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__added_combo__capacity_0p1pct\\daily.csv": "5a1f208aa4a4fd83c3a3bc9301662b3bba5b90b956038d08d2be940dc35cca61",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__added_combo__double_cost\\daily.csv": "0c9ae8bb1fdc2e8c0a23e61d25f11b0e1b0eb42decde98626888cc748959e4e6",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__base_combo__base\\daily.csv": "d30699a78cbb9411370248568545d1b4f518808ac861f0e5ede6f143a93cc762",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__base_combo__capacity_0p1pct\\daily.csv": "4d8aa0f9ab1ae650addf434ae820bcdb9199d5fb26555dbb91f61de79190267a",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__base_combo__double_cost\\daily.csv": "eb618faf2e72c84c1954fb1c10075f5797653241825fdfcf699ac5d9bebbc544",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__5dr__base\\daily.csv": "749a71ef5d1061512fbb343a2791e18e4611835f8a737c6a6411eb6765e00a67",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__5dr__capacity_0p1pct\\daily.csv": "59094469278dc3ab4b2756c51154f539538f972e1f9e8906f7d128fa6a87bc1b",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__5dr__double_cost\\daily.csv": "6b0d9ad5f52b71282c25a9c04f69b9b5b51d167e3dbc81b21bdd9e065962baa0",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__5dr_lag1__base\\daily.csv": "c65ac168e45f7639037a83221db76a1f53ea912e327fa001365259e61e2a47b3",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__added_combo__base\\daily.csv": "4b77df62d87285c9ddad61b118c25eebdaa0eb8b18d98583ddf93f00cd13b60b",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__added_combo__capacity_0p1pct\\daily.csv": "aed7ac0bb13d5df9108fd3681a7c71ac297b548b16a30822e9ca5f8433a36ac5",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__added_combo__double_cost\\daily.csv": "dea2470c8b75909ddd83b8723ef047375a0f775b5fbba10014ea032d88e5b86d",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__base_combo__base\\daily.csv": "311351f7cfd48c70783f4e1ba28cd875024256e3858787049dd85e93cdbe19d4",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__base_combo__capacity_0p1pct\\daily.csv": "ed70ada6b2760887c120ab9e4dd2218d17b024cd2c56c7d7b3e90f6fdacca1aa",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__base_combo__double_cost\\daily.csv": "bf9dbcf888bc0eaf70b9fb95ff42504dabe2f0c4c1072be0ec921786cbdc0992",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__5dr__base\\daily.csv": "6eaef5cc433effdf1c9190619b671222b156f7944587dba16e4a0bc0db840dd4",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__5dr__capacity_0p1pct\\daily.csv": "b15503a479c2cd72ff128793677c351ef8e5d8d75e9299c38f107adb4f37327c",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__5dr__double_cost\\daily.csv": "d0c1c55eec1456d282e5f793e91fc504214412a536324d5ead1bf63c2b2f79ef",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__5dr_lag1__base\\daily.csv": "48686e4a820f161f9c35dc6abb84047f20bc8af8536ce95001c0c2b7164a06e3",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__added_combo__base\\daily.csv": "c5bf5a01aa17d4fd16bf294ce4a4644ed58a711b52578506277b6f5ee6888965",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__added_combo__capacity_0p1pct\\daily.csv": "6b12a19847c9b47b30ee64f5db96e4396fee6d811cd8c73a91e8dd89d02531ac",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__added_combo__double_cost\\daily.csv": "8765414157aa0a954f2dac393d6b48dca923bbda0bebc5f948d3702c6d552f21",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__base_combo__base\\daily.csv": "afeee58a87a406c2d8a38451bba88dd614319cf46918453e8c759b4616b74e28",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__base_combo__capacity_0p1pct\\daily.csv": "47c7579b7f4f08701347f80dbf38dcd865c97d382c889a8223943d284644577b",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__base_combo__double_cost\\daily.csv": "b4424ae0ec407538cb62aacf6cf73ab5008d1e88ce807dca94bd9aee26647271",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__5dr__base\\daily.csv": "54b727c5316dfcb21856d0c075ffb09cc9c4fc09827d44ef1e936881f8909e5f",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__5dr__capacity_0p1pct\\daily.csv": "dc711c30248b7c95cdf4fa069d1f75a790c9c4810585e87dcf77c51f66482720",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__5dr__double_cost\\daily.csv": "508005277f0e3dfd4955b884adcad03fac0e823219255ca131937acab6b750ca",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__5dr_lag1__base\\daily.csv": "850e02683ca0c90b9a610fd6f4f072613aeeb0089ae651e644a22ec6e58edca0",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__added_combo__base\\daily.csv": "8b051673ff31bf97b69e2ff27a2fd39796763b029b2ccd939cc2eb92d46a07c9",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__added_combo__capacity_0p1pct\\daily.csv": "ae11fda337ea0cf4391453e6a5012372c61611a3530d8defa566c585bf4f1adb",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__added_combo__double_cost\\daily.csv": "a6fcba170e7ef5ae8508444803f8365c59d508100d2706e88ab0af88eee78a62",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__base_combo__base\\daily.csv": "47cd8ce7f9c3cffaed3ceaccc2f04cdd83c6529fe963b9e139e887c57b2b4a88",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__base_combo__capacity_0p1pct\\daily.csv": "944961941c21fff84c0395360ef43ad8d592196a4574878bfdb4ff7c1bf6224e",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__base_combo__double_cost\\daily.csv": "d3f40b5bb43950655aaaa83af185c64d2d928b9ed639b684196c666697571f24",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__5dr__base\\daily.csv": "9f11d044e14f30a6a1bcdc5222ebc8cf6c443614bd0e1210e58e8076ee8d5bc4",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__5dr__capacity_0p1pct\\daily.csv": "dab6a5a3c0d0d1b43a3013c527f51a444e62c041e33e79e134cad757200dcff0",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__5dr__double_cost\\daily.csv": "0123682cc880b502ac6af69de2ddaed44066a53248d22af8ac08da16c6065c6c",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__5dr_lag1__base\\daily.csv": "0b8f95c045cb57aa40bdb00755ff3bc202af343675c31ab9184858c2723b6bae",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__added_combo__base\\daily.csv": "71cbda1515be78a15211aa8c9703c9141eaf0468e5110903218e6159a71a2ec4",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__added_combo__capacity_0p1pct\\daily.csv": "93b25dfe3509460f8db667ce0cc914710b2a9bc75082ca668c928c1f13a53465",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__added_combo__double_cost\\daily.csv": "24057ce537e0ac5f5112515a0d89c592f2dce6002c680319d49ab60033d6b0b9",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__base_combo__base\\daily.csv": "67e488b6ab668432ac68bb19f40bd26f6ac37c65584dfdb8b3bd7633ff758a0f",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__base_combo__capacity_0p1pct\\daily.csv": "69f969af3158c4acaec9cc8105e08959627ce1314a69fc3d122e737a90461b05",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__base_combo__double_cost\\daily.csv": "9ab5d9ed939513db3583452256924e828a50b44305e0c9a36089eae82621ce74",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__base__paired.csv": "148cd3aba86b559d16a9e38a207214fa0e67b25f94c44ee0438619415002333f",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__capacity_0p1pct__paired.csv": "5359af0e825052eee3ddcf5801fa05f720b392a2af977a1f95ba857b095befc5",
+    "evaluation_20261023_200711\\execution\\evaluation_2025__double_cost__paired.csv": "c48cf8d0d3a462639f4f527a82a2609527450c9cf00fe1070be7ac625515473e",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__base__paired.csv": "b58be25d6ae54ee9d1823ec36f1d48a7c2aed46755c5dfb06da4690f5da453c4",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__capacity_0p1pct__paired.csv": "38c0070831857d7d51254c6d93aa70774db9fa95d03e2e40ca8deeb98e7c7c5f",
+    "evaluation_20261023_200711\\execution\\evaluation_2026sep__double_cost__paired.csv": "0ce720e8e975a001503fd4fc4c0bf5ddb83a358267949003a10186389d7fd803",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__base__paired.csv": "200cce389313a83741055654f8e9bf1864e22b47138fce5047af00160dbd7e36",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__capacity_0p1pct__paired.csv": "9cd4d6a19a049474c61dafa7dd313d95c910de9d0cca41a0287b61ed85219d41",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2025__double_cost__paired.csv": "f7320adb38f90adb09e6da97abe03df578833fd7f47174efa1d02a65ea12fb5d",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__base__paired.csv": "837723684e8dadc5bcd8309364a15c173b9cb915661c7671630a97eeae56790c",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__capacity_0p1pct__paired.csv": "ac01889fe020468ad1aa00e874d080241ef958291592803f59089e060b1cdb6c",
+    "pool_sensitivity_20261023_202110\\main_liquid\\execution\\evaluation_2026sep__double_cost__paired.csv": "7953f5ac9ddf847c063623bff8096c0e190386ef30db996c5de8df8ddc49383f",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__base__paired.csv": "832c11911f82221a426c7a0a7dee1afcfd3fb6192590c1350706d8e0609f115a",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__capacity_0p1pct__paired.csv": "cc25d8c24f95aff540ff76ff57dbb8c9d9a6545f2d1dcf950d43fa2d7343eb52",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2025__double_cost__paired.csv": "8e43891bb2cacfedc5a7b498d49725b6d50dd9e8a7423ef570b7054377d5b79c",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__base__paired.csv": "c86ee4efb777bec1dbe4524cf740bd1baafd99885307f140b06899e8d460257d",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__capacity_0p1pct__paired.csv": "7c6708d69bf879696f943df6c0a15610358ca528dd39d3936e548d40ba5627da",
+    "pool_sensitivity_20261023_202110\\liquid1000\\execution\\evaluation_2026sep__double_cost__paired.csv": "23430b0d9e4788abd46d625bbd6275b3a1d0210571e245aa04e6fb258370345b"
+  },
+  "execution_summary_sha256": {
+    "all_liquid": "0b325c26ca409956b1f6a507de420a94e5d72c487b9719a0739e2f3ba0f9a9b7",
+    "main_liquid": "b56e9c4e362a2d09676957359e716ea08153f02a78642cb127fa887c54ee52b9",
+    "liquid1000": "50d65d541592a281d451ee3714025a1b12323ee8ae1bc2e0daa80b35a121f87a"
+  },
+  "old_source_sha256": {
+    "lab.py": "11f837651cf543760f4dae966b60029a962c96cc9103d9e5bb433447bb3ba7f3",
+    "execution_metadata.py": "d9ef9a018d3259258c968c072b33043dcb82a07e399e82b1fab37b591945f87d",
+    "research.py": "6ac636ff5615c32446e2c9df407b377e12b5af87838d2f1b7527e695b9564cd6",
+    "strategy_blocks.py": "5d93e7f54cddb2a477a3f4a6428b39f21c3e5deb76ecdcfa91c129d236c4cfc8",
+    "v4_factors.py": "39947b7900016f8da7e75214c65aac8d175189ea5da71f1c40f8ec0ecbf0d158",
+    "research_v4.py": "8a30670b0817ada3a5cc99f7044aae40a8f3b642b61692f1c495cbc58f47f302"
+  },
+  "periods": {
+    "evaluation_2025": {
+      "start": "2025-01-02",
+      "end": "2025-12-31",
+      "role": "primary_retrospective"
+    },
+    "evaluation_2026sep": {
+      "start": "2026-01-05",
+      "end": "2026-09-30",
+      "role": "previously_observed_fixed_extension"
+    }
+  },
+  "pool_rules": {
+    "all_liquid": {
+      "name": "全部A股，20日均额≥2000万元",
+      "universe": "all_a",
+      "liquidity_top_n": 0
+    },
+    "main_liquid": {
+      "name": "主板，20日均额≥2000万元",
+      "universe": "main_a",
+      "liquidity_top_n": 0
+    },
+    "liquid1000": {
+      "name": "全部A股，过去20日均额前1000",
+      "universe": "all_a",
+      "liquidity_top_n": 1000
+    }
+  },
+  "base_config": {
+    "start": "2025-01-02",
+    "end": "2025-12-31",
+    "capital": 1000000000,
+    "top_n": 100,
+    "rebalance": "weekly",
+    "min_history": 120,
+    "min_price": 2.0,
+    "min_avg_amount": 20000000,
+    "min_active_days20": 18,
+    "commission": 0.0001,
+    "min_commission": 5.0,
+    "slippage": 0.0005,
+    "cash_buffer": 0.01,
+    "max_participation": 0.01,
+    "open_guard": 0.048,
+    "writeoff_missing_days": 20,
+    "execution_model": "daily_conservative",
+    "st_policy": "price_proxy",
+    "universe": "all_a",
+    "liquidity_top_n": 0,
+    "risk_proxy_window": 20,
+    "max_daily_participation": 0.01,
+    "liquidate_end": true,
+    "wind_down_days": 20
+  },
+  "risk_free_daily": 0,
+  "proxy_definition": "At source date t use Market.eligible(base_config pool)[t-1]; equal fixed 1/N weights of adjusted close_t/close_t-1-1. Finite positive raw close and cumadj on both dates required. strict return missing if any selected leg missing or N=0. No complete-case reweighting. missing_leg_zero_mark assigns zero to unavailable legs, a valuation assumption only. Not official or verified investable index.",
+  "HAC": "OLS intercept, Bartlett L5 no small-sample correction; normal CI and raw two-sided P. Scores padded at excluded source rows preserve lag distances. Main cell also L20.",
+  "fixed_primary_cell": {
+    "pool": "all_liquid",
+    "period": "evaluation_2025",
+    "strategy": "5dr",
+    "scenario": "base",
+    "proxy_pool": "all_liquid",
+    "proxy_method": "strict",
+    "HAC_maxlags": 5
+  },
+  "expected_unique_market_fits": 201,
+  "expected_relative_P3_checks": 18,
+  "resource_policy": {
+    "method": "Windows_CPU_set_topology",
+    "reserved_logical_processors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "allowed_logical_processors": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_sets": [
+      {
+        "logical": 0,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 1,
+        "core": 0,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 2,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 3,
+        "core": 2,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 4,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 5,
+        "core": 4,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 6,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 7,
+        "core": 6,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 8,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 9,
+        "core": 8,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 10,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 11,
+        "core": 10,
+        "efficiency": 1,
+        "group": 0
+      },
+      {
+        "logical": 12,
+        "core": 12,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 13,
+        "core": 13,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 14,
+        "core": 14,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 15,
+        "core": 15,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 16,
+        "core": 16,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 17,
+        "core": 17,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 18,
+        "core": 18,
+        "efficiency": 0,
+        "group": 0
+      },
+      {
+        "logical": 19,
+        "core": 19,
+        "efficiency": 0,
+        "group": 0
+      }
+    ]
+  },
+  "numeric_and_arrow_threads": 1,
+  "failure_policy": "Record each regression error and continue remaining jobs",
+  "boundaries": [
+    "Previously observed periods, no untouched out-of-sample claim",
+    "Linear annual alpha=252*daily intercept, not compound return",
+    "All constructed and source daily series remain local; only aggregate outputs eligible for later publication"
+  ]
+}

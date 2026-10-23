@@ -1,0 +1,177 @@
+[
+  {
+    "path": "execution_evaluation.py",
+    "bytes": 12479,
+    "sha256": "f4726a015a4dae8a7a808ef990ce6a2c44085e1bb6b4ecd03ac8a5a5f89f602f"
+  },
+  {
+    "path": "information_evaluation.py",
+    "bytes": 12179,
+    "sha256": "2f4b1e09bdf751c051d66df4fea23b490cd91d248600049379e559e28a01c0fd"
+  },
+  {
+    "path": "investigate_normalization.py",
+    "bytes": 4465,
+    "sha256": "18a1356ef16fe9d67bd68a3d451ed5eaa326727468377608ad87172658f33e4b"
+  },
+  {
+    "path": "market_beta_alpha.py",
+    "bytes": 10467,
+    "sha256": "dfaa29787d4bd472b9e7277fc8eafdb5f760283daaf10f75a9aab1ec5b66aa09"
+  },
+  {
+    "path": "pool_sensitivity.py",
+    "bytes": 6930,
+    "sha256": "c702d9b1f734e0bd2cd138920de4111681552ad566d08fdefc65b4e5946d1283"
+  },
+  {
+    "path": "render_report.py",
+    "bytes": 36264,
+    "sha256": "9cbfcab2c3781737e2e9954e5cfa3fa6671b7511f4578ae5337e54c2ce637497"
+  },
+  {
+    "path": "render_market_beta_alpha.py",
+    "bytes": 10147,
+    "sha256": "60071338cbae849069a1452c1dc26f2b311d18eed37d5f7afab0103ac23b8c14"
+  },
+  {
+    "path": "run_evaluation.py",
+    "bytes": 12600,
+    "sha256": "eb49e322280a0bc3898be2ee1b4841fd85fb0ffd10a418fd29e497faef47eca3"
+  },
+  {
+    "path": "verify_evaluation.py",
+    "bytes": 25593,
+    "sha256": "857264248443496643d548dc5051def9373828e5791935fc4585d5bb0b66ab0f"
+  },
+  {
+    "path": "verify_pool_sensitivity.py",
+    "bytes": 16506,
+    "sha256": "9c4880db25370cc5975596dc56dc9cca225202b572c3f8b6df040e25b64b3df1"
+  },
+  {
+    "path": "verify_market_beta_alpha.py",
+    "bytes": 9807,
+    "sha256": "8ce902538c546a7c3a5e76c1b9cd7c9ef5c6e084c433f9ce888ca7c3d22d1824"
+  },
+  {
+    "path": "evaluation_20261023_200711/REPORT.md",
+    "bytes": 150725,
+    "sha256": "be2f1f7a346a1d56112c22a138a472adb93719bf0859293a0a6b6d21d00c858b"
+  },
+  {
+    "path": "evaluation_20261023_200711/PREVIEW.md",
+    "bytes": 11080,
+    "sha256": "2639793b4d7f1c1610725a082ec7e7f4f1e70403ffe1e4524ced2d6cef465c11"
+  },
+  {
+    "path": "evaluation_20261023_200711/POOL_SENSITIVITY.md",
+    "bytes": 17431,
+    "sha256": "abd6a0e3679c24c469ebb231da9cba183830c7d12e811143fe79ea777a085d99"
+  },
+  {
+    "path": "evaluation_20261023_200711/result.json",
+    "bytes": 2065231,
+    "sha256": "ce09a650ed687ac199c9ed96242b4e5aaa38065206fb6e7513ebcace8cd6e36a"
+  },
+  {
+    "path": "pool_sensitivity_20261023_202110/result.json",
+    "bytes": 352100,
+    "sha256": "edae02229fcbdf2d5afa64859a6b06e139f314958f0d5ba174587cf8256a75b9"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/regressions.json",
+    "bytes": 223409,
+    "sha256": "54bd7ae6e8ff378fc134163a00d905c51a2f40fea654a6191c19e30f34b44c45"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/relative_p3_checks.json",
+    "bytes": 24894,
+    "sha256": "e6a8fe93236bf02bad8f499576c9fa1646180dd6f83f51618fdeee189af9a4e3"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/proxy_missingness.json",
+    "bytes": 1367,
+    "sha256": "bc78819bc695e4ef8bf8d2247100649409ef61d57863a4b73d620cbcc83b274c"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/MARKET_BETA_ALPHA.md",
+    "bytes": 8295,
+    "sha256": "df9f4f68939bad7e10b98a1589df49c913df451a416d7d16c62da6e21219f1e3"
+  },
+  {
+    "path": "evaluation_20261023_200711/figures/01_horizon_information.png",
+    "bytes": 49229,
+    "sha256": "b37ca639012bd362ecb291913f5e13fc06c29577de6679c3aff6f082cb4dc9ed"
+  },
+  {
+    "path": "evaluation_20261023_200711/figures/02_deciles.png",
+    "bytes": 28526,
+    "sha256": "e921e20ee79fe43b9e093e730c24b8792890c50a423a955024d80de658240767"
+  },
+  {
+    "path": "evaluation_20261023_200711/figures/03_rankic_periods.png",
+    "bytes": 223445,
+    "sha256": "48fe0ede667ba1aee6294f5657a9aa7d2f61c70edcf384cd02124a84fbe8d23f"
+  },
+  {
+    "path": "evaluation_20261023_200711/figures/04_execution_nav.png",
+    "bytes": 257803,
+    "sha256": "66593fa6742cd2607bf95d81c8e276ab05034267fb3903f75db3a9da6eba2611"
+  },
+  {
+    "path": "evaluation_20261023_200711/figures/05_pool_comparison.png",
+    "bytes": 43275,
+    "sha256": "213b28accd0ab1bed497782fc7da57af514b6601fc1f16a31069205c5a058cec"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/figures/06_market_beta_alpha.png",
+    "bytes": 143257,
+    "sha256": "5b057ca1f84874bf51f613706ea38d148c7be36323e516580029cedbbd23baf2"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/regressions.csv",
+    "bytes": 93347,
+    "sha256": "ec8340885b3cc5b61c82ff17573061cf9214a9839e97f14ae28ec1d379d85287"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/relative_p3_checks.csv",
+    "bytes": 10977,
+    "sha256": "6e7ae55a1c495281afb1229342144f3e0d9fcc2029d40413a7c370eae4b0f500"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/proxy_missingness.csv",
+    "bytes": 390,
+    "sha256": "7427a27c8afa23cc79100f68521133628cf73bc9d9604679d32b53b2a1598081"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/validation_summary.json",
+    "bytes": 620,
+    "sha256": "744ca11d475cb18007159ee13acd9ada6ed26cc12747b74014fcb1674e310705"
+  },
+  {
+    "path": "evaluation_20261023_200711/validation_summary.json",
+    "bytes": 2239,
+    "sha256": "f0585a501f815058d871044abd60884018525e5a6cbe249fee8518fb13f6351a"
+  },
+  {
+    "path": "pool_sensitivity_20261023_202110/validation_summary.json",
+    "bytes": 2868,
+    "sha256": "85e60b3062266bd4b70110054cbbe22d3ff32017f4b6d5f97be85977e8c788df"
+  },
+  {
+    "path": "market_beta_alpha_20261023_203503/protocol_public.json",
+    "bytes": 19965,
+    "sha256": "0353de291be147b2b921314a666b551becd5d096644c80c56ef1a577885e055a"
+  },
+  {
+    "path": ".gitattributes",
+    "bytes": 75,
+    "sha256": "516f10f37db06f0582c3e5768823e5b1e36ca8684caa24463c10bcc477c15cd0"
+  },
+  {
+    "path": "README.md",
+    "bytes": 2166,
+    "sha256": "fe071cf396bafb78bd54c927596b237f160e6e39513ab6719ede48d51778f2e8"
+  }
+]

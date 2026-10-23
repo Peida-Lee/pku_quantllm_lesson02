@@ -1,0 +1,7 @@
+proxy_pool,period,calendar_days,strict_missing_days,days_with_missing_legs,total_missing_legs,max_missing_weight
+all_liquid,evaluation_2025,243,1,1,1,0.00021510002151000216
+all_liquid,evaluation_2026sep,181,0,0,0,0
+main_liquid,evaluation_2025,243,0,0,0,0
+main_liquid,evaluation_2026sep,181,0,0,0,0
+liquid1000,evaluation_2025,243,1,1,1,0.001
+liquid1000,evaluation_2026sep,181,0,0,0,0

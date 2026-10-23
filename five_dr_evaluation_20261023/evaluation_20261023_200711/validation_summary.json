@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "generated_at": "2026-10-23T20:16:26.208388+08:00",
+  "validator_sha256": "857264248443496643d548dc5051def9373828e5791935fc4585d5bb0b66ab0f",
+  "check_count": 13830,
+  "failed_count": 0,
+  "money_absolute_tolerance": 0.001,
+  "ratio_absolute_tolerance": 1e-10,
+  "scope": [
+    "All 36 persisted information cohorts: daily calendars/counts/group identities, aggregate and monthly mean/std/HAC/CI/raw P including source-grid gaps.",
+    "All 20 persisted execution daily ledgers: 13 performance metrics, returns, cash and terminal/writeoff semantics; six paired return/relative-alpha calculations.",
+    "Original ZIP independent factor/target/IC/ranks/groups/OLS recomputation on first/middle/last valid target dates of 2025 all_liquid h5 only.",
+    "Exact roundtrip daily ledger continuity with preserved 2025 V4 5DR baseline; code and ZIP hash identity."
+  ],
+  "source_recomputed_signal_dates": [
+    "2024-12-31",
+    "2025-07-02",
+    "2025-12-23"
+  ],
+  "source_sample_price_construction": "Independent raw_price * (cumadj / first_valid_positive_cumadj), preserving declared causal normalization and IEEE operation order; no algebraic cancellation before ranks.",
+  "limitations": [
+    "No full stock-day independent information recalculation; conditional beta verified as persisted daily series and inference only.",
+    "Source sample eligibility reuses preserved old Market.eligible; factor and target formulas independently recomputed.",
+    "No independent full per-trade cash/position/price/fee/capacity reconstruction; daily-ledger verification does not prove ledger generation or real execution.",
+    "No claim of untouched out-of-sample data, actual historical ST exclusion, opening-auction feasibility or physical share settlement."
+  ],
+  "prior_validation_attempt": {
+    "sha256": "0629579863a9b78a8b0ccf91fc47e0d2baa42c71af22bf45c5c1d3238b4097f8",
+    "preserved": true
+  },
+  "normalization_investigation": {
+    "sha256": "22eb7dccd72e6c06f89404e3b8174ee8b8c9b5a4aebede843e441685e20f0061",
+    "correction": "Validator previously used raw*cumadj; repaired to independently compute declared raw*(cumadj/first_valid_factor). No computation, data, saved statistics, or tolerance changes."
+  }
+}

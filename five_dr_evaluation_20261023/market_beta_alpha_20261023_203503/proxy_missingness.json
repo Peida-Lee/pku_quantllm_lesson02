@@ -1,0 +1,56 @@
+[
+  {
+    "proxy_pool": "all_liquid",
+    "period": "evaluation_2025",
+    "calendar_days": 243,
+    "strict_missing_days": 1,
+    "days_with_missing_legs": 1,
+    "total_missing_legs": 1,
+    "max_missing_weight": 0.00021510002151000216
+  },
+  {
+    "proxy_pool": "all_liquid",
+    "period": "evaluation_2026sep",
+    "calendar_days": 181,
+    "strict_missing_days": 0,
+    "days_with_missing_legs": 0,
+    "total_missing_legs": 0,
+    "max_missing_weight": 0.0
+  },
+  {
+    "proxy_pool": "main_liquid",
+    "period": "evaluation_2025",
+    "calendar_days": 243,
+    "strict_missing_days": 0,
+    "days_with_missing_legs": 0,
+    "total_missing_legs": 0,
+    "max_missing_weight": 0.0
+  },
+  {
+    "proxy_pool": "main_liquid",
+    "period": "evaluation_2026sep",
+    "calendar_days": 181,
+    "strict_missing_days": 0,
+    "days_with_missing_legs": 0,
+    "total_missing_legs": 0,
+    "max_missing_weight": 0.0
+  },
+  {
+    "proxy_pool": "liquid1000",
+    "period": "evaluation_2025",
+    "calendar_days": 243,
+    "strict_missing_days": 1,
+    "days_with_missing_legs": 1,
+    "total_missing_legs": 1,
+    "max_missing_weight": 0.001
+  },
+  {
+    "proxy_pool": "liquid1000",
+    "period": "evaluation_2026sep",
+    "calendar_days": 181,
+    "strict_missing_days": 0,
+    "days_with_missing_legs": 0,
+    "total_missing_legs": 0,
+    "max_missing_weight": 0.0
+  }
+]

@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "generated_at": "2026-10-23T20:23:30.615055+08:00",
+  "validator_sha256": "9c4880db25370cc5975596dc56dc9cca225202b572c3f8b6df040e25b64b3df1",
+  "shared_independent_verifier_sha256": "857264248443496643d548dc5051def9373828e5791935fc4585d5bb0b66ab0f",
+  "check_count": 2443,
+  "failed_count": 0,
+  "money_absolute_tolerance": 0.001,
+  "ratio_absolute_tolerance": 1e-10,
+  "sampled_pool_counts": [
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2025",
+      "date": "2025-01-02"
+    },
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2025",
+      "date": "2025-07-07"
+    },
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2025",
+      "date": "2025-12-31"
+    },
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2026sep",
+      "date": "2026-01-05"
+    },
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2026sep",
+      "date": "2026-05-25"
+    },
+    {
+      "pool": "main_liquid",
+      "period": "evaluation_2026sep",
+      "date": "2026-09-30"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2025",
+      "date": "2025-01-02"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2025",
+      "date": "2025-07-07"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2025",
+      "date": "2025-12-31"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2026sep",
+      "date": "2026-01-05"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2026sep",
+      "date": "2026-05-25"
+    },
+    {
+      "pool": "liquid1000",
+      "period": "evaluation_2026sep",
+      "date": "2026-09-30"
+    }
+  ],
+  "scope": [
+    "40 supplemental simulation daily ledgers: all 13 performance metrics, daily returns, cash, exact configurations/calendar and terminal/writeoff semantics.",
+    "12 supplemental paired comparisons: saved daily differences, net IR/Sharpe/drawdown, HAC mean differences and relative-three-factor alpha.",
+    "Pool count full calendars/integer bounds/cardinality transitions and saved descriptive summaries; source count recomputation at first/middle/last date per period per pool.",
+    "Source/code hashes and reference accepted all_liquid result identity; original 13830 checks and original 20 simulations are not rerun."
+  ],
+  "limitations": [
+    "No independent full per-trade cash/position/price/fee/capacity reconstruction.",
+    "Pool count sample eligibility reuses frozen Market.eligible, explicitly not an independent policy implementation; 5DR complete-path availability independently constructed.",
+    "Pool changes alter universe membership and all within-pool ranks; effects are not isolated industry/size causal effects.",
+    "Previously observed retrospective sensitivity only; historical ST truth and opening auction fills remain unavailable."
+  ]
+}
